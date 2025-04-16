@@ -1,0 +1,64 @@
+MVP:
+
+software plan visualization : 
+
+	helps the developers plan the project according to their needs using the actual tools to check the compatibility and also tailor a proper workflow to complete the project.
+Ai auto recommendations:
+
+	when a developer/s start planning the workflow for their project the AI model understand the needs and provides with the best industry tools that would make their work  more efficient and up to industry standards 
+
+
+
+
+future updates:
+
+software update feature:
+	
+	When there is an update on the library or a module the system notifies the developers saying that there has been an update and if not updated then these are the things that will be affected
+
+code snippet boilerplate:
+	LLM's to create a boilerplate code between components to make sure the development process is more efficient
+
+
+
+
+other features:
+
+form groups:
+	form a group of developers that are working on the project to make the project more secure
+
+add people:
+	Feature to add new people on to an ongoing project
+
+assign tasks:
+	once the architecture is built the workload can be divided among the developers
+	
+Version control using Git:
+	keeping proper tract of the older and newer updates of the architecture
+
+
+
+
+Might Suggestions (ask for its need):
+
+Inline code editing: 
+	the interface currently resembles a design tool. Consider adding more developer-centric elements like inline code editing or an integrated console.
+
+Testing Framework Integration: 
+	Software should be tested before it's used. So the software can allow users to add little notes or blocks for what parts of the system they will test, and how.
+
+Cost Estimation: 
+	Integrate with cloud pricing APIs to estimate deployment costs based on the components selected.
+
+Deployment Pathway:
+	Once a user builds their architecture diagram, your tool can automatically generate setup files like Terraform or CloudFormation. These are files that can be used to deploy the whole system to the cloud — in one go. Instead of manually setting up the infrastructure, users can just click and launch. It saves hours of work.
+
+Architecture design based on the prompts:
+	For smaller projects, the user can type out what the requirements in form of a prompt and the system will build the entire architecture he/she can follow to achieve the desired outcome
+
+Default architecture template:
+	for small-mid level projects, creating the default templates based on the type of project soo that the developers can edit the template according to their specific needs 
+
+
+
+

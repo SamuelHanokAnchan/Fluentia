@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluentia - Software Planning Tool</title>
+    
+    <!-- CSS imports - order matters! -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/workspace.css">
+    <link rel="stylesheet" href="css/tools.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    
+    <!-- jsPlumb Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/icono.ico"/>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/Screenshot 2025-03-18 235410.png" alt="Fluentia Logo"></a>
+        </div>
+        <div class="project-title" id="projectName">Untitled Project</div>
+        <div class="nav-actions">
+            <button class="btn btn-primary export-btn">Export</button>
+        </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="dropdown">
+            <button class="dropdown-btn" id="statusBtn">
+                <span class="status-indicator no-status"></span>
+                <span class="status-text">No Status</span>
+            </button>
+            <div class="dropdown-content" id="statusDropdown">
+                <a href="#" class="status-item" data-status="draft">
+                    <span class="status-indicator draft"></span>Draft
+                </a>
+                <a href="#" class="status-item" data-status="complete">
+                    <span class="status-indicator complete"></span>Complete
+                </a>
+                <a href="#" class="status-item" data-status="pending">
+                    <span class="status-indicator pending"></span>Pending Review
+                </a>
+                <a href="#" class="status-item" data-status="approved">
+                    <span class="status-indicator approved"></span>Approved
+                </a>
+                <a href="#" class="status-item" data-status="rejected">
+                    <span class="status-indicator rejected"></span>Rejected
+                </a>
+                <a href="#" class="status-item" data-status="no-status">
+                    <span class="status-indicator no-status"></span>No Status
+                </a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-btn">File</button>
+            <div class="dropdown-content">
+                <a href="#" id="newProject">New</a>
+                <a href="#">Import</a>
+                <a href="#" class="save-project">Save</a>
+                <a href="#" class="load-project">Load</a>
+                <a href="#">Export as PDF</a>
+                <a href="#">Move to...</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-btn">Edit</button>
+            <div class="dropdown-content">
+                <a href="#" id="menuUndo">Undo</a>
+                <a href="#" id="menuRedo">Redo</a>
+                <a href="#">Cut</a>
+                <a href="#">Copy</a>
+                <a href="#">Paste</a>
+                <a href="#">Find and Replace</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-btn">View</button>
+            <div class="dropdown-content">
+                <a href="#" id="menuZoomIn">Zoom In</a>
+                <a href="#" id="menuZoomOut">Zoom Out</a>
+                <a href="#" id="menuResetZoom">Reset Zoom</a>
+                <a href="#" id="toggleGrid">Toggle Grid</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-btn">Insert</button>
+            <div class="dropdown-content">
+                <a href="#">New Page</a>
+                <a href="#">Import Page</a>
+                <a href="#">Comment</a>
+                <a href="#">PDF</a>
+                <a href="#">Tool</a>
+                <a href="#">Image</a>
+                <a href="#">Creator Name</a>
+                <a href="#">Team Name</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-btn">Share</button>
+            <div class="dropdown-content">
+                <a href="#">Add Collaborator</a>
+                <a href="#">Copy Fluentia Link</a>
+                <a href="#">Share Project</a>
+                <a href="#">Publish</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropdown-btn">Help</button>
+            <div class="dropdown-content">
+                <a href="#">About</a>
+                <a href="#">Find Feature</a>
+                <a href="#">Learning Center</a>
+                <a href="#">Community</a>
+                <a href="#">Training Lab</a>
+                <a href="#">Report a Bug</a>
+                <a href="#">Help Center</a>
+                <a href="#">Documentation</a>
+            </div>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <!-- Mobile menu content will be populated by JavaScript -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Buttons to show panes when collapsed -->
+        <button class="show-pane-btn show-left-pane" id="showLeftPane" title="Show Tools Panel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 17l5-5-5-5"></path>
+            </svg>
+        </button>
+
+        <!-- Left Pane -->
+        <div class="left-pane" id="leftPane">
+            <div class="pane-header">
+                <h3>Tools</h3>
+                <button class="toggle-pane-btn" id="toggleLeftPane">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input type="text" class="search-input" placeholder="Search for tools" id="searchInput">
+                    <div class="search-results">
+                        <div class="results-dropdown" id="resultsDropdown"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="results-container" id="resultsContainer"></div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <button class="btn btn-success" id="openModal">
+                <span style="font-size: 1.5rem;">+</span> Build a Project
+            </button>
+            
+            <!-- Workspace Container -->
+            <div id="workspaceContainer" class="workspace-container" style="display: none;">
+                <div id="workspace" class="workspace-grid"></div>
+                
+                <div class="workspace-controls">
+                    <select id="connectionType" title="Connection Type">
+                        <option value="straight">Straight</option>
+                        <option value="flowchart">Flowchart</option>
+                        <option value="bezier">Curved</option>
+                    </select>
+                    
+                    <div class="history-controls">
+                        <button id="undoBtn" title="Undo" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 10h10a5 5 0 0 1 5 5v2"></path>
+                                <path d="M3 10l5-5"></path>
+                                <path d="M3 10l5 5"></path>
+                            </svg>
+                        </button>
+                        <button id="redoBtn" title="Redo" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10H11a5 5 0 0 0-5 5v2"></path>
+                                <path d="M21 10l-5-5"></path>
+                                <path d="M21 10l-5 5"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="zoom-controls">
+                        <button id="zoomIn" title="Zoom In">+</button>
+                        <button id="resetZoom" title="Reset View">⟲</button>
+                        <button id="zoomOut" title="Zoom Out">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Pane -->
+        <div class="right-pane" id="rightPane">
+            <div class="pane-header">
+                <h3>AI Suggestions</h3>
+                <button class="toggle-pane-btn" id="toggleRightPane">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="aiSuggestionsContent"></div>
+        </div>
+        
+        <!-- Button to show right pane when collapsed -->
+        <button class="show-pane-btn show-right-pane" id="showRightPane" title="Show AI Suggestions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 17l-5-5 5-5"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>What kind of project do you want to create?</h2>
+                <button class="modal-close-btn" id="modalCloseBtn">×</button>
+            </div>
+            <div class="project-grid" id="projectGrid"></div>
+            
+            <div id="nameInput" style="display: none;">
+                <input type="text" class="project-name-input" placeholder="Enter project name">
+                <div class="form-actions">
+                    <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button class="btn btn-primary" id="saveBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmModalOverlay">
+        <div class="modal-content confirmation-modal">
+            <div class="modal-header">
+                <h3 id="confirmModalTitle">Confirmation</h3>
+                <button class="modal-close-btn" id="confirmModalCloseBtn">×</button>
+            </div>
+            <p id="confirmModalMessage">Are you sure you want to proceed?</p>
+            <div class="form-actions">
+                <button class="btn btn-secondary" id="confirmCancelBtn">Cancel</button>
+                <button class="btn btn-primary" id="confirmOkBtn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+
+    <!-- JavaScript imports - order matters! -->
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/workspace.js"></script>
+    <script src="js/connections.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/storage.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* 
+ * Fluentia - Software Planning Tool
+ * Workspace styles: grid, controls, and tool nodes
+ */
+
+/* Workspace */
+.workspace-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+}
+
+.workspace-grid {
+    width: 3000px;
+    height: 3000px;
+    background-color: white;
+    background-image: 
+        linear-gradient(to right, rgba(200, 200, 200, 0.2) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 200, 200, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+}
+
+/* Workspace controls */
+.workspace-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.zoom-controls, .history-controls {
+    display: flex;
+    background: white;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.zoom-controls button, .history-controls button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.zoom-controls button:hover, .history-controls button:hover {
+    background: var(--gray-100);
+}
+
+.zoom-controls button:disabled, .history-controls button:disabled {
+    color: var(--gray-300);
+    cursor: not-allowed;
+}
+
+#connectionType {
+    padding: 0.5rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius-sm);
+    background: white;
+    box-shadow: var(--box-shadow);
+    font-size: 0.875rem;
+}
+
+/* Tool node styles for workspace */
+.tool-node {
+    position: absolute;
+    width: 120px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    background: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    box-shadow: var(--box-shadow-sm);
+    z-index: 10;
+    cursor: move;
+    transition: box-shadow 0.2s ease;
+    /* Critical for dragging to work */
+    touch-action: none;
+}
+
+.tool-node:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.tool-node img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.tool-node-title {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+
+/* Delete button for nodes in workspace */
+.delete-node-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--danger);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 30;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.tool-node:hover .delete-node-btn {
+    opacity: 0.8;
+}
+
+.delete-node-btn:hover {
+    background-color: var(--danger-dark);
+    transform: scale(1.1);
+}
+
+/* jsPlumb specific styles */
+.jtk-connector {
+    z-index: 4;
+}
+
+.jtk-endpoint {
+    z-index: 21;
+    cursor: pointer;
+}
+
+.jtk-overlay {
+    z-index: 6;
+}
+
+/* Custom connection dragging style */
+.jtk-drag-active {
+    outline: 2px dashed var(--success) !important;
+}
+
+.jtk-drag-hover {
+    outline: 2px solid var(--primary) !important;
+}
+
+/* Context menu for connections */
+.custom-menu {
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--box-shadow-md);
+    padding: 0.5rem 0;
+    min-width: 150px;
+}
+
+.custom-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.custom-menu button:hover {
+    background: var(--gray-100);
+}
+
+.delete-btn {
+    color: var(--danger);
+}

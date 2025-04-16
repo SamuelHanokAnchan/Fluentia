@@ -1,0 +1,286 @@
+/* 
+ * Fluentia - Software Planning Tool
+ * Layout styles: navbar, main containers, and panels
+ */
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--dark-blue);
+    box-shadow: var(--box-shadow);
+    color: white;
+    z-index: 100;
+}
+
+.navbar .logo img {
+    width: 184px;
+    height: 55px;
+    object-fit: contain;
+}
+
+/* Project title in navbar - centered */
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40%;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 2rem;
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-200);
+    height: 42px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Status button styling */
+#statusBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-right: 16px;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--gray-600);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Mobile menu */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 42px;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-menu-item {
+    padding: 0.75rem;
+    border-radius: var(--border-radius-sm);
+    background: var(--gray-100);
+    font-weight: 500;
+}
+
+.mobile-menu-item:hover {
+    background: var(--gray-200);
+}
+
+/* Main Layout */
+.main-container {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Panes */
+.left-pane, .right-pane {
+    width: 280px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, width 0.3s ease;
+    z-index: 10;
+}
+
+.left-pane {
+    border-right: 1px solid var(--gray-200);
+}
+
+.right-pane {
+    border-left: 1px solid var(--gray-200);
+}
+
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.pane-header h3 {
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+/* Left pane toggle button */
+.toggle-pane-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-500);
+    padding: 0.25rem;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-pane-btn:hover {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+.toggle-pane-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Collapsed panes */
+.left-pane.collapsed {
+    transform: translateX(-100%);
+    width: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}
+
+.right-pane.collapsed {
+    transform: translateX(100%);
+    width: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}
+
+/* Show pane buttons */
+.show-pane-btn {
+    position: absolute;
+    z-index: 5;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--box-shadow-sm);
+    transition: var(--transition);
+}
+
+.show-pane-btn:hover {
+    background: var(--gray-100);
+    box-shadow: var(--box-shadow);
+}
+
+.show-left-pane {
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.show-right-pane {
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: transparent;
+    color: var(--gray-700);
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.dropdown-btn:hover {
+    background-color: var(--gray-200);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: var(--box-shadow-lg);
+    z-index: 1000;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    top: 100%;
+    left: 0;
+    border: 1px solid var(--gray-200);
+    margin-top: 2px;
+}
+
+.dropdown-content a {
+    color: var(--gray-700);
+    padding: 10px 14px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--gray-100);
+}
+
+/* Active dropdown item */
+.dropdown-content a.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Status item in dropdown */
+.status-item {
+    display: flex !important;
+    align-items: center;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray-100);
+    position: relative;
+    overflow: hidden;
+}

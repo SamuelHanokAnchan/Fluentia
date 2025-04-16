@@ -1,0 +1,162 @@
+/* 
+ * Fluentia - Software Planning Tool
+ * AI feature styles
+ */
+
+/* AI Recommendations */
+.ai-recommendations {
+    margin-bottom: 1.5rem;
+}
+
+.ai-section-header {
+    margin-bottom: 1rem;
+}
+
+.ai-section-header h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.ai-section-header p {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 0.75rem;
+}
+
+/* Connection visualization */
+.ai-connections {
+    border-top: 1px solid var(--gray-200);
+    padding-top: 1rem;
+}
+
+.connections-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.connection-item {
+    background-color: var(--gray-100);
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connection-tools {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.connection-arrow {
+    color: var(--gray-600);
+    font-weight: 500;
+}
+
+.badge {
+    background-color: var(--gray-200);
+    color: var(--gray-800);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+}
+
+.btn-add-connection {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-add-connection:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+/* Code snippet display */
+.ai-code-snippet {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ai-explanation {
+    background-color: var(--gray-100);
+    border-left: 3px solid var(--primary);
+    padding: 0.75rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.875rem;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.ai-code-block {
+    position: relative;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.ai-code-block pre {
+    background-color: #f8f9fc;
+    padding: 1rem;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 0;
+    max-height: 400px;
+}
+
+.ai-code-block code {
+    font-family: inherit;
+    color: var(--gray-800);
+}
+
+.copy-code-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius-sm);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.copy-code-btn:hover {
+    background-color: white;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Highlight pulse animation for the show pane button */
+@keyframes highlight-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+.highlight-pulse {
+    animation: highlight-pulse 1.5s ease-out infinite;
+}
+
+/* AI Tip */
+.ai-tip {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--gray-200);
+}

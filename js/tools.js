@@ -10,7 +10,9 @@ function initSearchFunctionality() {
     searchInput.addEventListener('input', (e) => {
         clearTimeout(searchTimeoutId);
         searchTimeoutId = setTimeout(() => {
-            searchTools(e.target.value);
+            // Use the new search function that works with JSON data
+            const results = searchToolsFromJSON(e.target.value);
+            displaySearchResults(results);
         }, 300); // Debounce time
     });
     
@@ -22,29 +24,18 @@ function initSearchFunctionality() {
     });
 }
 
-// Search tools in the database
-function searchTools(query) {
+// Display search results in the dropdown
+function displaySearchResults(results) {
     if (!resultsDropdown) return;
     
-    if (!query.trim()) {
-        resultsDropdown.innerHTML = '';
-        return;
-    }
-
-    const cleanQuery = query.toLowerCase().trim();
-
-    const filteredTools = TOOLS.filter(tool => {
-        return tool.name.toLowerCase().includes(cleanQuery);
-    });
-    
-    if (filteredTools.length === 0) {
+    if (!results || results.length === 0) {
         resultsDropdown.innerHTML = '<div class="no-results">No matching tools found</div>';
         return;
     }
     
-    resultsDropdown.innerHTML = filteredTools.map(tool => `
+    resultsDropdown.innerHTML = results.map(tool => `
         <div class="result-item" data-tool='${JSON.stringify(tool)}'>
-            <img src="${tool.logo_path}" alt="${tool.name}" class="tool-logo">
+            <img src="${tool.imagePath || 'images/tools/default.png'}" alt="${tool.name}" class="tool-logo">
             <div class="tool-info">
                 <div class="tool-name">${tool.name}</div>
                 <div class="tool-description">${tool.category} Tool</div>
@@ -73,8 +64,8 @@ function handleToolSelection(e) {
         if (searchInput) searchInput.value = '';
         if (resultsDropdown) resultsDropdown.innerHTML = '';
         
-        // Show AI suggestions if applicable
-        updateAISuggestions(toolData);
+        // Show AI suggestions if applicable (we'll implement this later)
+        // updateAISuggestions(toolData);
     } catch (error) {
         console.error("Error handling tool selection:", error);
         showToast("Error adding tool", "error");
@@ -114,7 +105,7 @@ function addToolToPane(toolData) {
     toolElement.setAttribute('data-tool', JSON.stringify(toolData));
     
     toolElement.innerHTML = `
-        <img src="${toolData.logo_path}" alt="${toolData.name}" class="tool-logo">
+        <img src="${toolData.imagePath || 'images/tools/default.png'}" alt="${toolData.name}" class="tool-logo">
         <span>${toolData.name}</span>
         <span class="platform-badge">${toolData.category}</span>
         <div class="delete-item-btn" title="Remove from toolkit">
@@ -173,7 +164,7 @@ function createToolNode(id, toolData, x, y) {
     
     // Add content to node - with delete button INSIDE the node
     node.innerHTML = `
-        <img src="${toolData.logo_path}" alt="${toolData.name}">
+        <img src="${toolData.imagePath || 'images/tools/default.png'}" alt="${toolData.name}">
         <div class="tool-node-title">${toolData.name}</div>
         <div class="delete-node-btn" title="Delete node">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -274,53 +265,15 @@ function createToolNode(id, toolData, x, y) {
     return node;
 }
 
-// Update AI suggestions based on selected tool
+// Update AI suggestions based on selected tool (placeholder for now)
 function updateAISuggestions(toolData) {
     const aiContent = document.getElementById('aiSuggestionsContent');
     if (!aiContent) return;
     
-    aiContent.innerHTML = '';
-    
-    // Only show suggestions for main tools
-    if (CATEGORY_MAP[toolData.name]) {
-        const relatedCategory = CATEGORY_MAP[toolData.name];
-        const relatedTools = TOOLS.filter(tool => tool.category === relatedCategory);
-        
-        if (relatedTools.length > 0) {
-            const dropdown = document.createElement('div');
-            dropdown.className = 'python-tools-dropdown';
-            dropdown.innerHTML = `
-                <div style="margin-bottom: 0.75rem; font-weight: 500;">
-                    Most commonly used ${toolData.name} tools for Data Engineering Projects:
-                </div>
-            `;
-
-            relatedTools.forEach(tool => {
-                const option = document.createElement('div');
-                option.className = 'python-tool-option';
-                option.innerHTML = `
-                    <img src="${tool.logo_path}" alt="${tool.name}" class="tool-logo">
-                    <span>${tool.name}</span>
-                    <span class="platform-badge">${relatedCategory}</span>
-                `;
-                option.addEventListener('click', () => {
-                    addToolToPane(tool);
-                });
-                dropdown.appendChild(option);
-            });
-
-            aiContent.appendChild(dropdown);
-            
-            // Also add a description
-            const description = document.createElement('div');
-            description.className = 'ai-suggestion-description';
-            description.innerHTML = `
-                <p style="margin-top: 1rem; color: var(--gray-500); font-size: 0.875rem;">
-                    These are the most commonly used ${toolData.name} tools in data engineering projects. 
-                    Click any tool to add it to your toolkit.
-                </p>
-            `;
-            aiContent.appendChild(description);
-        }
-    }
+    aiContent.innerHTML = `
+        <div style="padding: 1rem;">
+            <p>AI recommendations will be implemented in a future update.</p>
+            <p>Selected tool: ${toolData.name}</p>
+        </div>
+    `;
 }

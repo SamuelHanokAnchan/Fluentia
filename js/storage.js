@@ -9,11 +9,16 @@ function saveProject() {
         // Show loading indicator
         toggleLoading(true, "Saving project...");
         
+        // Get project type from data attribute
+        const projectNameElement = document.getElementById('projectName');
+        const projectType = projectNameElement ? projectNameElement.getAttribute('data-project-type') : null;
+        
         // Get the current workspace state
         const projectState = {
             // Basic project info
-            name: document.getElementById('projectName').textContent,
+            name: projectNameElement ? projectNameElement.textContent : 'Untitled Project',
             status: document.querySelector('#statusBtn .status-text').textContent,
+            projectType: projectType,
             
             // Nodes
             nodes: [],
@@ -21,7 +26,8 @@ function saveProject() {
             // Connections
             connections: []
         };
-        
+
+
         // Get all nodes
         const nodes = document.querySelectorAll('.tool-node');
         nodes.forEach(node => {
@@ -104,6 +110,11 @@ function loadProject() {
         const projectNameElement = document.getElementById('projectName');
         if (projectNameElement) {
             projectNameElement.textContent = projectState.name || 'Untitled Project';
+            
+            // Set project type attribute if available
+            if (projectState.projectType) {
+                projectNameElement.setAttribute('data-project-type', projectState.projectType);
+            }
         }
         
         // Set status if available
@@ -152,10 +163,11 @@ function loadProject() {
         setTimeout(() => {
             // Create nodes
             projectState.nodes.forEach(node => {
-                // Find matching tool data
-                const toolData = TOOLS.find(tool => tool.name === node.title) || {
+                // Find matching tool in ALL_TOOLS or create minimal toolData
+                let toolData = ALL_TOOLS.find(tool => tool.name === node.title) || {
+                    id: `unknown-${Date.now()}`,
                     name: node.title,
-                    logo_path: node.imgSrc,
+                    imagePath: node.imgSrc,
                     category: 'Unknown'
                 };
                 

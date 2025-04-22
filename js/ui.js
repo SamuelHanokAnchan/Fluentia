@@ -300,3 +300,165 @@ function toggleLoading(show, message = "Loading...") {
     
     loadingOverlay.style.display = show ? 'flex' : 'none';
 }
+
+// Initialize responsive layout
+function initResponsiveLayout() {
+    const leftPane = document.getElementById('leftPane');
+    const rightPane = document.getElementById('rightPane');
+    const toggleLeftPane = document.getElementById('toggleLeftPane');
+    const toggleRightPane = document.getElementById('toggleRightPane');
+    const showLeftPane = document.getElementById('showLeftPane');
+    const showRightPane = document.getElementById('showRightPane');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    // Toggle left pane - ensure proper direct DOM manipulation
+    if (toggleLeftPane && leftPane) {
+        toggleLeftPane.addEventListener('click', function() {
+            // Using direct style manipulation for more reliable behavior
+            if (leftPane.classList.contains('collapsed')) {
+                leftPane.classList.remove('collapsed');
+                this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+            } else {
+                leftPane.classList.add('collapsed');
+                this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+            }
+            
+            // Log for debugging
+            console.log("Left pane toggled, collapsed:", leftPane.classList.contains('collapsed'));
+        });
+    }
+    
+    // Toggle right pane - ensure proper direct DOM manipulation
+    if (toggleRightPane && rightPane) {
+        toggleRightPane.addEventListener('click', function() {
+            // Using direct style manipulation for more reliable behavior  
+            if (rightPane.classList.contains('collapsed')) {
+                rightPane.classList.remove('collapsed');
+                this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+            } else {
+                rightPane.classList.add('collapsed');
+                this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+            }
+            
+            // Log for debugging
+            console.log("Right pane toggled, collapsed:", rightPane.classList.contains('collapsed'));
+        });
+    }
+    
+    // Show left pane button
+    if (showLeftPane && leftPane) {
+        showLeftPane.addEventListener('click', function() {
+            console.log("Show left pane button clicked");
+            leftPane.classList.remove('collapsed');
+            if (toggleLeftPane) {
+                toggleLeftPane.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+            }
+            showToast("Tools panel opened", "success");
+        });
+    }
+    
+    // Show right pane button
+    if (showRightPane && rightPane) {
+        showRightPane.addEventListener('click', function() {
+            console.log("Show right pane button clicked");
+            rightPane.classList.remove('collapsed');
+            if (toggleRightPane) {
+                toggleRightPane.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+            }
+            showToast("AI Suggestions panel opened", "success");
+        });
+    }
+    
+    // Direct click handlers as failsafe
+    document.addEventListener('click', function(e) {
+        // Check if the click was on one of our show buttons by class
+        if (e.target.closest('.show-left-pane') && leftPane) {
+            console.log("Show left pane button delegate clicked");
+            leftPane.classList.remove('collapsed');
+        }
+        
+        if (e.target.closest('.show-right-pane') && rightPane) {
+            console.log("Show right pane button delegate clicked");
+            rightPane.classList.remove('collapsed');
+        }
+    });
+    
+    // Mobile menu toggle
+    if (mobileMenuToggle && mobileMenu) {
+        // Populate mobile menu
+        populateMobileMenu();
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            const isVisible = mobileMenu.style.display === 'flex';
+            mobileMenu.style.display = isVisible ? 'none' : 'flex';
+        });
+        
+        // Close mobile menu when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.style.display === 'flex' && 
+                !mobileMenu.contains(e.target) && 
+                e.target !== mobileMenuToggle) {
+                mobileMenu.style.display = 'none';
+            }
+        });
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', handleWindowResize);
+    
+    // Initial check
+    handleWindowResize();
+}
+
+// Populate the mobile menu
+function populateMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (!mobileMenu) return;
+    
+    // Clear existing content
+    mobileMenu.innerHTML = '';
+    
+    // Add main menu items
+    const menuItems = [
+        { text: 'File', submenu: ['New', 'Import', 'Save', 'Load', 'Export as PDF', 'Move to...'] },
+        { text: 'Edit', submenu: ['Undo', 'Redo', 'Cut', 'Copy', 'Paste', 'Find and Replace'] },
+        { text: 'View', submenu: ['Zoom In', 'Zoom Out', 'Reset Zoom', 'Toggle Grid'] },
+        { text: 'Insert', submenu: ['New Page', 'Import Page', 'Comment', 'PDF', 'Tool', 'Image'] },
+        { text: 'Share', submenu: ['Add Collaborator', 'Copy Fluentia Link', 'Share Project', 'Publish'] },
+        { text: 'Help', submenu: ['About', 'Find Feature', 'Learning Center', 'Community', 'Help Center'] }
+    ];
+    
+    menuItems.forEach(item => {
+        const menuItem = document.createElement('div');
+        menuItem.className = 'mobile-menu-item';
+        menuItem.textContent = item.text;
+        menuItem.addEventListener('click', () => {
+            // Logic for handling menu item click
+            console.log('Mobile menu item clicked:', item.text);
+            
+            // Placeholder for submenu handling
+            // In a real implementation, you might want to show a submenu here
+        });
+        
+        mobileMenu.appendChild(menuItem);
+    });
+}
+
+// Handle window resize for responsive layout
+function handleWindowResize() {
+    const width = window.innerWidth;
+    const leftPane = document.getElementById('leftPane');
+    const rightPane = document.getElementById('rightPane');
+    
+    if (width <= 768) {
+        // Mobile view
+        if (leftPane && !leftPane.classList.contains('collapsed')) {
+            leftPane.classList.add('collapsed');
+        }
+        
+        if (rightPane && !rightPane.classList.contains('collapsed')) {
+            rightPane.classList.add('collapsed');
+        }
+    }
+}

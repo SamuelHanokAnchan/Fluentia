@@ -72,7 +72,7 @@ async function initApp() {
         initUndoRedo();
         
         // Initialize responsive layout
-        initResponsiveLayout();
+        initResponsiveLayout(); 
         
         console.log("Fluentia application initialized");
         

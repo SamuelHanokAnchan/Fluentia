@@ -57,6 +57,9 @@ let aiChatState = {
   
   // Create connection code modal element
   function createConnectionCodeModal() {
+    // Check if modal already exists
+    if (document.getElementById('connectionCodeModal')) return;
+    
     const modal = document.createElement('div');
     modal.id = 'connectionCodeModal';
     modal.className = 'connection-code-modal';
@@ -64,6 +67,7 @@ let aiChatState = {
     modal.innerHTML = `
       <div class="connection-code-header">
         <span id="connectionCodeTitle">Connection Code</span>
+        <button class="close-code-modal-btn" id="closeCodeModalBtn">&times;</button>
       </div>
       <div class="connection-code-content">
         <pre class="connection-code-block" id="connectionCodeBlock"></pre>
@@ -79,6 +83,11 @@ let aiChatState = {
       navigator.clipboard.writeText(code)
         .then(() => showToast("Code copied to clipboard", "success"))
         .catch(err => console.error('Could not copy text: ', err));
+    });
+    
+    // Add close button functionality
+    document.getElementById('closeCodeModalBtn').addEventListener('click', function() {
+      document.getElementById('connectionCodeModal').style.display = 'none';
     });
   }
   
@@ -285,14 +294,19 @@ let aiChatState = {
       if (aiChatState.currentConnection) {
         aiChatState.currentConnection.codeSnippet = code;
         
-        // Add a label to the connection to indicate it has code
-        if (jsPlumbInstance) {
-          jsPlumbInstance.addClass(aiChatState.currentConnection, 'has-code');
+        // Update code icon on the connection
+        if (typeof addCodeIconToConnection === 'function') {
+          addCodeIconToConnection(aiChatState.currentConnection);
+        } else if (typeof updateCodeIconForConnection === 'function') {
+          updateCodeIconForConnection(aiChatState.currentConnection);
         }
       }
       
       // Inform the user that code has been generated
-      appendAiMessage("✅ Code generated and attached to the connection! Hover over the connection line to view it.");
+      appendAiMessage("✅ Code generated and attached to the connection! Click the code icon on the connection line to view it.");
+      
+      // Show success toast
+      showToast("Code generated successfully", "success");
       
       // Hide the chat after a delay
       setTimeout(() => {
@@ -329,54 +343,6 @@ let aiChatState = {
     } catch (error) {
       console.error("Error calling AI:", error);
       throw new Error("Failed to call AI API");
-    }
-  }
-  
-  // Show code modal on connection hover
-  function showConnectionCode(connection, event) {
-    if (!connection.codeSnippet) return;
-    
-    const codeModal = document.getElementById('connectionCodeModal');
-    const codeBlock = document.getElementById('connectionCodeBlock');
-    const codeTitle = document.getElementById('connectionCodeTitle');
-    
-    if (!codeModal || !codeBlock || !codeTitle) return;
-    
-    // Set the content
-    codeBlock.textContent = connection.codeSnippet;
-    
-    // Get source and target tool names if available
-    const sourceNode = document.getElementById(connection.sourceId);
-    const targetNode = document.getElementById(connection.targetId);
-    
-    let title = "Connection Code";
-    if (sourceNode && targetNode) {
-      const sourceToolName = sourceNode.querySelector('.tool-node-title')?.textContent || 'Source';
-      const targetToolName = targetNode.querySelector('.tool-node-title')?.textContent || 'Target';
-      title = `${sourceToolName} → ${targetToolName}`;
-    }
-    
-    codeTitle.textContent = title;
-    
-    // Position the modal near the cursor but ensure it's visible
-    const maxX = window.innerWidth - codeModal.offsetWidth - 20;
-    const maxY = window.innerHeight - codeModal.offsetHeight - 20;
-    
-    const x = Math.min(event.clientX + 10, maxX);
-    const y = Math.min(event.clientY + 10, maxY);
-    
-    codeModal.style.left = x + 'px';
-    codeModal.style.top = y + 'px';
-    
-    // Show the modal
-    codeModal.style.display = 'block';
-  }
-  
-  // Hide code modal
-  function hideConnectionCode() {
-    const codeModal = document.getElementById('connectionCodeModal');
-    if (codeModal) {
-      codeModal.style.display = 'none';
     }
   }
   

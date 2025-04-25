@@ -122,27 +122,6 @@
     color: var(--gray-800);
 }
 
-.copy-code-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--border-radius-sm);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    color: var(--gray-700);
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 10;
-}
-
-.copy-code-btn:hover {
-    background-color: white;
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
 /* Highlight pulse animation for the show pane button */
 @keyframes highlight-pulse {
     0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
@@ -160,10 +139,6 @@
     padding-top: 1rem;
     border-top: 1px dashed var(--gray-200);
 }
-/* 
- * Additional styles for AI suggestions panel 
- * Add these to the end of ai-styles.css
- */
 
 /* Selected tool highlighting */
 .added-item.selected {
@@ -215,38 +190,6 @@
     background-color: var(--gray-200);
 }
 
-.btn-add-connection {
-    font-size: 0.75rem;
-    padding: 4px 8px;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius-sm);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-add-connection:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-1px);
-}
-
-/* Pulsing animation to help draw attention to the AI panel */
-@keyframes highlight-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-    }
-}
-
-.highlight-pulse {
-    animation: highlight-pulse 1.5s ease-out infinite;
-}
 .add-to-toolkit-hint {
     font-size: 0.75rem;
     color: var(--gray-600);
@@ -256,208 +199,9 @@
     color: var(--primary);
 }
 
-    /* AI Chat Box Styles */
-    .ai-chat-box {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 350px;
-        height: 450px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        display: flex;
-        flex-direction: column;
-        z-index: 1100;
-        overflow: hidden;
-      }
-      
-      .ai-chat-header {
-        padding: 12px 16px;
-        background: var(--primary);
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .ai-chat-header h3 {
-        margin: 0;
-        font-size: 1rem;
-        color: white;
-      }
-      
-      .close-chat-btn {
-        background: transparent;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-      }
-      
-      .ai-chat-messages {
-        flex-grow: 1;
-        padding: 16px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .ai-message, .user-message {
-        max-width: 85%;
-        padding: 10px 14px;
-        border-radius: 18px;
-        font-size: 0.9rem;
-        margin-bottom: 4px;
-      }
-      
-      .ai-message {
-        background: var(--gray-100);
-        align-self: flex-start;
-        border: 1px solid var(--gray-200);
-      }
-      
-      .user-message {
-        background: var(--primary);
-        color: white;
-        align-self: flex-end;
-      }
-      
-      .ai-chat-input {
-        padding: 12px;
-        border-top: 1px solid var(--gray-200);
-        display: flex;
-        gap: 8px;
-      }
-      
-      .ai-chat-input input {
-        flex-grow: 1;
-        padding: 10px;
-        border: 1px solid var(--gray-300);
-        border-radius: 20px;
-        font-size: 0.9rem;
-      }
-      
-      .ai-chat-input button {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-      
-      .code-block {
-        background: #1e293b;
-        color: #f8fafc;
-        padding: 12px;
-        border-radius: 8px;
-        font-family: monospace;
-        white-space: pre-wrap;
-        margin: 8px 0;
-        font-size: 0.85rem;
-        width: 100%;
-        overflow-x: auto;
-      }
-      /* Connection Code Modal Styles (Add this to css/ai-styles.css) */
-.connection-code-modal {
-    position: absolute;
-    max-width: 450px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1050;
-    overflow: hidden;
-    font-size: 0.9rem;
-    border: 1px solid var(--gray-300);
-    display: none;
-  }
-  
-  .connection-code-header {
-    padding: 8px 12px;
-    background: var(--primary);
-    color: white;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .connection-code-content {
-    max-height: 350px;
-    overflow-y: auto;
-    padding: 12px;
-  }
-  
-  .connection-code-block {
-    background: #1e293b;
-    color: #f8fafc;
-    padding: 10px;
-    border-radius: 6px;
-    font-family: monospace;
-    white-space: pre-wrap;
-    font-size: 0.8rem;
-    width: 100%;
-    overflow-x: auto;
-  }
-  
-  /* Updated AI Chat Box Styles */
-  .ai-chat-box {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px; /* Smaller size */
-    height: 380px; /* Smaller size */
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    z-index: 1100;
-    overflow: hidden;
-    cursor: move; /* Indicate it's movable */
-    border: 1px solid var(--gray-300);
-  }
-  
-  .ai-chat-header {
-    padding: 8px 12px;
-    background: var(--primary);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    cursor: move; /* Indicate it's movable */
-  }
-  
-  .ai-chat-header h3 {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: white;
-  }
-  
-  /* Copy Button for Code */
-  .copy-code-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin-top: 8px;
-    cursor: pointer;
-    font-size: 0.75rem;
-    float: right;
-  }
-  
-  .copy-code-btn:hover {
-    opacity: 0.9;
-  }
-  /* CSS for Code Icon and Modal (Add to css/ai-styles.css) */
+/* Code Icon Overlay */
 .code-icon-overlay {
+    position: absolute;
     background-color: var(--primary);
     color: white;
     border-radius: 50%;
@@ -468,45 +212,50 @@
     justify-content: center;
     font-size: 10px;
     cursor: pointer;
-    z-index: 20;
+    z-index: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
-  
-  .code-icon-overlay:hover {
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.code-icon-overlay:hover {
     transform: scale(1.1);
-  }
-  
-  /* Update the connection code modal styling */
-  .connection-code-modal {
-    position: fixed; /* Changed from absolute to fixed */
-    max-width: 600px;
+    background-color: var(--primary-dark);
+}
+
+/* Container for code icon when used as overlay */
+.code-icon-container {
+    position: absolute;
+    z-index: 100;
+}
+
+/* Connection Code Modal */
+.connection-code-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80%;
+    max-width: 600px;
     max-height: 80vh;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-lg);
     z-index: 1050;
     overflow: hidden;
-    font-size: 0.9rem;
-    border: 1px solid var(--gray-300);
     display: none;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .connection-code-header {
-    padding: 10px 16px;
+}
+
+.connection-code-header {
+    padding: 12px 16px;
     background: var(--primary);
     color: white;
     font-weight: 500;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .close-code-modal-btn {
+}
+
+.close-code-modal-btn {
     background: transparent;
     border: none;
     color: white;
@@ -514,109 +263,166 @@
     cursor: pointer;
     padding: 0;
     line-height: 1;
-  }
-  
-  .connection-code-content {
+}
+
+.close-code-modal-btn:hover {
+    opacity: 0.8;
+}
+
+.connection-code-content {
+    padding: 16px;
     max-height: calc(80vh - 50px);
     overflow-y: auto;
-    padding: 16px;
-  }
-  
-  /* Code visibility indicator for connections */
-  .jtk-connector.has-code {
-    stroke-width: 3px !important; /* Make connections with code slightly thicker */
-  }
-  /* Connection Code Modal Styles (Add this to css/ai-styles.css) */
-.connection-code-modal {
-    position: absolute;
-    max-width: 450px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1050;
-    overflow: hidden;
-    font-size: 0.9rem;
-    border: 1px solid var(--gray-300);
-    display: none;
-  }
-  
-  .connection-code-header {
-    padding: 8px 12px;
-    background: var(--primary);
-    color: white;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .connection-code-content {
-    max-height: 350px;
-    overflow-y: auto;
-    padding: 12px;
-  }
-  
-  .connection-code-block {
+}
+
+.connection-code-block {
     background: #1e293b;
     color: #f8fafc;
-    padding: 10px;
-    border-radius: 6px;
-    font-family: monospace;
+    padding: 16px;
+    border-radius: var(--border-radius-sm);
+    font-family: 'Courier New', monospace;
     white-space: pre-wrap;
-    font-size: 0.8rem;
-    width: 100%;
+    margin: 0 0 16px 0;
     overflow-x: auto;
-  }
-  
-  /* Updated AI Chat Box Styles */
-  .ai-chat-box {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px; /* Smaller size */
-    height: 380px; /* Smaller size */
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    z-index: 1100;
-    overflow: hidden;
-    cursor: move; /* Indicate it's movable */
-    border: 1px solid var(--gray-300);
-  }
-  
-  .ai-chat-header {
-    padding: 8px 12px;
-    background: var(--primary);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: 0.9rem;
-    cursor: move; /* Indicate it's movable */
-  }
-  
-  .ai-chat-header h3 {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: white;
-  }
-  
-  /* Copy Button for Code */
-  .copy-code-btn {
+    line-height: 1.5;
+}
+
+.copy-code-btn {
     background: var(--primary);
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin-top: 8px;
+    border-radius: var(--border-radius-sm);
+    padding: 8px 16px;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     float: right;
-  }
-  
-  .copy-code-btn:hover {
-    opacity: 0.9;
-  }
+    transition: background-color 0.2s;
+}
+
+.copy-code-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Connection with code styling */
+.jtk-connector.has-code {
+    stroke-width: 2.5px !important;
+    stroke: var(--primary) !important;
+}
+
+/* AI Chat Box */
+.ai-chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    height: 400px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-lg);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+}
+
+.ai-chat-header {
+    padding: 10px 16px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.ai-chat-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+}
+
+.close-chat-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.ai-chat-messages {
+    flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--gray-100);
+}
+
+.ai-message, .user-message {
+    max-width: 85%;
+    padding: 12px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.ai-message {
+    background: white;
+    align-self: flex-start;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-800);
+}
+
+.user-message {
+    background: var(--primary);
+    color: white;
+    align-self: flex-end;
+}
+
+.ai-thinking {
+    color: var(--gray-500);
+    font-style: italic;
+}
+
+.ai-chat-input {
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    background: white;
+    border-top: 1px solid var(--gray-200);
+}
+
+.ai-chat-input input {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.ai-chat-input input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+.ai-chat-input button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.ai-chat-input button:hover {
+    background-color: var(--primary-dark);
+}

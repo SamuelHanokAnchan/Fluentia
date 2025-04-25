@@ -145,16 +145,97 @@ function setupContextMenu() {
     });
 }
 
-// Setup hover handlers for all connections
+// This is the function that was missing but is referenced in workspace.js
+function bindConnectionEvents() {
+    if (!jsPlumbInstance) return;
+    
+    // Bind to connection events to add code icon and functionality
+    jsPlumbInstance.bind("connection", function(info) {
+        // Initialize connection properties
+        info.connection.codeSnippet = info.connection.codeSnippet || "";
+        
+        // Update code icon for this connection
+        updateCodeIconForConnection(info.connection);
+    });
+    
+    // Apply to existing connections
+    const connections = jsPlumbInstance.getAllConnections();
+    connections.forEach(conn => {
+        updateCodeIconForConnection(conn);
+    });
+}
+
+// Add a code icon to a connection using overlays
+function addCodeIconToConnection(connection) {
+    try {
+        // Remove any existing code icon overlay
+        if (connection.codeIconOverlay) {
+            connection.removeOverlay("codeIcon");
+        }
+        
+        // Only add the overlay if the connection has code
+        if (connection.codeSnippet && connection.codeSnippet.trim() !== "") {
+            // Add an overlay to the connection
+            connection.addOverlay([
+                "Custom", {
+                    id: "codeIcon",
+                    create: function() {
+                        // Create the element
+                        const codeIcon = document.createElement('div');
+                        codeIcon.className = 'code-icon-overlay';
+                        codeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>';
+                        
+                        // Add click handler
+                        codeIcon.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            showCodeModal(connection);
+                        });
+                        
+                        return codeIcon;
+                    },
+                    location: 0.5, // Middle of the connection
+                    cssClass: "code-icon-container"
+                }
+            ]);
+            
+            // Store reference to the overlay
+            connection.codeIconOverlay = true;
+            
+            // Highlight the connection
+            if (jsPlumbInstance) {
+                try {
+                    jsPlumbInstance.select({source: connection.sourceId, target: connection.targetId}).addClass("has-code");
+                } catch (err) {
+                    console.log("Unable to add class to connection", err);
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error adding code icon:", error);
+    }
+}
+
+// Update the code icon for a connection
+function updateCodeIconForConnection(connection) {
+    try {
+        // Check if connection has code
+        if (connection.codeSnippet && connection.codeSnippet.trim() !== '') {
+            addCodeIconToConnection(connection);
+        } else if (connection.codeIconOverlay) {
+            // If no code but overlay exists, remove it
+            connection.removeOverlay("codeIcon");
+            connection.codeIconOverlay = false;
+        }
+    } catch (error) {
+        console.error("Error updating code icon:", error);
+    }
+}
+
+// Setup hover handler for connections
 function setupConnectionHoverHandlers() {
     if (!jsPlumbInstance) return;
     
-    // Bind to connection events
-    jsPlumbInstance.bind("connection", function(info) {
-        setupSingleConnectionHover(info.connection);
-    });
-    
-    // Add hover handlers to existing connections
+    // Add hover handlers to all connections
     const connections = jsPlumbInstance.getAllConnections();
     connections.forEach(conn => {
         setupSingleConnectionHover(conn);
@@ -164,25 +245,41 @@ function setupConnectionHoverHandlers() {
 // Setup hover handler for a single connection
 function setupSingleConnectionHover(connection) {
     $(connection.canvas).hover(
-        // Mouse enter
-        function(event) {
-            // Only show if the connection has code
-            if (connection.codeSnippet && connection.codeSnippet.trim() !== "") {
-                showConnectionCode(connection, event);
-            }
-        },
-        // Mouse leave
-        function() {
-            hideConnectionCode();
-        }
+        // Mouse enter - no action needed for overlay approach
+        function() {},
+        // Mouse leave - no action needed for overlay approach
+        function() {}
     );
+}
+
+// Show code modal with connection code
+function showCodeModal(connection) {
+    if (!connection.codeSnippet) return;
     
-    // Also track mouse movement while hovering to update the modal position
-    $(connection.canvas).mousemove(function(event) {
-        if (connection.codeSnippet && 
-            connection.codeSnippet.trim() !== "" && 
-            $('#connectionCodeModal').is(':visible')) {
-            showConnectionCode(connection, event);
-        }
-    });
+    const codeModal = document.getElementById('connectionCodeModal');
+    const codeBlock = document.getElementById('connectionCodeBlock');
+    const codeTitle = document.getElementById('connectionCodeTitle');
+    
+    if (!codeModal || !codeBlock || !codeTitle) {
+        console.error('Code modal elements not found');
+        return;
+    }
+    
+    // Get source and target tool names
+    const sourceNode = document.getElementById(connection.sourceId);
+    const targetNode = document.getElementById(connection.targetId);
+    
+    let title = "Connection Code";
+    if (sourceNode && targetNode) {
+        const sourceToolName = sourceNode.querySelector('.tool-node-title')?.textContent || 'Source';
+        const targetToolName = targetNode.querySelector('.tool-node-title')?.textContent || 'Target';
+        title = `${sourceToolName} → ${targetToolName}`;
+    }
+    
+    // Set modal content
+    codeTitle.textContent = title;
+    codeBlock.textContent = connection.codeSnippet;
+    
+    // Position and show the modal in the center of the screen
+    codeModal.style.display = 'block';
 }

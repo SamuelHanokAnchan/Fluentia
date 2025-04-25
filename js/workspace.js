@@ -208,6 +208,10 @@ function clearWorkspace() {
 
 // Initialize workspace for jsPlumb
 // Initialize workspace for jsPlumb
+// This is the updated initWorkspace function from js/workspace.js
+// Add this to replace the original initWorkspace function
+
+// Initialize workspace for jsPlumb
 function initWorkspace() {
     const workspace = document.getElementById('workspace');
     const container = document.getElementById('workspaceContainer');
@@ -276,6 +280,10 @@ function initWorkspace() {
     // Setup context menu for connections
     setupContextMenu();
     
-    // Bind connection events - call our new function
-    bindConnectionEvents();
+    // Bind connection events - the function that needs to be defined and called
+    if (typeof bindConnectionEvents === 'function') {
+        bindConnectionEvents();
+    } else {
+        console.error("bindConnectionEvents function is not defined");
+    }
 }

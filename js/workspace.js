@@ -207,6 +207,7 @@ function clearWorkspace() {
 }
 
 // Initialize workspace for jsPlumb
+// Initialize workspace for jsPlumb
 function initWorkspace() {
     const workspace = document.getElementById('workspace');
     const container = document.getElementById('workspaceContainer');
@@ -274,4 +275,7 @@ function initWorkspace() {
     
     // Setup context menu for connections
     setupContextMenu();
+    
+    // Bind connection events - call our new function
+    bindConnectionEvents();
 }

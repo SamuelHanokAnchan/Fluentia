@@ -5,12 +5,25 @@
 
 // Initialize search functionality
 function initSearchFunctionality() {
-    if (!searchInput) return;
+    if (!searchInput) {
+        console.error("searchInput element not found");
+        return;
+    }
+    
+    console.log("Initializing search functionality");
     
     searchInput.addEventListener('input', (e) => {
         clearTimeout(searchTimeoutId);
         searchTimeoutId = setTimeout(() => {
-            // Use the new search function that works with JSON data
+            // Ensure the data is loaded before searching
+            if (!ALL_TOOLS || ALL_TOOLS.length === 0) {
+                console.warn("Cannot search: Tools data not loaded yet");
+                showToast("Still loading tools data, please try again in a moment", "warning");
+                return;
+            }
+            
+            console.log("Searching for:", e.target.value);
+            // Use the search function that works with JSON data
             const results = searchToolsFromJSON(e.target.value);
             displaySearchResults(results);
         }, 300); // Debounce time
@@ -22,16 +35,23 @@ function initSearchFunctionality() {
             resultsDropdown.innerHTML = '';
         }
     });
+    
+    console.log("Search functionality initialized");
 }
 
 // Display search results in the dropdown
 function displaySearchResults(results) {
-    if (!resultsDropdown) return;
+    if (!resultsDropdown) {
+        console.error("resultsDropdown element not found");
+        return;
+    }
     
     if (!results || results.length === 0) {
         resultsDropdown.innerHTML = '<div class="no-results">No matching tools found</div>';
         return;
     }
+    
+    resultsDropdown.style.display = 'block';
     
     resultsDropdown.innerHTML = results.map(tool => `
         <div class="result-item" data-tool='${JSON.stringify(tool)}'>
@@ -47,6 +67,8 @@ function displaySearchResults(results) {
     document.querySelectorAll('.result-item').forEach(item => {
         item.addEventListener('click', handleToolSelection);
     });
+    
+    console.log(`Displayed ${results.length} search results`);
 }
 
 // Handle tool selection from search results
@@ -56,6 +78,7 @@ function handleToolSelection(e) {
     
     try {
         const toolData = JSON.parse(this.dataset.tool);
+        console.log("Tool selected:", toolData.name);
         
         // Add to left pane
         addToolToPane(toolData);
@@ -64,8 +87,8 @@ function handleToolSelection(e) {
         if (searchInput) searchInput.value = '';
         if (resultsDropdown) resultsDropdown.innerHTML = '';
         
-        // Show AI suggestions if applicable (we'll implement this later)
-        // updateAISuggestions(toolData);
+        // Show AI suggestions for the selected tool
+        updateAISuggestions(toolData);
     } catch (error) {
         console.error("Error handling tool selection:", error);
         showToast("Error adding tool", "error");
@@ -74,7 +97,10 @@ function handleToolSelection(e) {
 
 // Add tool to the left pane
 function addToolToPane(toolData) {
-    if (!resultsContainer) return;
+    if (!resultsContainer) {
+        console.error("resultsContainer element not found");
+        return;
+    }
     
     // Check if this tool is already in the pane
     const existingTools = resultsContainer.querySelectorAll('.added-item');
@@ -129,6 +155,17 @@ function addToolToPane(toolData) {
         });
     }
     
+    // Add click handler to show AI suggestions when clicking on the tool
+    toolElement.addEventListener('click', () => {
+        // Highlight the selected tool
+        const allTools = resultsContainer.querySelectorAll('.added-item');
+        allTools.forEach(t => t.classList.remove('selected'));
+        toolElement.classList.add('selected');
+        
+        // Show AI suggestions for this tool
+        updateAISuggestions(toolData);
+    });
+    
     resultsContainer.appendChild(toolElement);
     
     // Make the element draggable
@@ -148,12 +185,31 @@ function addToolToPane(toolData) {
     }
     
     showToast(`Added ${toolData.name} to toolkit`, "success");
+    
+    // Automatically show AI suggestions for the newly added tool
+    updateAISuggestions(toolData);
+    
+    // Make right pane visible if it's collapsed
+    const rightPane = document.getElementById('rightPane');
+    if (rightPane && rightPane.classList.contains('collapsed')) {
+        const showRightPane = document.getElementById('showRightPane');
+        if (showRightPane) {
+            // Add highlight pulse to the button to draw user's attention
+            showRightPane.classList.add('highlight-pulse');
+            setTimeout(() => {
+                showRightPane.classList.remove('highlight-pulse');
+            }, 3000);
+        }
+    }
 }
 
 // Create a tool node in the workspace
 function createToolNode(id, toolData, x, y) {
     const workspace = document.getElementById('workspace');
-    if (!workspace) return null;
+    if (!workspace) {
+        console.error("workspace element not found");
+        return null;
+    }
     
     // Create node element
     const node = document.createElement('div');
@@ -161,6 +217,7 @@ function createToolNode(id, toolData, x, y) {
     node.className = 'tool-node';
     node.style.left = `${x}px`;
     node.style.top = `${y}px`;
+    node.setAttribute('data-tool', JSON.stringify(toolData));
     
     // Add content to node - with delete button INSIDE the node
     node.innerHTML = `
@@ -179,6 +236,24 @@ function createToolNode(id, toolData, x, y) {
     
     // Add to workspace
     workspace.appendChild(node);
+    
+    // Add node click handler to show AI suggestions
+    node.addEventListener('click', function(e) {
+        // Only handle click if it's not on the delete button
+        if (!e.target.closest('.delete-node-btn')) {
+            updateAISuggestions(toolData);
+            
+            // Make right pane visible if it's collapsed
+            const rightPane = document.getElementById('rightPane');
+            if (rightPane && rightPane.classList.contains('collapsed')) {
+                rightPane.classList.remove('collapsed');
+                const toggleRightPane = document.getElementById('toggleRightPane');
+                if (toggleRightPane) {
+                    toggleRightPane.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+                }
+            }
+        }
+    });
     
     // Add delete button handler
     const deleteBtn = node.querySelector('.delete-node-btn');
@@ -265,15 +340,80 @@ function createToolNode(id, toolData, x, y) {
     return node;
 }
 
-// Update AI suggestions based on selected tool (placeholder for now)
+// Update AI suggestions based on selected tool
 function updateAISuggestions(toolData) {
     const aiContent = document.getElementById('aiSuggestionsContent');
-    if (!aiContent) return;
+    if (!aiContent) {
+        console.error("aiSuggestionsContent element not found");
+        return;
+    }
     
-    aiContent.innerHTML = `
-        <div style="padding: 1rem;">
-            <p>AI recommendations will be implemented in a future update.</p>
-            <p>Selected tool: ${toolData.name}</p>
-        </div>
+    // Get related tools from the tool data
+    const relatedTools = getAISuggestionsForTool(toolData);
+    
+    // Build the suggestion content
+    let suggestionsHTML = `
+        <div class="ai-recommendations">
+            <div class="ai-section-header">
+                <h4>AI Recommendations for ${toolData.name}</h4>
+                <p>${toolData.description || toolData.category + ' Tool'}</p>
+            </div>
     `;
+    
+    // Add tool relationships section
+    if (relatedTools && relatedTools.length > 0) {
+        suggestionsHTML += `
+            <div class="ai-connections">
+                <div class="ai-section-header">
+                    <h4>Recommended Related Tools</h4>
+                    <p>Tools that work well with ${toolData.name}</p>
+                </div>
+                <div class="connections-list">
+        `;
+        
+        // Add each related tool
+        relatedTools.forEach(relatedTool => {
+            suggestionsHTML += `
+                <div class="connection-item" data-tool='${JSON.stringify(relatedTool)}' style="cursor: pointer;">
+                    <div>
+                        <img src="${relatedTool.imagePath || 'images/tools/default.png'}" 
+                            alt="${relatedTool.name}" 
+                            style="width: 24px; height: 24px; margin-right: 8px; vertical-align: middle;">
+                        <span>${relatedTool.name}</span>
+                    </div>
+                    <div class="connection-tools">
+                        <span class="badge">${relatedTool.category}</span>
+                        
+                    </div>
+                </div>
+            `;  
+        });
+        
+        suggestionsHTML += `
+                </div>
+            </div>
+        `;
+    }
+    
+    // Add tool tips section based on questions from the tool data
+    
+    
+    suggestionsHTML += `</div>`;
+    
+    // Update the AI content
+    aiContent.innerHTML = suggestionsHTML;
+    
+    // Add event listeners to "Add to Toolkit" buttons
+    const connectionItems = aiContent.querySelectorAll('.connection-item');
+connectionItems.forEach(item => {
+    item.addEventListener('click', function() {
+        try {
+            const relatedToolData = JSON.parse(this.getAttribute('data-tool'));
+            addToolToPane(relatedToolData);
+        } catch (error) {
+            console.error("Error adding related tool:", error);
+            showToast("Error adding related tool", "error");
+        }
+    });
+});
 }

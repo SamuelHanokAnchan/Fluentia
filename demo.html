@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Code Architect</title>
+  <style>
+    :root {
+      --primary-blue: #2563eb;
+      --background: #f8fafc;
+      --bot-bubble: #ffffff;
+      --user-bubble: #eff6ff;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--background);
+      margin: 0;
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .chat-header {
+      padding: 20px;
+      background: var(--primary-blue);
+      color: white;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 20px;
+      margin: 4px 0;
+      font-size: 0.95rem;
+    }
+
+    .bot-message {
+      background: var(--bot-bubble);
+      align-self: flex-start;
+      border: 1px solid #e2e8f0;
+    }
+
+    .user-message {
+      background: var(--user-bubble);
+      align-self: flex-end;
+      color: var(--primary-blue);
+    }
+
+    .input-area {
+      padding: 20px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .code-block {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      margin: 10px 0;
+    }
+
+    .status-text {
+      color: #64748b;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>AI Code Architect</h1>
+      <p>I'll ask 3 questions to generate your perfect code</p>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">🚀 Let's create some code! First question:</div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Type your answer here..." />
+      <button onclick="handleInteraction()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    let conversationState = {
+      currentStep: 0,
+      answers: [],
+      questions: [
+        "What programming language or framework are we using?",
+        "", // Will be generated based on Q1 answer
+        "",
+        ""  // Will be generated based on Q1+Q2 answers
+      ]
+    };
+
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+
+    async function generateNextQuestion() {
+  let prompt;
+  const previousAnswers = conversationState.answers.join(', ');
+  
+  switch(conversationState.currentStep) {
+    case 1:
+      prompt = `As a senior ${conversationState.answers[0]} developer, I need to ask one specific technical question that helps determine the project structure. Considering the tool is ${conversationState.answers[0]}, ask exactly one short question about: the specific purpose/goal of the code. Only include the question.make sure the question is within in 15 words`;
+      break;
+      
+    case 2:
+      prompt = `Based on:
+      - Tool: ${conversationState.answers[0]}
+      - Purpose: ${conversationState.answers[1]}
+      Ask exactly one short technical question about required functionality or key features needed in the code. Only include the question. and make sure that the question is within 15 words`;
+      break;
+      
+    case 3:
+      prompt = `Given:
+      - Tool: ${conversationState.answers[0]}
+      - Purpose: ${conversationState.answers[1]}
+      - Key Features: ${conversationState.answers[2]}
+      Ask exactly one final short question about implementation specifics (e.g., needed dependencies, architectural pattern, or input/output requirements). Only include the question. and make sure that the question is within 15 words`;
+      break;
+  }
+
+  const question = await callAI(prompt);
+  conversationState.questions[conversationState.currentStep] = question;
+  appendMessage(question, 'bot');
+}
+
+    async function generateFinalCode() {
+      const requirements = conversationState.questions.map((q, i) => `${q} → ${conversationState.answers[i]}`).join('\n');
+      const prompt = `Generate code for ${conversationState.answers[0]} that satisfies:\n${requirements}\n\nOutput only raw code without any formatting or explanations.`;
+      
+      const code = await callAI(prompt);
+      appendMessage(code, 'bot', true);
+    }
+
+    async function callAI(prompt) {
+      appendMessage('Analyzing...', 'bot');
+      
+      try {
+        const response = await fetch('https://api.deepinfra.com/v1/openai/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer zTg0D6lABD5ncLQsk6bTQp3pBDVpliGa',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'meta-llama/Meta-Llama-3-8B-Instruct',
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.2,
+            max_tokens: 200
+          })
+        });
+
+        const data = await response.json();
+        return data?.choices?.[0]?.message?.content.trim() || "Could not generate response";
+      } catch (error) {
+        return "Error generating response";
+      } finally {
+        removeLastLoadingMessage();
+      }
+    }
+
+    function handleInteraction() {
+      const answer = userInput.value.trim();
+      if (!answer) return;
+
+      // Store answer and clear input
+      conversationState.answers.push(answer);
+      userInput.value = '';
+      appendMessage(answer, 'user');
+
+      if (conversationState.currentStep < 3) {
+        conversationState.currentStep++;
+        generateNextQuestion();
+      } else {
+        generateFinalCode();
+        // Reset for new conversation
+        setTimeout(() => {
+          conversationState = {
+            currentStep: 0,
+            answers: [],
+            questions: [
+              "What programming language or framework are we using?",
+              "",
+              ""
+            ]
+          };
+          appendMessage("✅ Code generated! Start a new session by typing below.", 'bot');
+        }, 2000);
+      }
+    }
+
+    // UI Helpers
+    function appendMessage(text, sender, isCode = false) {
+      const message = document.createElement('div');
+      message.className = `message ${sender}-message`;
+      
+      if (isCode) {
+        const codeBlock = document.createElement('pre');
+        codeBlock.className = 'code-block';
+        codeBlock.textContent = text;
+        message.appendChild(codeBlock);
+      } else {
+        message.textContent = text;
+      }
+      
+      chatMessages.appendChild(message);
+      message.scrollIntoView();
+    }
+
+    function removeLastLoadingMessage() {
+      const lastMessage = chatMessages.lastElementChild;
+      if (lastMessage?.textContent?.includes('Analyzing...')) {
+        chatMessages.removeChild(lastMessage);
+      }
+    }
+
+    // Initialize first question
+    appendMessage(conversationState.questions[0], 'bot');
+
+    // Handle Enter key
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleInteraction();
+    });
+  </script>
+</body>
+</html>

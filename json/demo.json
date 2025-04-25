@@ -1,0 +1,190 @@
+{
+    "projectTypes": [
+      {
+        "id": "full-stack",
+        "name": "Full Stack Development",
+        "tools": [
+          {
+            "id": "javascript",
+            "name": "JavaScript",
+            "category": "Programming Language",
+            "description": "The primary language of web browsers and a key component in full-stack development. Used for creating interactive web applications.",
+            "imagePath": "images/tools/javascript.png",
+            "questions": [
+              "What type of application are you developing with JavaScript?",
+              "What JavaScript features or libraries do you need to use?",
+              "Are you targeting specific browsers or environments?"
+            ],
+            "subTools": [
+              {
+                "id": "react",
+                "name": "React",
+                "description": "A JavaScript library for building user interfaces, particularly single-page applications. Developed by Facebook.",
+                "imagePath": "images/tools/react.png",
+                "questions": [
+                  "What type of web application are you building with React?",
+                  "What components and state management do you need to implement?",
+                  "Are you using specific React features or patterns (hooks, context, HOCs)?"
+                ]
+              },
+              {
+                "id": "angular",
+                "name": "Angular",
+                "description": "A TypeScript-based open-source web application framework led by the Angular Team at Google.",
+                "imagePath": "images/tools/angular.png",
+                "questions": [
+                  "Which Angular version are you using for your project?",
+                  "What type of application are you building (SPA, PWA, enterprise application)?",
+                  "What Angular features do you need to implement (routing, forms, HTTP client)?"
+                ]
+              },
+              {
+                "id": "vue",
+                "name": "Vue.js",
+                "description": "A progressive JavaScript framework for building user interfaces, designed to be incrementally adoptable.",
+                "imagePath": "images/tools/vue.png",
+                "questions": [
+                  "What type of web application are you building with Vue?",
+                  "What components and state management do you need to implement?",
+                  "Which Vue version are you using (2 or 3)?"
+                ]
+              },
+              {
+                "id": "jquery",
+                "name": "jQuery",
+                "description": "A fast, small, and feature-rich JavaScript library that simplifies HTML document traversing and manipulation.",
+                "imagePath": "images/tools/jquery.png",
+                "questions": [
+                  "What web page interactions are you implementing with jQuery?",
+                  "What DOM manipulations or event handlers do you need?",
+                  "Are you using specific jQuery plugins or features?"
+                ]
+              },
+              {
+                "id": "redux",
+                "name": "Redux",
+                "description": "A predictable state container for JavaScript apps, commonly used with React for state management.",
+                "imagePath": "images/tools/redux.png",
+                "questions": [
+                  "What application state are you managing with Redux?",
+                  "What actions, reducers, and selectors do you need to implement?",
+                  "Are you using Redux middleware or enhancers (thunk, saga, toolkit)?"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "typescript",
+            "name": "TypeScript",
+            "category": "Programming Language",
+            "description": "A superset of JavaScript that adds static typing, enabling better tooling and error detection in large applications.",
+            "imagePath": "images/tools/typescript.png",
+            "questions": [
+              "What type of application are you developing with TypeScript?",
+              "What TypeScript features do you need to use (interfaces, generics, decorators)?",
+              "How are you configuring the TypeScript compiler options?"
+            ],
+            "subTools": [
+              {
+                "id": "nestjs",
+                "name": "NestJS",
+                "description": "A progressive Node.js framework for building scalable server-side applications.",
+                "imagePath": "images/tools/nestjs.png",
+                "questions": [
+                  "What type of Node.js application are you building with NestJS?",
+                  "What modules, controllers, and providers do you need to implement?",
+                  "What NestJS features do you need to use (Guards, Interceptors, Pipes)?"
+                ]
+              },
+              {
+                "id": "typeorm",
+                "name": "TypeORM",
+                "description": "An ORM that can run in NodeJS and can be used with TypeScript and JavaScript.",
+                "imagePath": "images/tools/typeorm.png",
+                "questions": [
+                  "What database are you connecting to with TypeORM?",
+                  "What entities and relationships do you need to define?",
+                  "What TypeORM features are you using (migrations, transactions, repositories)?"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "data-engineering",
+        "name": "Data Engineering",
+        "tools": [
+          {
+            "id": "python-de",
+            "name": "Python",
+            "category": "Programming Language",
+            "description": "The most widely used programming language in data engineering for data processing, analysis, and pipeline development.",
+            "imagePath": "images/tools/python.png",
+            "questions": [
+              "What type of application are you developing with Python?",
+              "What Python version are you targeting?",
+              "What libraries or frameworks will you be using?"
+            ],
+            "subTools": [
+              {
+                "id": "pandas",
+                "name": "Pandas",
+                "description": "A fast, powerful, flexible and easy to use open source data analysis and manipulation tool built on top of Python.",
+                "imagePath": "images/tools/pandas.png",
+                "questions": [
+                  "What type of data analysis are you performing with Pandas?",
+                  "What data cleaning or transformation operations do you need?",
+                  "How are you reading and writing data (CSV, Excel, SQL, JSON)?"
+                ]
+              },
+              {
+                "id": "numpy",
+                "name": "NumPy",
+                "description": "The fundamental package for scientific computing with Python, providing support for arrays, matrices, and mathematical functions.",
+                "imagePath": "images/tools/numpy.png",
+                "questions": [
+                  "What numerical computations or data manipulations are you performing?",
+                  "What array operations or mathematical functions do you need to use?",
+                  "How are you integrating NumPy with other libraries in your workflow?"
+                ]
+              },
+              {
+                "id": "dask",
+                "name": "Dask",
+                "description": "A flexible library for parallel computing in Python that scales Python code from multi-core local machines to large clusters.",
+                "imagePath": "images/tools/dask.png",
+                "questions": [
+                  "What type of parallel computing tasks are you implementing with Dask?",
+                  "Are you using Dask Arrays, DataFrames, Bags, or Delayed functions?",
+                  "What is the scale of your computation (local machine, cluster)?"
+                ]
+              },
+              {
+                "id": "pyspark",
+                "name": "PySpark",
+                "description": "The Python API for Apache Spark, allowing data engineers to leverage Spark's capabilities using Python.",
+                "imagePath": "images/tools/pyspark.png",
+                "questions": [
+                  "What data processing tasks are you implementing with PySpark?",
+                  "Are you working with RDDs, DataFrames, or Spark SQL?",
+                  "What transformations and actions do you need to perform on your data?"
+                ]
+              },
+              {
+                "id": "scikit-learn",
+                "name": "Scikit-learn",
+                "description": "A machine learning library for Python that features various classification, regression, and clustering algorithms.",
+                "imagePath": "images/tools/scikit-learn.png",
+                "questions": [
+                  "What machine learning task are you implementing (classification, regression, clustering)?",
+                  "What algorithms will you be using?",
+                  "How are you handling data preprocessing, feature selection, and model evaluation?"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+}

@@ -1,0 +1,4437 @@
+{
+  "projectTypes": [
+    {
+      "id": "full-stack",
+      "name": "Full Stack Development",
+      "tools": [
+        {
+          "id": "javascript",
+          "name": "JavaScript",
+          "category": "Programming Language",
+          "description": "The primary language of web browsers and a key component in full-stack development. Used for creating interactive web applications.",
+          "imagePath": "images/tools/javascript.png",
+          "subTools": [
+            {
+              "id": "react",
+              "name": "React",
+              "description": "A JavaScript library for building user interfaces, particularly single-page applications. Developed by Facebook.",
+              "imagePath": "images/tools/react.png"
+            },
+            {
+              "id": "angular",
+              "name": "Angular",
+              "description": "A TypeScript-based open-source web application framework led by the Angular Team at Google.",
+              "imagePath": "images/tools/angular.png"
+            },
+            {
+              "id": "vue",
+              "name": "Vue.js",
+              "description": "A progressive JavaScript framework for building user interfaces, designed to be incrementally adoptable.",
+              "imagePath": "images/tools/vue.png"
+            },
+            {
+              "id": "jquery",
+              "name": "jQuery",
+              "description": "A fast, small, and feature-rich JavaScript library that simplifies HTML document traversing and manipulation.",
+              "imagePath": "images/tools/jquery.png"
+            },
+            {
+              "id": "redux",
+              "name": "Redux",
+              "description": "A predictable state container for JavaScript apps, commonly used with React for state management.",
+              "imagePath": "images/tools/redux.png"
+            }
+          ]
+        },
+        {
+          "id": "typescript",
+          "name": "TypeScript",
+          "category": "Programming Language",
+          "description": "A superset of JavaScript that adds static typing, enabling better tooling and error detection in large applications.",
+          "imagePath": "images/tools/typescript.png",
+          "subTools": [
+            {
+              "id": "nestjs",
+              "name": "NestJS",
+              "description": "A progressive Node.js framework for building scalable server-side applications.",
+              "imagePath": "images/tools/nestjs.png"
+            },
+            {
+              "id": "typeorm",
+              "name": "TypeORM",
+              "description": "An ORM that can run in NodeJS and can be used with TypeScript and JavaScript.",
+              "imagePath": "images/tools/typeorm.png"
+            }
+          ]
+        },
+        {
+          "id": "python",
+          "name": "Python",
+          "category": "Programming Language",
+          "description": "A high-level, general-purpose programming language. In full-stack development, often used for backend logic.",
+          "imagePath": "images/tools/python.png",
+          "subTools": [
+            {
+              "id": "django",
+              "name": "Django",
+              "description": "A high-level Python web framework that encourages rapid development and clean, pragmatic design.",
+              "imagePath": "images/tools/django.png"
+            },
+            {
+              "id": "flask",
+              "name": "Flask",
+              "description": "A lightweight WSGI web application framework in Python, designed to make getting started quick and easy.",
+              "imagePath": "images/tools/flask.png"
+            },
+            {
+              "id": "fastapi",
+              "name": "FastAPI",
+              "description": "A modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints.",
+              "imagePath": "images/tools/fastapi.png"
+            }
+          ]
+        },
+        {
+          "id": "nodejs",
+          "name": "Node.js",
+          "category": "Runtime Environment",
+          "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine, enabling server-side JavaScript execution.",
+          "imagePath": "images/tools/nodejs.png",
+          "subTools": [
+            {
+              "id": "express",
+              "name": "Express.js",
+              "description": "A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+              "imagePath": "images/tools/express.png"
+            },
+            {
+              "id": "koa",
+              "name": "Koa.js",
+              "description": "A newer web framework designed by the team behind Express, which aims to be a smaller, more expressive, and more robust foundation for web applications.",
+              "imagePath": "images/tools/koa.png"
+            },
+            {
+              "id": "socketio",
+              "name": "Socket.IO",
+              "description": "A library for real-time web applications. It enables bidirectional communication between web clients and servers.",
+              "imagePath": "images/tools/socketio.png"
+            }
+          ]
+        },
+        {
+          "id": "html",
+          "name": "HTML",
+          "category": "Markup Language",
+          "description": "The standard markup language for documents designed to be displayed in a web browser.",
+          "imagePath": "images/tools/html.png",
+          "subTools": [
+            {
+              "id": "pug",
+              "name": "Pug",
+              "description": "A high-performance template engine heavily influenced by Haml and implemented with JavaScript for Node.js and browsers.",
+              "imagePath": "images/tools/pug.png"
+            },
+            {
+              "id": "handlebars",
+              "name": "Handlebars",
+              "description": "A popular templating engine based on the Mustache template language.",
+              "imagePath": "images/tools/handlebars.png"
+            }
+          ]
+        },
+        {
+          "id": "css",
+          "name": "CSS",
+          "category": "Style Sheet Language",
+          "description": "A style sheet language used for describing the presentation of a document written in HTML.",
+          "imagePath": "images/tools/css.png",
+          "subTools": [
+            {
+              "id": "sass",
+              "name": "Sass",
+              "description": "A preprocessor scripting language that is interpreted or compiled into CSS.",
+              "imagePath": "images/tools/sass.png"
+            },
+            {
+              "id": "less",
+              "name": "Less",
+              "description": "A backward-compatible language extension for CSS.",
+              "imagePath": "images/tools/less.png"
+            },
+            {
+              "id": "tailwind",
+              "name": "Tailwind CSS",
+              "description": "A utility-first CSS framework for rapidly building custom user interfaces.",
+              "imagePath": "images/tools/tailwind.png"
+            },
+            {
+              "id": "bootstrap",
+              "name": "Bootstrap",
+              "description": "A free and open-source CSS framework directed at responsive, mobile-first front-end web development.",
+              "imagePath": "images/tools/bootstrap.png"
+            }
+          ]
+        },
+        {
+          "id": "mongodb",
+          "name": "MongoDB",
+          "category": "Database",
+          "description": "A source-available cross-platform document-oriented database program. Classified as a NoSQL database program.",
+          "imagePath": "images/tools/mongodb.png",
+          "subTools": [
+            {
+              "id": "mongoose",
+              "name": "Mongoose",
+              "description": "An Object Data Modeling (ODM) library for MongoDB and Node.js.",
+              "imagePath": "images/tools/mongoose.png"
+            },
+            {
+              "id": "mongodb-atlas",
+              "name": "MongoDB Atlas",
+              "description": "A multi-cloud database service by MongoDB.",
+              "imagePath": "images/tools/mongodb-atlas.png"
+            }
+          ]
+        },
+        {
+          "id": "postgresql",
+          "name": "PostgreSQL",
+          "category": "Database",
+          "description": "A powerful, open-source object-relational database system that uses and extends the SQL language.",
+          "imagePath": "images/tools/postgresql.png",
+          "subTools": [
+            {
+              "id": "sequelize",
+              "name": "Sequelize",
+              "description": "A promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite, and Microsoft SQL Server.",
+              "imagePath": "images/tools/sequelize.png"
+            },
+            {
+              "id": "prisma",
+              "name": "Prisma",
+              "description": "A next-generation ORM for Node.js and TypeScript.",
+              "imagePath": "images/tools/prisma.png"
+            }
+          ]
+        },
+        {
+          "id": "mysql",
+          "name": "MySQL",
+          "category": "Database",
+          "description": "An open-source relational database management system.",
+          "imagePath": "images/tools/mysql.png",
+          "subTools": []
+        },
+        {
+          "id": "redis",
+          "name": "Redis",
+          "category": "Database",
+          "description": "An in-memory data structure store, used as a database, cache, and message broker.",
+          "imagePath": "images/tools/redis.png",
+          "subTools": []
+        },
+        {
+          "id": "docker",
+          "name": "Docker",
+          "category": "Containerization",
+          "description": "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+          "imagePath": "images/tools/docker.png",
+          "subTools": [
+            {
+              "id": "docker-compose",
+              "name": "Docker Compose",
+              "description": "A tool for defining and running multi-container Docker applications.",
+              "imagePath": "images/tools/docker-compose.png"
+            }
+          ]
+        },
+        {
+          "id": "kubernetes",
+          "name": "Kubernetes",
+          "category": "Container Orchestration",
+          "description": "An open-source container orchestration system for automating software deployment, scaling, and management.",
+          "imagePath": "images/tools/kubernetes.png",
+          "subTools": [
+            {
+              "id": "helm",
+              "name": "Helm",
+              "description": "A package manager for Kubernetes that helps you define, install, and upgrade applications.",
+              "imagePath": "images/tools/helm.png"
+            }
+          ]
+        },
+        {
+          "id": "git",
+          "name": "Git",
+          "category": "Version Control",
+          "description": "A distributed version-control system for tracking changes in source code during software development.",
+          "imagePath": "images/tools/git.png",
+          "subTools": [
+            {
+              "id": "github",
+              "name": "GitHub",
+              "description": "A provider of Internet hosting for software development and version control using Git.",
+              "imagePath": "images/tools/github.png"
+            },
+            {
+              "id": "gitlab",
+              "name": "GitLab",
+              "description": "A web-based DevOps lifecycle tool that provides a Git-repository manager.",
+              "imagePath": "images/tools/gitlab.png"
+            }
+          ]
+        },
+        {
+          "id": "webpack",
+          "name": "Webpack",
+          "category": "Module Bundler",
+          "description": "An open-source JavaScript module bundler that generates static assets representing modules with dependencies.",
+          "imagePath": "images/tools/webpack.png",
+          "subTools": []
+        },
+        {
+          "id": "babel",
+          "name": "Babel",
+          "category": "Transpiler",
+          "description": "A JavaScript compiler that converts ECMAScript 2015+ code into backwards-compatible JavaScript.",
+          "imagePath": "images/tools/babel.png",
+          "subTools": []
+        },
+        {
+          "id": "jest",
+          "name": "Jest",
+          "category": "Testing",
+          "description": "A JavaScript testing framework designed to ensure correctness of any JavaScript codebase.",
+          "imagePath": "images/tools/jest.png",
+          "subTools": []
+        },
+        {
+          "id": "mocha",
+          "name": "Mocha",
+          "category": "Testing",
+          "description": "A JavaScript test framework running on Node.js and in the browser.",
+          "imagePath": "images/tools/mocha.png",
+          "subTools": [
+            {
+              "id": "chai",
+              "name": "Chai",
+              "description": "A BDD / TDD assertion library for node and the browser.",
+              "imagePath": "images/tools/chai.png"
+            }
+          ]
+        },
+        {
+          "id": "cypress",
+          "name": "Cypress",
+          "category": "Testing",
+          "description": "A JavaScript end-to-end testing framework.",
+          "imagePath": "images/tools/cypress.png",
+          "subTools": []
+        },
+        {
+          "id": "aws",
+          "name": "AWS",
+          "category": "Cloud Services",
+          "description": "A secure cloud services platform, offering compute power, database storage, content delivery, and other functionality.",
+          "imagePath": "images/tools/aws.png",
+          "subTools": [
+            {
+              "id": "aws-ec2",
+              "name": "AWS EC2",
+              "description": "A web service that provides secure, resizable compute capacity in the cloud.",
+              "imagePath": "images/tools/aws-ec2.png"
+            },
+            {
+              "id": "aws-s3",
+              "name": "AWS S3",
+              "description": "An object storage service that offers industry-leading scalability, data availability, security, and performance.",
+              "imagePath": "images/tools/aws-s3.png"
+            },
+            {
+              "id": "aws-lambda",
+              "name": "AWS Lambda",
+              "description": "A serverless compute service that runs your code in response to events.",
+              "imagePath": "images/tools/aws-lambda.png"
+            }
+          ]
+        },
+        {
+          "id": "heroku",
+          "name": "Heroku",
+          "category": "Cloud Platform",
+          "description": "A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.",
+          "imagePath": "images/tools/heroku.png",
+          "subTools": []
+        },
+        {
+          "id": "netlify",
+          "name": "Netlify",
+          "category": "Hosting Platform",
+          "description": "A web developer platform that multiplies productivity. By unifying the modern web stack, Netlify enables faster, more confident development.",
+          "imagePath": "images/tools/netlify.png",
+          "subTools": []
+        },
+        {
+          "id": "vercel",
+          "name": "Vercel",
+          "category": "Hosting Platform",
+          "description": "A deployment and collaboration platform for frontend developers.",
+          "imagePath": "images/tools/vercel.png",
+          "subTools": []
+        },
+        {
+          "id": "graphql",
+          "name": "GraphQL",
+          "category": "API Query Language",
+          "description": "A query language for APIs and a runtime for fulfilling those queries with your existing data.",
+          "imagePath": "images/tools/graphql.png",
+          "subTools": [
+            {
+              "id": "apollo",
+              "name": "Apollo",
+              "description": "A comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL.",
+              "imagePath": "images/tools/apollo.png"
+            }
+          ]
+        },
+        {
+          "id": "postman",
+          "name": "Postman",
+          "category": "API Development",
+          "description": "A collaboration platform for API development.",
+          "imagePath": "images/tools/postman.png",
+          "subTools": []
+        },
+        {
+          "id": "ruby",
+          "name": "Ruby",
+          "category": "Programming Language",
+          "description": "A dynamic, open-source programming language with a focus on simplicity and productivity. In full-stack development, often used with Rails.",
+          "imagePath": "images/tools/ruby.png",
+          "subTools": [
+            {
+              "id": "rails",
+              "name": "Ruby on Rails",
+              "description": "A server-side web application framework written in Ruby under the MIT License.",
+              "imagePath": "images/tools/rails.png"
+            }
+          ]
+        },
+        {
+          "id": "php",
+          "name": "PHP",
+          "category": "Programming Language",
+          "description": "A general-purpose scripting language especially suited to web development.",
+          "imagePath": "images/tools/php.png",
+          "subTools": [
+            {
+              "id": "laravel",
+              "name": "Laravel",
+              "description": "A free, open-source PHP web framework for developing web applications following the MVC architectural pattern.",
+              "imagePath": "images/tools/laravel.png"
+            },
+            {
+              "id": "symfony",
+              "name": "Symfony",
+              "description": "A PHP framework for web applications and a set of reusable PHP components.",
+              "imagePath": "images/tools/symfony.png"
+            }
+          ]
+        },
+        {
+          "id": "nginx",
+          "name": "NGINX",
+          "category": "Web Server",
+          "description": "A web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.",
+          "imagePath": "images/tools/nginx.png",
+          "subTools": []
+        },
+        {
+          "id": "apache",
+          "name": "Apache HTTP Server",
+          "category": "Web Server",
+          "description": "A free and open-source cross-platform web server software.",
+          "imagePath": "images/tools/apache.png",
+          "subTools": []
+        },
+        {
+          "id": "elasticsearch",
+          "name": "Elasticsearch",
+          "category": "Search Engine",
+          "description": "A distributed, RESTful search and analytics engine capable of addressing a growing number of use cases.",
+          "imagePath": "images/tools/elasticsearch.png",
+          "subTools": []
+        },
+        {
+          "id": "redux-saga",
+          "name": "Redux-Saga",
+          "category": "State Management",
+          "description": "A library that aims to make application side effects easier to manage, more efficient to execute, easy to test, and better at handling failures.",
+          "imagePath": "images/tools/redux-saga.png",
+          "subTools": []
+        },
+        {
+          "id": "rxjs",
+          "name": "RxJS",
+          "category": "Reactive Programming",
+          "description": "A library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.",
+          "imagePath": "images/tools/rxjs.png",
+          "subTools": []
+        },
+        {
+          "id": "d3js",
+          "name": "D3.js",
+          "category": "Data Visualization",
+          "description": "A JavaScript library for producing dynamic, interactive data visualizations in web browsers.",
+          "imagePath": "images/tools/d3js.png",
+          "subTools": []
+        },
+        {
+          "id": "threejs",
+          "name": "Three.js",
+          "category": "3D Graphics",
+          "description": "A cross-browser JavaScript library and API used to create and display animated 3D computer graphics in a web browser.",
+          "imagePath": "images/tools/threejs.png",
+          "subTools": []
+        },
+        {
+          "id": "wordpress",
+          "name": "WordPress",
+          "category": "CMS",
+          "description": "A free and open-source content management system written in PHP.",
+          "imagePath": "images/tools/wordpress.png",
+          "subTools": []
+        },
+        {
+          "id": "jenkins",
+          "name": "Jenkins",
+          "category": "CI/CD",
+          "description": "An open-source automation server that helps automate the parts of software development related to building, testing, and deploying.",
+          "imagePath": "images/tools/jenkins.png",
+          "subTools": []
+        },
+        {
+          "id": "travis-ci",
+          "name": "Travis CI",
+          "category": "CI/CD",
+          "description": "A hosted continuous integration service used to build and test software projects hosted at GitHub.",
+          "imagePath": "images/tools/travis-ci.png",
+          "subTools": []
+        },
+        {
+          "id": "circleci",
+          "name": "CircleCI",
+          "category": "CI/CD",
+          "description": "A continuous integration and continuous delivery platform that can be used to implement DevOps practices.",
+          "imagePath": "images/tools/circleci.png",
+          "subTools": []
+        },
+        {
+          "id": "npm",
+          "name": "npm",
+          "category": "Package Manager",
+          "description": "A package manager for the JavaScript programming language.",
+          "imagePath": "images/tools/npm.png",
+          "subTools": []
+        },
+        {
+          "id": "yarn",
+          "name": "Yarn",
+          "category": "Package Manager",
+          "description": "A package manager for JavaScript and an alternative to npm.",
+          "imagePath": "images/tools/yarn.png",
+          "subTools": []
+        },
+        {
+          "id": "firebase",
+          "name": "Firebase",
+          "category": "Backend as a Service",
+          "description": "A platform developed by Google for creating mobile and web applications.",
+          "imagePath": "images/tools/firebase.png",
+          "subTools": [
+            {
+              "id": "firestore",
+              "name": "Cloud Firestore",
+              "description": "A flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud.",
+              "imagePath": "images/tools/firestore.png"
+            }
+          ]
+        },
+        {
+          "id": "auth0",
+          "name": "Auth0",
+          "category": "Authentication",
+          "description": "An authentication and authorization platform.",
+          "imagePath": "images/tools/auth0.png",
+          "subTools": []
+        },
+        {
+          "id": "passport",
+          "name": "Passport.js",
+          "category": "Authentication",
+          "description": "Simple, unobtrusive authentication for Node.js.",
+          "imagePath": "images/tools/passport.png",
+          "subTools": []
+        },
+        {
+          "id": "stripe",
+          "name": "Stripe",
+          "category": "Payment Processing",
+          "description": "A suite of payment APIs that powers commerce for online businesses of all sizes.",
+          "imagePath": "images/tools/stripe.png",
+          "subTools": []
+        },
+        {
+          "id": "paypal",
+          "name": "PayPal",
+          "category": "Payment Processing",
+          "description": "An online payments system that supports online money transfers.",
+          "imagePath": "images/tools/paypal.png",
+          "subTools": []
+        },
+        {
+          "id": "sentry",
+          "name": "Sentry",
+          "category": "Error Tracking",
+          "description": "An error monitoring platform that helps developers discover, triage, and prioritize errors in real-time.",
+          "imagePath": "images/tools/sentry.png",
+          "subTools": []
+        },
+        {
+          "id": "parcel",
+          "name": "Parcel",
+          "category": "Bundler",
+          "description": "A web application bundler, differentiated by its developer experience.",
+          "imagePath": "images/tools/parcel.png",
+          "subTools": []
+        },
+        {
+          "id": "storybook",
+          "name": "Storybook",
+          "category": "UI Development",
+          "description": "An open-source tool for developing UI components in isolation for React, Vue, Angular, and more.",
+          "imagePath": "images/tools/storybook.png",
+          "subTools": []
+        },
+        {
+          "id": "gatsby",
+          "name": "Gatsby",
+          "category": "Static Site Generator",
+          "description": "A free and open-source framework based on React that helps developers build blazing-fast websites and apps.",
+          "imagePath": "images/tools/gatsby.png",
+          "subTools": []
+        },
+        {
+          "id": "nextjs",
+          "name": "Next.js",
+          "category": "React Framework",
+          "description": "An open-source React front-end development web framework that enables functionality such as server-side rendering and static site generation.",
+          "imagePath": "images/tools/nextjs.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "data-engineering",
+      "name": "Data Engineering",
+      "tools": [
+        {
+          "id": "python-de",
+          "name": "Python",
+          "category": "Programming Language",
+          "description": "The most widely used programming language in data engineering for data processing, analysis, and pipeline development.",
+          "imagePath": "images/tools/python.png",
+          "subTools": [
+            {
+              "id": "pandas",
+              "name": "Pandas",
+              "description": "A fast, powerful, flexible and easy to use open source data analysis and manipulation tool built on top of Python.",
+              "imagePath": "images/tools/pandas.png"
+            },
+            {
+              "id": "numpy",
+              "name": "NumPy",
+              "description": "The fundamental package for scientific computing with Python, providing support for arrays, matrices, and mathematical functions.",
+              "imagePath": "images/tools/numpy.png"
+            },
+            {
+              "id": "dask",
+              "name": "Dask",
+              "description": "A flexible library for parallel computing in Python that scales Python code from multi-core local machines to large clusters.",
+              "imagePath": "images/tools/dask.png"
+            },
+            {
+              "id": "pyspark",
+              "name": "PySpark",
+              "description": "The Python API for Apache Spark, allowing data engineers to leverage Spark's capabilities using Python.",
+              "imagePath": "images/tools/pyspark.png"
+            },
+            {
+              "id": "scikit-learn",
+              "name": "Scikit-learn",
+              "description": "A machine learning library for Python that features various classification, regression, and clustering algorithms.",
+              "imagePath": "images/tools/scikit-learn.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-spark",
+          "name": "Apache Spark",
+          "category": "Big Data Processing",
+          "description": "An open-source unified analytics engine for large-scale data processing, with built-in modules for streaming, SQL, machine learning and graph processing.",
+          "imagePath": "images/tools/apache-spark.png",
+          "subTools": [
+            {
+              "id": "spark-sql",
+              "name": "Spark SQL",
+              "description": "A Spark module for structured data processing, providing a DataFrame API and SQL interface.",
+              "imagePath": "images/tools/spark-sql.png"
+            },
+            {
+              "id": "spark-streaming",
+              "name": "Spark Streaming",
+              "description": "An extension of the core Spark API that enables scalable, high-throughput, fault-tolerant stream processing of live data streams.",
+              "imagePath": "images/tools/spark-streaming.png"
+            },
+            {
+              "id": "mllib",
+              "name": "MLlib",
+              "description": "Spark's machine learning library, providing common machine learning algorithms and utilities.",
+              "imagePath": "images/tools/mllib.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-hadoop",
+          "name": "Apache Hadoop",
+          "category": "Big Data Storage & Processing",
+          "description": "An open-source framework that allows for the distributed processing of large data sets across clusters of computers.",
+          "imagePath": "images/tools/apache-hadoop.png",
+          "subTools": [
+            {
+              "id": "hdfs",
+              "name": "HDFS",
+              "description": "Hadoop Distributed File System - a distributed file system designed to run on commodity hardware.",
+              "imagePath": "images/tools/hdfs.png"
+            },
+            {
+              "id": "mapreduce",
+              "name": "MapReduce",
+              "description": "A programming model for processing and generating big data sets with a parallel, distributed algorithm.",
+              "imagePath": "images/tools/mapreduce.png"
+            },
+            {
+              "id": "yarn",
+              "name": "YARN",
+              "description": "Yet Another Resource Negotiator - a resource management platform responsible for managing computing resources in clusters.",
+              "imagePath": "images/tools/yarn-hadoop.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-kafka",
+          "name": "Apache Kafka",
+          "category": "Stream Processing",
+          "description": "A distributed event streaming platform capable of handling trillions of events a day.",
+          "imagePath": "images/tools/apache-kafka.png",
+          "subTools": [
+            {
+              "id": "kafka-streams",
+              "name": "Kafka Streams",
+              "description": "A client library for building applications and microservices, where the input and output data are stored in Kafka clusters.",
+              "imagePath": "images/tools/kafka-streams.png"
+            },
+            {
+              "id": "kafka-connect",
+              "name": "Kafka Connect",
+              "description": "A tool for scalably and reliably streaming data between Apache Kafka and other data systems.",
+              "imagePath": "images/tools/kafka-connect.png"
+            },
+            {
+              "id": "ksqldb",
+              "name": "ksqlDB",
+              "description": "A database purpose-built for stream processing applications, allowing you to build stream processing applications with SQL.",
+              "imagePath": "images/tools/ksqldb.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-airflow",
+          "name": "Apache Airflow",
+          "category": "Workflow Management",
+          "description": "A platform to programmatically author, schedule, and monitor workflows as directed acyclic graphs (DAGs) of tasks.",
+          "imagePath": "images/tools/apache-airflow.png",
+          "subTools": [
+            {
+              "id": "airflow-providers",
+              "name": "Airflow Providers",
+              "description": "Collections of packages that extend Airflow functionality by adding connections, operators, and hooks for external services.",
+              "imagePath": "images/tools/airflow-providers.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-nifi",
+          "name": "Apache NiFi",
+          "category": "Data Flow",
+          "description": "An easy to use, powerful, and reliable system to process and distribute data between different systems.",
+          "imagePath": "images/tools/apache-nifi.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-data-engineering",
+          "name": "AWS Data Services",
+          "category": "Cloud Data Services",
+          "description": "A collection of AWS services for data engineering and analytics workloads.",
+          "imagePath": "images/tools/aws.png",
+          "subTools": [
+            {
+              "id": "aws-glue",
+              "name": "AWS Glue",
+              "description": "A serverless data integration service that makes it easy to discover, prepare, and combine data for analytics, machine learning, and application development.",
+              "imagePath": "images/tools/aws-glue.png"
+            },
+            {
+              "id": "aws-emr",
+              "name": "AWS EMR",
+              "description": "A cloud big data platform for processing vast amounts of data using open source tools such as Apache Spark, Apache Hive, Apache HBase, Apache Flink, and Presto.",
+              "imagePath": "images/tools/aws-emr.png"
+            },
+            {
+              "id": "aws-redshift",
+              "name": "Amazon Redshift",
+              "description": "A fully managed, petabyte-scale data warehouse service in the cloud, designed for analyzing large volumes of data.",
+              "imagePath": "images/tools/aws-redshift.png"
+            },
+            {
+              "id": "aws-kinesis",
+              "name": "Amazon Kinesis",
+              "description": "A platform for streaming data on AWS, offering powerful services to make it easy to load and analyze streaming data.",
+              "imagePath": "images/tools/aws-kinesis.png"
+            },
+            {
+              "id": "aws-athena",
+              "name": "Amazon Athena",
+              "description": "An interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL.",
+              "imagePath": "images/tools/aws-athena.png"
+            }
+          ]
+        },
+        {
+          "id": "gcp-data-engineering",
+          "name": "Google Cloud Data Services",
+          "category": "Cloud Data Services",
+          "description": "A collection of Google Cloud services for data engineering and analytics workloads.",
+          "imagePath": "images/tools/gcp.png",
+          "subTools": [
+            {
+              "id": "bigquery",
+              "name": "BigQuery",
+              "description": "Google's fully managed, serverless data warehouse that enables scalable analysis over petabytes of data.",
+              "imagePath": "images/tools/bigquery.png"
+            },
+            {
+              "id": "dataflow",
+              "name": "Cloud Dataflow",
+              "description": "A fully managed service for executing Apache Beam pipelines within the Google Cloud Platform ecosystem.",
+              "imagePath": "images/tools/dataflow.png"
+            },
+            {
+              "id": "dataproc",
+              "name": "Cloud Dataproc",
+              "description": "A fast, easy-to-use, fully managed cloud service for running Apache Spark and Apache Hadoop clusters.",
+              "imagePath": "images/tools/dataproc.png"
+            },
+            {
+              "id": "pubsub",
+              "name": "Cloud Pub/Sub",
+              "description": "A fully-managed real-time messaging service that allows you to send and receive messages between independent applications.",
+              "imagePath": "images/tools/pubsub.png"
+            }
+          ]
+        },
+        {
+          "id": "azure-data-engineering",
+          "name": "Azure Data Services",
+          "category": "Cloud Data Services",
+          "description": "A collection of Microsoft Azure services for data engineering and analytics workloads.",
+          "imagePath": "images/tools/azure.png",
+          "subTools": [
+            {
+              "id": "azure-databricks",
+              "name": "Azure Databricks",
+              "description": "A fast, easy, and collaborative Apache Spark-based analytics platform optimized for Azure.",
+              "imagePath": "images/tools/azure-databricks.png"
+            },
+            {
+              "id": "azure-data-factory",
+              "name": "Azure Data Factory",
+              "description": "A hybrid data integration service that allows you to create, schedule, and orchestrate your ETL/ELT workflows.",
+              "imagePath": "images/tools/azure-data-factory.png"
+            },
+            {
+              "id": "azure-synapse-analytics",
+              "name": "Azure Synapse Analytics",
+              "description": "An analytics service that brings together enterprise data warehousing and big data analytics.",
+              "imagePath": "images/tools/azure-synapse-analytics.png"
+            },
+            {
+              "id": "azure-hdinsight",
+              "name": "Azure HDInsight",
+              "description": "A fully managed cloud service that makes it easy to process massive amounts of data with open-source frameworks like Hadoop, Spark, and Kafka.",
+              "imagePath": "images/tools/azure-hdinsight.png"
+            }
+          ]
+        },
+        {
+          "id": "sql",
+          "name": "SQL",
+          "category": "Query Language",
+          "description": "A standard language for storing, manipulating, and retrieving data in databases, essential for data engineers.",
+          "imagePath": "images/tools/sql.png",
+          "subTools": [
+            {
+              "id": "postgresql-de",
+              "name": "PostgreSQL",
+              "description": "A powerful, open-source object-relational database system with a strong reputation for reliability and data integrity.",
+              "imagePath": "images/tools/postgresql.png"
+            },
+            {
+              "id": "mysql-de",
+              "name": "MySQL",
+              "description": "One of the world's most popular open-source relational database management systems.",
+              "imagePath": "images/tools/mysql.png"
+            },
+            {
+              "id": "mssql",
+              "name": "Microsoft SQL Server",
+              "description": "A relational database management system developed by Microsoft.",
+              "imagePath": "images/tools/mssql.png"
+            }
+          ]
+        },
+        {
+          "id": "nosql",
+          "name": "NoSQL Databases",
+          "category": "Databases",
+          "description": "A collection of database systems that use non-relational models, often chosen for their scalability and flexibility with big data applications.",
+          "imagePath": "images/tools/nosql.png",
+          "subTools": [
+            {
+              "id": "mongodb-de",
+              "name": "MongoDB",
+              "description": "A source-available cross-platform document-oriented database program, classified as a NoSQL database program.",
+              "imagePath": "images/tools/mongodb.png"
+            },
+            {
+              "id": "cassandra",
+              "name": "Apache Cassandra",
+              "description": "A free and open-source, distributed, wide column store, NoSQL database management system designed to handle large amounts of data across many servers.",
+              "imagePath": "images/tools/cassandra.png"
+            },
+            {
+              "id": "hbase",
+              "name": "Apache HBase",
+              "description": "An open-source, non-relational, distributed database modeled after Google's Bigtable and runs on top of HDFS.",
+              "imagePath": "images/tools/hbase.png"
+            },
+            {
+              "id": "redis-de",
+              "name": "Redis",
+              "description": "An in-memory data structure store, used as a database, cache, and message broker.",
+              "imagePath": "images/tools/redis.png"
+            }
+          ]
+        },
+        {
+          "id": "docker-de",
+          "name": "Docker",
+          "category": "Containerization",
+          "description": "A platform for developing, shipping, and running applications in containers, enabling consistent environments across development and production.",
+          "imagePath": "images/tools/docker.png",
+          "subTools": [
+            {
+              "id": "docker-compose-de",
+              "name": "Docker Compose",
+              "description": "A tool for defining and running multi-container Docker applications.",
+              "imagePath": "images/tools/docker-compose.png"
+            }
+          ]
+        },
+        {
+          "id": "kubernetes-de",
+          "name": "Kubernetes",
+          "category": "Container Orchestration",
+          "description": "An open-source system for automating deployment, scaling, and management of containerized applications.",
+          "imagePath": "images/tools/kubernetes.png",
+          "subTools": []
+        },
+        {
+          "id": "terraform",
+          "name": "Terraform",
+          "category": "Infrastructure as Code",
+          "description": "An open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services.",
+          "imagePath": "images/tools/terraform.png",
+          "subTools": []
+        },
+        {
+          "id": "databricks",
+          "name": "Databricks",
+          "category": "Unified Analytics",
+          "description": "A unified data analytics platform designed to help data teams solve the world's toughest problems.",
+          "imagePath": "images/tools/databricks.png",
+          "subTools": []
+        },
+        {
+          "id": "snowflake",
+          "name": "Snowflake",
+          "category": "Data Warehouse",
+          "description": "A cloud-based data warehousing platform that provides a solution for data storage, processing, and analytic solutions.",
+          "imagePath": "images/tools/snowflake.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-beam",
+          "name": "Apache Beam",
+          "category": "Data Processing",
+          "description": "An open source, unified model for defining both batch and streaming data-parallel processing pipelines.",
+          "imagePath": "images/tools/apache-beam.png",
+          "subTools": []
+        },
+        {
+          "id": "dbt",
+          "name": "dbt (Data Build Tool)",
+          "category": "Data Transformation",
+          "description": "A command-line tool that enables data analysts and engineers to transform data in their warehouses simply and effectively.",
+          "imagePath": "images/tools/dbt.png",
+          "subTools": []
+        },
+        {
+          "id": "tableau",
+          "name": "Tableau",
+          "category": "Data Visualization",
+          "description": "A visual analytics platform that helps people see and understand data.",
+          "imagePath": "images/tools/tableau.png",
+          "subTools": []
+        },
+        {
+          "id": "power-bi",
+          "name": "Power BI",
+          "category": "Data Visualization",
+          "description": "A business analytics service by Microsoft that provides interactive visualizations and business intelligence capabilities.",
+          "imagePath": "images/tools/power-bi.png",
+          "subTools": []
+        },
+        {
+          "id": "looker",
+          "name": "Looker",
+          "category": "Business Intelligence",
+          "description": "A business intelligence software and big data analytics platform that helps you explore, analyze and share real-time business analytics easily.",
+          "imagePath": "images/tools/looker.png",
+          "subTools": []
+        },
+        {
+          "id": "git-de",
+          "name": "Git",
+          "category": "Version Control",
+          "description": "A distributed version-control system for tracking changes in source code during software development.",
+          "imagePath": "images/tools/git.png",
+          "subTools": []
+        },
+        {
+          "id": "scala",
+          "name": "Scala",
+          "category": "Programming Language",
+          "description": "A strong statically typed high-level programming language that combines object-oriented and functional programming, often used with Spark.",
+          "imagePath": "images/tools/scala.png",
+          "subTools": []
+        },
+        {
+          "id": "r",
+          "name": "R",
+          "category": "Programming Language",
+          "description": "A programming language and free software environment for statistical computing and graphics.",
+          "imagePath": "images/tools/r.png",
+          "subTools": [
+            {
+              "id": "r-shiny",
+              "name": "Shiny",
+              "description": "An R package that makes it easy to build interactive web apps straight from R.",
+              "imagePath": "images/tools/r-shiny.png"
+            },
+            {
+              "id": "ggplot2",
+              "name": "ggplot2",
+              "description": "A data visualization package for the statistical programming language R.",
+              "imagePath": "images/tools/ggplot2.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-flink",
+          "name": "Apache Flink",
+          "category": "Stream Processing",
+          "description": "An open-source, unified stream-processing and batch-processing framework.",
+          "imagePath": "images/tools/apache-flink.png",
+          "subTools": []
+        },
+        {
+          "id": "elasticsearch-de",
+          "name": "Elasticsearch",
+          "category": "Search and Analytics",
+          "description": "A distributed, RESTful search and analytics engine capable of addressing a growing number of use cases.",
+          "imagePath": "images/tools/elasticsearch.png",
+          "subTools": [
+            {
+              "id": "kibana",
+              "name": "Kibana",
+              "description": "An open-source data visualization dashboard for Elasticsearch, providing visualization capabilities on top of the content indexed on an Elasticsearch cluster.",
+              "imagePath": "images/tools/kibana.png"
+            },
+            {
+              "id": "logstash",
+              "name": "Logstash",
+              "description": "A server-side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a 'stash' like Elasticsearch.",
+              "imagePath": "images/tools/logstash.png"
+            }
+          ]
+        },
+        {
+          "id": "apache-hive",
+          "name": "Apache Hive",
+          "category": "Data Warehouse",
+          "description": "A data warehouse software project built on top of Apache Hadoop for providing data query and analysis.",
+          "imagePath": "images/tools/apache-hive.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-druid",
+          "name": "Apache Druid",
+          "category": "Analytics Database",
+          "description": "A high-performance, real-time analytics database designed for workflows where fast queries and ingest really matter.",
+          "imagePath": "images/tools/apache-druid.png",
+          "subTools": []
+        },
+        {
+          "id": "pentaho",
+          "name": "Pentaho",
+          "category": "ETL",
+          "description": "A business intelligence platform that includes ETL capabilities, with a focus on data integration, reporting, and dashboards.",
+          "imagePath": "images/tools/pentaho.png",
+          "subTools": []
+        },
+        {
+          "id": "talend",
+          "name": "Talend",
+          "category": "ETL",
+          "description": "A suite of data integration and data management tools that provides enterprise-level data solutions.",
+          "imagePath": "images/tools/talend.png",
+          "subTools": []
+        },
+        {
+          "id": "prefect",
+          "name": "Prefect",
+          "category": "Workflow Management",
+          "description": "A modern workflow management system designed to handle complex data pipelines that run in dynamic environments.",
+          "imagePath": "images/tools/prefect.png",
+          "subTools": []
+        },
+        {
+          "id": "luigi",
+          "name": "Luigi",
+          "category": "Workflow Management",
+          "description": "A Python package that helps you build complex pipelines of batch jobs, handling dependency resolution, workflow management, visualization, etc.",
+          "imagePath": "images/tools/luigi.png",
+          "subTools": []
+        },
+        {
+          "id": "dagster",
+          "name": "Dagster",
+          "category": "Workflow Management",
+          "description": "A data orchestrator for machine learning, analytics, and ETL.",
+          "imagePath": "images/tools/dagster.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-superset",
+          "name": "Apache Superset",
+          "category": "Data Visualization",
+          "description": "A modern, enterprise-ready business intelligence web application.",
+          "imagePath": "images/tools/apache-superset.png",
+          "subTools": []
+        },
+        {
+          "id": "grafana-de",
+          "name": "Grafana",
+          "category": "Monitoring and Visualization",
+          "description": "An open-source platform for monitoring and observability that lets you visualize metrics, logs, and traces from multiple sources.",
+          "imagePath": "images/tools/grafana.png",
+          "subTools": []
+        },
+        {
+          "id": "prometheus",
+          "name": "Prometheus",
+          "category": "Monitoring",
+          "description": "An open-source systems monitoring and alerting toolkit, often used with Grafana for visualization.",
+          "imagePath": "images/tools/prometheus.png",
+          "subTools": []
+        },
+        {
+          "id": "jenkins-de",
+          "name": "Jenkins",
+          "category": "CI/CD",
+          "description": "An open-source automation server that helps automate parts of the software development process.",
+          "imagePath": "images/tools/jenkins.png",
+          "subTools": []
+        },
+        {
+          "id": "gitlab-ci",
+          "name": "GitLab CI/CD",
+          "category": "CI/CD",
+          "description": "The CI/CD tool built into GitLab, enabling testing, building, and deploying code through automation pipelines.",
+          "imagePath": "images/tools/gitlab-ci.png",
+          "subTools": []
+        },
+        {
+          "id": "github-actions",
+          "name": "GitHub Actions",
+          "category": "CI/CD",
+          "description": "A CI/CD platform that allows you to automate your build, test, and deployment pipeline directly within GitHub.",
+          "imagePath": "images/tools/github-actions.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-zookeeper",
+          "name": "Apache ZooKeeper",
+          "category": "Distributed Coordination",
+          "description": "A centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.",
+          "imagePath": "images/tools/apache-zookeeper.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-avro",
+          "name": "Apache Avro",
+          "category": "Data Serialization",
+          "description": "A row-oriented remote procedure call and data serialization framework developed within Apache's Hadoop project.",
+          "imagePath": "images/tools/apache-avro.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-parquet",
+          "name": "Apache Parquet",
+          "category": "Data Storage",
+          "description": "A columnar storage file format designed for efficient data storage and retrieval, commonly used in the Hadoop ecosystem.",
+          "imagePath": "images/tools/apache-parquet.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-orc",
+          "name": "Apache ORC",
+          "category": "Data Storage",
+          "description": "A columnar storage file format designed for Hadoop workloads, optimized for reading, writing, and processing data.",
+          "imagePath": "images/tools/apache-orc.png",
+          "subTools": []
+        },
+        {
+          "id": "delta-lake",
+          "name": "Delta Lake",
+          "category": "Data Lake",
+          "description": "An open-source storage layer that brings reliability to data lakes, providing ACID transactions and unifying streaming and batch data processing.",
+          "imagePath": "images/tools/delta-lake.png",
+          "subTools": []
+        },
+        {
+          "id": "jupyter",
+          "name": "Jupyter Notebook",
+          "category": "Development Environment",
+          "description": "An open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text.",
+          "imagePath": "images/tools/jupyter.png",
+          "subTools": [
+            {
+              "id": "jupyterlab",
+              "name": "JupyterLab",
+              "description": "A web-based interactive development environment for Jupyter notebooks, code, and data.",
+              "imagePath": "images/tools/jupyterlab.png"
+            }
+          ]
+        },
+        {
+          "id": "vscode-de",
+          "name": "Visual Studio Code",
+          "category": "IDE",
+          "description": "A lightweight but powerful source code editor that runs on your desktop and is available for Windows, macOS, and Linux.",
+          "imagePath": "images/tools/vscode.png",
+          "subTools": []
+        },
+        {
+          "id": "pycharm",
+          "name": "PyCharm",
+          "category": "IDE",
+          "description": "An integrated development environment used in computer programming, specifically for the Python language.",
+          "imagePath": "images/tools/pycharm.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "cloud-computing",
+      "name": "Cloud Computing",
+      "tools": [
+        {
+          "id": "aws-cloud",
+          "name": "Amazon Web Services (AWS)",
+          "category": "Cloud Platform",
+          "description": "A comprehensive and widely adopted cloud platform, offering over 200 fully featured services from data centers globally.",
+          "imagePath": "images/tools/aws.png",
+          "subTools": [
+            {
+              "id": "aws-ec2-cloud",
+              "name": "Amazon EC2",
+              "description": "Elastic Compute Cloud - Secure and resizable compute capacity in the cloud.",
+              "imagePath": "images/tools/aws-ec2.png"
+            },
+            {
+              "id": "aws-s3-cloud",
+              "name": "Amazon S3",
+              "description": "Simple Storage Service - Object storage service that offers industry-leading scalability, data availability, security, and performance.",
+              "imagePath": "images/tools/aws-s3.png"
+            },
+            {
+              "id": "aws-lambda-cloud",
+              "name": "AWS Lambda",
+              "description": "Serverless compute service that lets you run code without provisioning or managing servers.",
+              "imagePath": "images/tools/aws-lambda.png"
+            },
+            {
+              "id": "aws-rds",
+              "name": "Amazon RDS",
+              "description": "Relational Database Service - Makes it easy to set up, operate, and scale a relational database in the cloud.",
+              "imagePath": "images/tools/aws-rds.png"
+            },
+            {
+              "id": "aws-dynamodb",
+              "name": "Amazon DynamoDB",
+              "description": "A fast and flexible NoSQL database service for single-digit millisecond performance at any scale.",
+              "imagePath": "images/tools/aws-dynamodb.png"
+            },
+            {
+              "id": "aws-cloudformation",
+              "name": "AWS CloudFormation",
+              "description": "A service that gives developers and businesses an easy way to create a collection of related AWS resources.",
+              "imagePath": "images/tools/aws-cloudformation.png"
+            },
+            {
+              "id": "aws-vpc",
+              "name": "Amazon VPC",
+              "description": "Virtual Private Cloud - Enables you to launch AWS resources into a virtual network that you've defined.",
+              "imagePath": "images/tools/aws-vpc.png"
+            }
+          ]
+        },
+        {
+          "id": "azure-cloud",
+          "name": "Microsoft Azure",
+          "category": "Cloud Platform",
+          "description": "Microsoft's cloud computing service, providing a wide range of services including compute, analytics, storage, and networking.",
+          "imagePath": "images/tools/azure.png",
+          "subTools": [
+            {
+              "id": "azure-vm",
+              "name": "Azure Virtual Machines",
+              "description": "Provides on-demand, scalable computing resources.",
+              "imagePath": "images/tools/azure-vm.png"
+            },
+            {
+              "id": "azure-functions",
+              "name": "Azure Functions",
+              "description": "An event-driven, serverless compute platform.",
+              "imagePath": "images/tools/azure-functions.png"
+            },
+            {
+              "id": "azure-storage",
+              "name": "Azure Storage",
+              "description": "Microsoft's cloud storage solution for modern data storage scenarios.",
+              "imagePath": "images/tools/azure-storage.png"
+            },
+            {
+              "id": "azure-cosmos-db",
+              "name": "Azure Cosmos DB",
+              "description": "A globally distributed, multi-model database service.",
+              "imagePath": "images/tools/azure-cosmos-db.png"
+            },
+            {
+              "id": "azure-app-service",
+              "name": "Azure App Service",
+              "description": "A fully managed platform for building, deploying, and scaling web apps.",
+              "imagePath": "images/tools/azure-app-service.png"
+            }
+          ]
+        },
+        {
+          "id": "gcp-cloud",
+          "name": "Google Cloud Platform (GCP)",
+          "category": "Cloud Platform",
+          "description": "Google's suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products.",
+          "imagePath": "images/tools/gcp.png",
+          "subTools": [
+            {
+              "id": "compute-engine",
+              "name": "Compute Engine",
+              "description": "Secure and customizable compute service that lets you create and run virtual machines.",
+              "imagePath": "images/tools/compute-engine.png"
+            },
+            {
+              "id": "cloud-storage",
+              "name": "Cloud Storage",
+              "description": "Object storage for companies of all sizes, from startups to enterprises.",
+              "imagePath": "images/tools/cloud-storage.png"
+            },
+            {
+              "id": "cloud-functions",
+              "name": "Cloud Functions",
+              "description": "Serverless execution environment for building and connecting cloud services.",
+              "imagePath": "images/tools/cloud-functions.png"
+            },
+            {
+              "id": "cloud-sql",
+              "name": "Cloud SQL",
+              "description": "Fully managed relational database service for MySQL, PostgreSQL, and SQL Server.",
+              "imagePath": "images/tools/cloud-sql.png"
+            },
+            {
+              "id": "kubernetes-engine",
+              "name": "Kubernetes Engine (GKE)",
+              "description": "Secured and managed Kubernetes service with four-way auto scaling and multi-cluster support.",
+              "imagePath": "images/tools/kubernetes-engine.png"
+            }
+          ]
+        },
+        {
+          "id": "docker-cloud",
+          "name": "Docker",
+          "category": "Containerization",
+          "description": "A platform for developing, shipping, and running applications in isolated environments called containers.",
+          "imagePath": "images/tools/docker.png",
+          "subTools": [
+            {
+              "id": "docker-compose-cloud",
+              "name": "Docker Compose",
+              "description": "A tool for defining and running multi-container Docker applications.",
+              "imagePath": "images/tools/docker-compose.png"
+            },
+            {
+              "id": "docker-swarm",
+              "name": "Docker Swarm",
+              "description": "A native clustering and orchestration solution for Docker.",
+              "imagePath": "images/tools/docker-swarm.png"
+            }
+          ]
+        },
+        {
+          "id": "kubernetes-cloud",
+          "name": "Kubernetes",
+          "category": "Container Orchestration",
+          "description": "An open-source system for automating deployment, scaling, and management of containerized applications.",
+          "imagePath": "images/tools/kubernetes.png",
+          "subTools": [
+            {
+              "id": "helm-cloud",
+              "name": "Helm",
+              "description": "The package manager for Kubernetes, helping you define, install, and upgrade Kubernetes applications.",
+              "imagePath": "images/tools/helm.png"
+            },
+            {
+              "id": "istio",
+              "name": "Istio",
+              "description": "An open-source service mesh that helps organizations run distributed, microservices-based apps anywhere.",
+              "imagePath": "images/tools/istio.png"
+            },
+            {
+              "id": "rancher",
+              "name": "Rancher",
+              "description": "A complete software stack for teams adopting containers.",
+              "imagePath": "images/tools/rancher.png"
+            }
+          ]
+        },
+        {
+          "id": "terraform-cloud",
+          "name": "Terraform",
+          "category": "Infrastructure as Code",
+          "description": "An open-source infrastructure as code software tool that provides a consistent CLI workflow to manage cloud services.",
+          "imagePath": "images/tools/terraform.png",
+          "subTools": [
+            {
+              "id": "terraform-cloud-service",
+              "name": "Terraform Cloud",
+              "description": "A SaaS platform for teams to use Terraform together.",
+              "imagePath": "images/tools/terraform-cloud-service.png"
+            }
+          ]
+        },
+        {
+          "id": "ansible",
+          "name": "Ansible",
+          "category": "Configuration Management",
+          "description": "An open-source software provisioning, configuration management, and application-deployment tool.",
+          "imagePath": "images/tools/ansible.png",
+          "subTools": [
+            {
+              "id": "ansible-tower",
+              "name": "Ansible Tower",
+              "description": "The enterprise framework for controlling, securing, and managing your Ansible automation.",
+              "imagePath": "images/tools/ansible-tower.png"
+            }
+          ]
+        },
+        {
+          "id": "chef",
+          "name": "Chef",
+          "category": "Configuration Management",
+          "description": "A configuration management tool designed to help automate the deployment and management of infrastructure.",
+          "imagePath": "images/tools/chef.png",
+          "subTools": []
+        },
+        {
+          "id": "puppet",
+          "name": "Puppet",
+          "category": "Configuration Management",
+          "description": "A software configuration management tool which includes its own declarative language to describe system configuration.",
+          "imagePath": "images/tools/puppet.png",
+          "subTools": []
+        },
+        {
+          "id": "cloudflare",
+          "name": "Cloudflare",
+          "category": "CDN & Security",
+          "description": "A global network designed to make everything you connect to the Internet secure, private, fast, and reliable.",
+          "imagePath": "images/tools/cloudflare.png",
+          "subTools": [
+            {
+              "id": "cloudflare-workers",
+              "name": "Cloudflare Workers",
+              "description": "A serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.",
+              "imagePath": "images/tools/cloudflare-workers.png"
+            },
+            {
+              "id": "cloudflare-pages",
+              "name": "Cloudflare Pages",
+              "description": "A JAMstack platform for frontend developers to collaborate and deploy websites.",
+              "imagePath": "images/tools/cloudflare-pages.png"
+            }
+          ]
+        },
+        {
+          "id": "serverless-framework",
+          "name": "Serverless Framework",
+          "category": "Serverless Computing",
+          "description": "An open-source framework for building applications on AWS Lambda and other serverless architectures.",
+          "imagePath": "images/tools/serverless-framework.png",
+          "subTools": []
+        },
+        {
+          "id": "pulumi",
+          "name": "Pulumi",
+          "category": "Infrastructure as Code",
+          "description": "An open-source infrastructure as code tool for creating, deploying, and managing cloud infrastructure using familiar programming languages.",
+          "imagePath": "images/tools/pulumi.png",
+          "subTools": []
+        },
+        {
+          "id": "openstack",
+          "name": "OpenStack",
+          "category": "Private Cloud Platform",
+          "description": "A free and open-source software platform for cloud computing, mostly deployed as infrastructure-as-a-service (IaaS).",
+          "imagePath": "images/tools/openstack.png",
+          "subTools": []
+        },
+        {
+          "id": "prometheus-cloud",
+          "name": "Prometheus",
+          "category": "Monitoring",
+          "description": "An open-source monitoring and alerting toolkit designed for reliability and scalability.",
+          "imagePath": "images/tools/prometheus.png",
+          "subTools": []
+        },
+        {
+          "id": "grafana-cloud",
+          "name": "Grafana",
+          "category": "Monitoring & Visualization",
+          "description": "An open-source analytics and interactive visualization web application, providing charts, graphs, and alerts when connected to supported data sources.",
+          "imagePath": "images/tools/grafana.png",
+          "subTools": []
+        },
+        {
+          "id": "elk-stack",
+          "name": "ELK Stack",
+          "category": "Logging & Analytics",
+          "description": "A collection of three open-source products \u00e2\u20ac\u201d Elasticsearch, Logstash, and Kibana \u00e2\u20ac\u201d from Elastic designed to help users take data from any source and search, analyze, and visualize it in real time.",
+          "imagePath": "images/tools/elk-stack.png",
+          "subTools": [
+            {
+              "id": "elasticsearch-cloud",
+              "name": "Elasticsearch",
+              "description": "A distributed, RESTful search and analytics engine capable of solving a growing number of use cases.",
+              "imagePath": "images/tools/elasticsearch.png"
+            },
+            {
+              "id": "logstash-cloud",
+              "name": "Logstash",
+              "description": "A server-side data processing pipeline that ingests data from multiple sources simultaneously.",
+              "imagePath": "images/tools/logstash.png"
+            },
+            {
+              "id": "kibana-cloud",
+              "name": "Kibana",
+              "description": "A data visualization and exploration tool used for log and time-series analytics, application monitoring, and operational intelligence use cases.",
+              "imagePath": "images/tools/kibana.png"
+            }
+          ]
+        },
+        {
+          "id": "jenkins-cloud",
+          "name": "Jenkins",
+          "category": "CI/CD",
+          "description": "An open-source automation server that enables developers to reliably build, test, and deploy their software.",
+          "imagePath": "images/tools/jenkins.png",
+          "subTools": []
+        },
+        {
+          "id": "github-actions-cloud",
+          "name": "GitHub Actions",
+          "category": "CI/CD",
+          "description": "A CI/CD platform that allows you to automate your build, test, and deployment pipeline directly from GitHub.",
+          "imagePath": "images/tools/github-actions.png",
+          "subTools": []
+        },
+        {
+          "id": "gitlab-ci-cloud",
+          "name": "GitLab CI/CD",
+          "category": "CI/CD",
+          "description": "A part of GitLab that allows for continuous integration and deployment through automation pipelines.",
+          "imagePath": "images/tools/gitlab-ci.png",
+          "subTools": []
+        },
+        {
+          "id": "circleci-cloud",
+          "name": "CircleCI",
+          "category": "CI/CD",
+          "description": "A continuous integration and delivery platform that helps software teams rapidly release code with confidence.",
+          "imagePath": "images/tools/circleci.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-cloudwatch",
+          "name": "Amazon CloudWatch",
+          "category": "Monitoring",
+          "description": "A monitoring and observability service that provides data and actionable insights for AWS, hybrid, and on-premises applications and infrastructure resources.",
+          "imagePath": "images/tools/aws-cloudwatch.png",
+          "subTools": []
+        },
+        {
+          "id": "datadog",
+          "name": "Datadog",
+          "category": "Monitoring & Analytics",
+          "description": "A monitoring and security platform for cloud applications that provides visibility of your entire stack.",
+          "imagePath": "images/tools/datadog.png",
+          "subTools": []
+        },
+        {
+          "id": "new-relic",
+          "name": "New Relic",
+          "category": "Monitoring & Observability",
+          "description": "A cloud-based observability platform that helps you instrument, analyze, troubleshoot, and optimize your entire software stack.",
+          "imagePath": "images/tools/new-relic.png",
+          "subTools": []
+        },
+        {
+          "id": "splunk",
+          "name": "Splunk",
+          "category": "Monitoring & Analytics",
+          "description": "A software platform for searching, monitoring, and analyzing machine-generated big data via a web-style interface.",
+          "imagePath": "images/tools/splunk.png",
+          "subTools": []
+        },
+        {
+          "id": "hashicorp-vault",
+          "name": "HashiCorp Vault",
+          "category": "Security & Secret Management",
+          "description": "A tool for secrets management, encryption as a service, and privileged access management.",
+          "imagePath": "images/tools/hashicorp-vault.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-iam",
+          "name": "AWS Identity and Access Management (IAM)",
+          "category": "Security & Access Control",
+          "description": "A web service that helps you securely control access to AWS resources.",
+          "imagePath": "images/tools/aws-iam.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-route53",
+          "name": "Amazon Route 53",
+          "category": "DNS Management",
+          "description": "A highly available and scalable cloud Domain Name System (DNS) web service.",
+          "imagePath": "images/tools/aws-route53.png",
+          "subTools": []
+        },
+        {
+          "id": "cloudfront",
+          "name": "Amazon CloudFront",
+          "category": "CDN",
+          "description": "A fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs.",
+          "imagePath": "images/tools/cloudfront.png",
+          "subTools": []
+        },
+        {
+          "id": "akamai",
+          "name": "Akamai",
+          "category": "CDN & Edge Computing",
+          "description": "A content delivery network (CDN), cybersecurity, and cloud service company, providing web and Internet security services.",
+          "imagePath": "images/tools/akamai.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-ebs",
+          "name": "Amazon Elastic Block Store (EBS)",
+          "category": "Storage",
+          "description": "A high-performance block storage service designed for use with Amazon EC2 for both throughput and transaction-intensive workloads.",
+          "imagePath": "images/tools/aws-ebs.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-efs",
+          "name": "Amazon Elastic File System (EFS)",
+          "category": "Storage",
+          "description": "A simple, scalable, fully managed elastic NFS file system for use with AWS cloud services and on-premises resources.",
+          "imagePath": "images/tools/aws-efs.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-sns",
+          "name": "Amazon Simple Notification Service (SNS)",
+          "category": "Messaging",
+          "description": "A fully managed messaging service for both application-to-application (A2A) and application-to-person (A2P) communication.",
+          "imagePath": "images/tools/aws-sns.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-sqs",
+          "name": "Amazon Simple Queue Service (SQS)",
+          "category": "Messaging",
+          "description": "A fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.",
+          "imagePath": "images/tools/aws-sqs.png",
+          "subTools": []
+        },
+        {
+          "id": "rabbitmq",
+          "name": "RabbitMQ",
+          "category": "Messaging",
+          "description": "An open-source message broker software that implements the Advanced Message Queuing Protocol (AMQP).",
+          "imagePath": "images/tools/rabbitmq.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-kafka-cloud",
+          "name": "Apache Kafka",
+          "category": "Messaging & Event Streaming",
+          "description": "A distributed event streaming platform capable of handling trillions of events a day.",
+          "imagePath": "images/tools/apache-kafka.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-api-gateway",
+          "name": "Amazon API Gateway",
+          "category": "API Management",
+          "description": "A fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.",
+          "imagePath": "images/tools/aws-api-gateway.png",
+          "subTools": []
+        },
+        {
+          "id": "kong",
+          "name": "Kong",
+          "category": "API Gateway",
+          "description": "An open-source API gateway and microservice management layer that acts as middleware between compute clients and the service.",
+          "imagePath": "images/tools/kong.png",
+          "subTools": []
+        },
+        {
+          "id": "nginx-cloud",
+          "name": "NGINX",
+          "category": "Web Server & Reverse Proxy",
+          "description": "A web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.",
+          "imagePath": "images/tools/nginx.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-httpd-cloud",
+          "name": "Apache HTTP Server",
+          "category": "Web Server",
+          "description": "A free and open-source cross-platform web server software.",
+          "imagePath": "images/tools/apache.png",
+          "subTools": []
+        },
+        {
+          "id": "haproxy",
+          "name": "HAProxy",
+          "category": "Load Balancer",
+          "description": "A free, open-source software that provides a high availability load balancer and proxy server for TCP and HTTP-based applications.",
+          "imagePath": "images/tools/haproxy.png",
+          "subTools": []
+        },
+        {
+          "id": "traefik",
+          "name": "Traefik",
+          "category": "Edge Router & Reverse Proxy",
+          "description": "A modern HTTP reverse proxy and load balancer that makes deploying microservices easy.",
+          "imagePath": "images/tools/traefik.png",
+          "subTools": []
+        },
+        {
+          "id": "envoy",
+          "name": "Envoy",
+          "category": "Service Proxy",
+          "description": "An open-source edge and service proxy, designed for cloud-native applications.",
+          "imagePath": "images/tools/envoy.png",
+          "subTools": []
+        },
+        {
+          "id": "digitalocean",
+          "name": "DigitalOcean",
+          "category": "Cloud Provider",
+          "description": "A cloud infrastructure provider focused on simplifying web infrastructure for software developers.",
+          "imagePath": "images/tools/digitalocean.png",
+          "subTools": []
+        },
+        {
+          "id": "linode",
+          "name": "Linode",
+          "category": "Cloud Provider",
+          "description": "A cloud hosting company that provides virtual private servers.",
+          "imagePath": "images/tools/linode.png",
+          "subTools": []
+        },
+        {
+          "id": "netlify-cloud",
+          "name": "Netlify",
+          "category": "Hosting Platform",
+          "description": "A cloud computing company that offers hosting and serverless backend services for web applications and static websites.",
+          "imagePath": "images/tools/netlify.png",
+          "subTools": []
+        },
+        {
+          "id": "vercel-cloud",
+          "name": "Vercel",
+          "category": "Hosting Platform",
+          "description": "A platform for frontend frameworks and static sites, built to integrate with headless content, commerce, or database.",
+          "imagePath": "images/tools/vercel.png",
+          "subTools": []
+        },
+        {
+          "id": "heroku-cloud",
+          "name": "Heroku",
+          "category": "Platform as a Service",
+          "description": "A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.",
+          "imagePath": "images/tools/heroku.png",
+          "subTools": []
+        },
+        {
+          "id": "openshift",
+          "name": "Red Hat OpenShift",
+          "category": "Container Platform",
+          "description": "An open-source container application platform by Red Hat based on top of Docker containers and the Kubernetes container orchestrator.",
+          "imagePath": "images/tools/openshift.png",
+          "subTools": []
+        },
+        {
+          "id": "cloudformation",
+          "name": "AWS CloudFormation",
+          "category": "Infrastructure as Code",
+          "description": "A service that helps you model and set up your AWS resources so you can spend less time managing those resources and more time focusing on your applications.",
+          "imagePath": "images/tools/cloudformation.png",
+          "subTools": []
+        },
+        {
+          "id": "arm-templates",
+          "name": "Azure Resource Manager Templates",
+          "category": "Infrastructure as Code",
+          "description": "A JSON file that defines the infrastructure and configuration for your project.",
+          "imagePath": "images/tools/arm-templates.png",
+          "subTools": []
+        },
+        {
+          "id": "gcp-deployment-manager",
+          "name": "Google Cloud Deployment Manager",
+          "category": "Infrastructure as Code",
+          "description": "An infrastructure deployment service that automates the creation and management of Google Cloud resources.",
+          "imagePath": "images/tools/gcp-deployment-manager.png",
+          "subTools": []
+        },
+        {
+          "id": "packer",
+          "name": "Packer",
+          "category": "Machine Image Automation",
+          "description": "An open-source tool for creating identical machine images for multiple platforms from a single source configuration.",
+          "imagePath": "images/tools/packer.png",
+          "subTools": []
+        },
+        {
+          "id": "vagrant",
+          "name": "Vagrant",
+          "category": "Development Environments",
+          "description": "An open-source software product for building and maintaining portable virtual software development environments.",
+          "imagePath": "images/tools/vagrant.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "api-development",
+      "name": "API Development",
+      "tools": [
+        {
+          "id": "nodejs-api",
+          "name": "Node.js",
+          "category": "Runtime Environment",
+          "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine, perfect for building fast and scalable network applications like APIs.",
+          "imagePath": "images/tools/nodejs.png",
+          "subTools": [
+            {
+              "id": "express-api",
+              "name": "Express.js",
+              "description": "A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+              "imagePath": "images/tools/express.png"
+            },
+            {
+              "id": "nestjs-api",
+              "name": "NestJS",
+              "description": "A progressive Node.js framework for building efficient, reliable and scalable server-side applications.",
+              "imagePath": "images/tools/nestjs.png"
+            },
+            {
+              "id": "hapi",
+              "name": "Hapi.js",
+              "description": "A rich framework for building applications and services that enables developers to focus on writing reusable application logic.",
+              "imagePath": "images/tools/hapi.png"
+            },
+            {
+              "id": "koa-api",
+              "name": "Koa.js",
+              "description": "A new web framework designed by the team behind Express, which aims to be a smaller, more expressive, and more robust foundation for web applications and APIs.",
+              "imagePath": "images/tools/koa.png"
+            },
+            {
+              "id": "fastify",
+              "name": "Fastify",
+              "description": "A web framework highly focused on providing the best developer experience with the least overhead and a powerful plugin architecture.",
+              "imagePath": "images/tools/fastify.png"
+            }
+          ]
+        },
+        {
+          "id": "python-api",
+          "name": "Python",
+          "category": "Programming Language",
+          "description": "A versatile programming language widely used for API development due to its simplicity and extensive library support.",
+          "imagePath": "images/tools/python.png",
+          "subTools": [
+            {
+              "id": "flask-api",
+              "name": "Flask",
+              "description": "A lightweight WSGI web application framework designed to make getting started quick and easy, with the ability to scale up to complex applications.",
+              "imagePath": "images/tools/flask.png"
+            },
+            {
+              "id": "django-api",
+              "name": "Django",
+              "description": "A high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+              "imagePath": "images/tools/django.png"
+            },
+            {
+              "id": "fastapi-api",
+              "name": "FastAPI",
+              "description": "A modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints.",
+              "imagePath": "images/tools/fastapi.png"
+            },
+            {
+              "id": "django-rest-framework",
+              "name": "Django REST Framework",
+              "description": "A powerful and flexible toolkit for building Web APIs on top of Django.",
+              "imagePath": "images/tools/django-rest-framework.png"
+            }
+          ]
+        },
+        {
+          "id": "java-api",
+          "name": "Java",
+          "category": "Programming Language",
+          "description": "A robust programming language widely used for enterprise-level API development due to its reliability and performance.",
+          "imagePath": "images/tools/java.png",
+          "subTools": [
+            {
+              "id": "spring-boot",
+              "name": "Spring Boot",
+              "description": "An extension of the Spring framework that simplifies the development of new Spring applications through opinionated defaults.",
+              "imagePath": "images/tools/spring-boot.png"
+            },
+            {
+              "id": "jersey",
+              "name": "Jersey",
+              "description": "An open-source framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs.",
+              "imagePath": "images/tools/jersey.png"
+            },
+            {
+              "id": "quarkus",
+              "name": "Quarkus",
+              "description": "A Kubernetes Native Java stack tailored for GraalVM and HotSpot, crafted from the best of breed Java libraries and standards.",
+              "imagePath": "images/tools/quarkus.png"
+            },
+            {
+              "id": "micronaut",
+              "name": "Micronaut",
+              "description": "A modern, JVM-based, full-stack framework for building modular, easily testable microservice and serverless applications.",
+              "imagePath": "images/tools/micronaut.png"
+            }
+          ]
+        },
+        {
+          "id": "go-api",
+          "name": "Go",
+          "category": "Programming Language",
+          "description": "A statically typed, compiled language designed at Google, known for its simplicity and efficiency in building APIs.",
+          "imagePath": "images/tools/go.png",
+          "subTools": [
+            {
+              "id": "gin",
+              "name": "Gin",
+              "description": "A HTTP web framework written in Go (Golang) that features a Martini-like API with much better performance.",
+              "imagePath": "images/tools/gin.png"
+            },
+            {
+              "id": "echo",
+              "name": "Echo",
+              "description": "A high performance, extensible, minimalist Go web framework.",
+              "imagePath": "images/tools/echo.png"
+            },
+            {
+              "id": "gorilla",
+              "name": "Gorilla",
+              "description": "A web toolkit for the Go programming language that provides useful, composable packages for writing HTTP-based applications.",
+              "imagePath": "images/tools/gorilla.png"
+            }
+          ]
+        },
+        {
+          "id": "ruby-api",
+          "name": "Ruby",
+          "category": "Programming Language",
+          "description": "A dynamic, open source programming language with a focus on simplicity and productivity, popular for API development.",
+          "imagePath": "images/tools/ruby.png",
+          "subTools": [
+            {
+              "id": "rails-api",
+              "name": "Ruby on Rails",
+              "description": "A server-side web application framework written in Ruby, providing default structures for databases, web services, and web pages.",
+              "imagePath": "images/tools/rails.png"
+            },
+            {
+              "id": "sinatra",
+              "name": "Sinatra",
+              "description": "A free and open source software web application library and domain-specific language written in Ruby.",
+              "imagePath": "images/tools/sinatra.png"
+            }
+          ]
+        },
+        {
+          "id": "php-api",
+          "name": "PHP",
+          "category": "Programming Language",
+          "description": "A popular general-purpose scripting language especially suited to web development, including APIs.",
+          "imagePath": "images/tools/php.png",
+          "subTools": [
+            {
+              "id": "laravel-api",
+              "name": "Laravel",
+              "description": "A PHP web application framework with expressive, elegant syntax, designed for building modern web applications and APIs.",
+              "imagePath": "images/tools/laravel.png"
+            },
+            {
+              "id": "symfony-api",
+              "name": "Symfony",
+              "description": "A PHP framework for web applications and a set of reusable PHP components.",
+              "imagePath": "images/tools/symfony.png"
+            },
+            {
+              "id": "slim",
+              "name": "Slim",
+              "description": "A PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.",
+              "imagePath": "images/tools/slim.png"
+            }
+          ]
+        },
+        {
+          "id": "graphql-api",
+          "name": "GraphQL",
+          "category": "Query Language & Runtime",
+          "description": "A query language for APIs and a runtime for fulfilling those queries with your existing data, giving clients the power to ask for exactly what they need.",
+          "imagePath": "images/tools/graphql.png",
+          "subTools": [
+            {
+              "id": "apollo-server",
+              "name": "Apollo Server",
+              "description": "An open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client.",
+              "imagePath": "images/tools/apollo-server.png"
+            },
+            {
+              "id": "express-graphql",
+              "name": "Express GraphQL",
+              "description": "A module that allows you to easily create a GraphQL HTTP server with Express.",
+              "imagePath": "images/tools/express-graphql.png"
+            },
+            {
+              "id": "graphene",
+              "name": "Graphene",
+              "description": "A Python library for building GraphQL APIs.",
+              "imagePath": "images/tools/graphene.png"
+            }
+          ]
+        },
+        {
+          "id": "rest-api",
+          "name": "REST",
+          "category": "Architectural Style",
+          "description": "An architectural style for distributed hypermedia systems, fundamental to API design principles.",
+          "imagePath": "images/tools/rest.png",
+          "subTools": []
+        },
+        {
+          "id": "swagger",
+          "name": "Swagger/OpenAPI",
+          "category": "API Documentation",
+          "description": "A specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services.",
+          "imagePath": "images/tools/swagger.png",
+          "subTools": [
+            {
+              "id": "swagger-ui",
+              "name": "Swagger UI",
+              "description": "A collection of HTML, JavaScript, and CSS assets that dynamically generate beautiful documentation from a Swagger-compliant API.",
+              "imagePath": "images/tools/swagger-ui.png"
+            },
+            {
+              "id": "swagger-editor",
+              "name": "Swagger Editor",
+              "description": "An editor to design, define, and document RESTful APIs in the Swagger Specification.",
+              "imagePath": "images/tools/swagger-editor.png"
+            }
+          ]
+        },
+        {
+          "id": "postman-api",
+          "name": "Postman",
+          "category": "API Development & Testing",
+          "description": "A collaboration platform for API development, offering tools for designing, building, testing, and documenting APIs.",
+          "imagePath": "images/tools/postman.png",
+          "subTools": [
+            {
+              "id": "newman",
+              "name": "Newman",
+              "description": "A command-line collection runner for Postman, allowing you to run and test a Postman collection directly from the command line.",
+              "imagePath": "images/tools/newman.png"
+            }
+          ]
+        },
+        {
+          "id": "insomnia",
+          "name": "Insomnia",
+          "category": "API Testing",
+          "description": "A powerful HTTP and GraphQL client that helps you design, debug, and test APIs like a human, not a robot.",
+          "imagePath": "images/tools/insomnia.png",
+          "subTools": []
+        },
+        {
+          "id": "pact",
+          "name": "Pact",
+          "category": "Contract Testing",
+          "description": "A contract testing tool, following the microservices pattern, allowing service dependencies to be tested without deploying them together.",
+          "imagePath": "images/tools/pact.png",
+          "subTools": []
+        },
+        {
+          "id": "api-gateway-api",
+          "name": "API Gateway",
+          "category": "API Management",
+          "description": "A server that acts as an API front-end, receiving API requests, enforcing throttling and security policies, passing requests to the back-end service, and then passing the response back to the requester.",
+          "imagePath": "images/tools/api-gateway.png",
+          "subTools": [
+            {
+              "id": "aws-api-gateway-api",
+              "name": "AWS API Gateway",
+              "description": "A fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.",
+              "imagePath": "images/tools/aws-api-gateway.png"
+            },
+            {
+              "id": "kong-api",
+              "name": "Kong",
+              "description": "A cloud-native, fast, scalable, and distributed microservice API gateway.",
+              "imagePath": "images/tools/kong.png"
+            },
+            {
+              "id": "tyk",
+              "name": "Tyk",
+              "description": "An open source API Gateway that is fast, scalable and modern.",
+              "imagePath": "images/tools/tyk.png"
+            }
+          ]
+        },
+        {
+          "id": "oauth",
+          "name": "OAuth",
+          "category": "Authentication",
+          "description": "An open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords.",
+          "imagePath": "images/tools/oauth.png",
+          "subTools": []
+        },
+        {
+          "id": "jwt",
+          "name": "JSON Web Tokens (JWT)",
+          "category": "Authentication",
+          "description": "An open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.",
+          "imagePath": "images/tools/jwt.png",
+          "subTools": []
+        },
+        {
+          "id": "redis-api",
+          "name": "Redis",
+          "category": "Caching",
+          "description": "An in-memory data structure store, used as a database, cache, and message broker, often used for API rate limiting and caching.",
+          "imagePath": "images/tools/redis.png",
+          "subTools": []
+        },
+        {
+          "id": "memcached",
+          "name": "Memcached",
+          "category": "Caching",
+          "description": "A free and open-source, high-performance, distributed memory object caching system.",
+          "imagePath": "images/tools/memcached.png",
+          "subTools": []
+        },
+        {
+          "id": "prometheus-api",
+          "name": "Prometheus",
+          "category": "Monitoring",
+          "description": "An open-source monitoring and alerting toolkit, ideal for monitoring API metrics and performance.",
+          "imagePath": "images/tools/prometheus.png",
+          "subTools": []
+        },
+        {
+          "id": "grafana-api",
+          "name": "Grafana",
+          "category": "Monitoring & Visualization",
+          "description": "An open-source analytics and interactive visualization web application, perfect for creating dashboards to monitor API performance and usage.",
+          "imagePath": "images/tools/grafana.png",
+          "subTools": []
+        },
+        {
+          "id": "elasticsearch-api",
+          "name": "Elasticsearch",
+          "category": "Search & Analytics",
+          "description": "A distributed, RESTful search and analytics engine capable of solving a growing number of use cases, often used for log management and analysis in API systems.",
+          "imagePath": "images/tools/elasticsearch.png",
+          "subTools": []
+        },
+        {
+          "id": "rabbitmq-api",
+          "name": "RabbitMQ",
+          "category": "Message Broker",
+          "description": "An open-source message broker that implements the Advanced Message Queuing Protocol (AMQP), useful for building asynchronous APIs.",
+          "imagePath": "images/tools/rabbitmq.png",
+          "subTools": []
+        },
+        {
+          "id": "kafka-api",
+          "name": "Apache Kafka",
+          "category": "Event Streaming",
+          "description": "A distributed event streaming platform capable of handling trillions of events a day, ideal for building event-driven APIs.",
+          "imagePath": "images/tools/apache-kafka.png",
+          "subTools": []
+        },
+        {
+          "id": "docker-api",
+          "name": "Docker",
+          "category": "Containerization",
+          "description": "A set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers, making API deployment consistent and reliable.",
+          "imagePath": "images/tools/docker.png",
+          "subTools": []
+        },
+        {
+          "id": "kubernetes-api",
+          "name": "Kubernetes",
+          "category": "Container Orchestration",
+          "description": "An open-source container orchestration system for automating software deployment, scaling, and management of containerized applications including APIs.",
+          "imagePath": "images/tools/kubernetes.png",
+          "subTools": []
+        },
+        {
+          "id": "apigee",
+          "name": "Apigee",
+          "category": "API Management",
+          "description": "Google Cloud's API management platform that helps design, secure, analyze, and scale APIs with visibility and control.",
+          "imagePath": "images/tools/apigee.png",
+          "subTools": []
+        },
+        {
+          "id": "mulesoft",
+          "name": "MuleSoft",
+          "category": "API Integration",
+          "description": "A platform for building application networks that connect different apps, data, and devices through APIs.",
+          "imagePath": "images/tools/mulesoft.png",
+          "subTools": []
+        },
+        {
+          "id": "azure-api-management",
+          "name": "Azure API Management",
+          "category": "API Management",
+          "description": "A hybrid, multicloud management platform for APIs across all environments, helping to publish, secure, transform, maintain, and monitor APIs.",
+          "imagePath": "images/tools/azure-api-management.png",
+          "subTools": []
+        },
+        {
+          "id": "grpc",
+          "name": "gRPC",
+          "category": "RPC Framework",
+          "description": "A high-performance, open-source universal RPC framework that can run in any environment, ideal for connecting services in distributed systems.",
+          "imagePath": "images/tools/grpc.png",
+          "subTools": []
+        },
+        {
+          "id": "swagger-api",
+          "name": "Swagger/OpenAPI",
+          "category": "API Documentation",
+          "description": "A specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful web services.",
+          "imagePath": "images/tools/swagger.png",
+          "subTools": []
+        },
+        {
+          "id": "jsonapi",
+          "name": "JSON:API",
+          "category": "API Specification",
+          "description": "A specification for how a client should request that resources be fetched or modified, and how a server should respond to those requests.",
+          "imagePath": "images/tools/jsonapi.png",
+          "subTools": []
+        },
+        {
+          "id": "soap",
+          "name": "SOAP",
+          "category": "Protocol",
+          "description": "A messaging protocol specification for exchanging structured information in the implementation of web services in computer networks.",
+          "imagePath": "images/tools/soap.png",
+          "subTools": []
+        },
+        {
+          "id": "odata",
+          "name": "OData",
+          "category": "Protocol",
+          "description": "An open protocol that allows the creation and consumption of queryable and interoperable RESTful APIs in a simple and standard way.",
+          "imagePath": "images/tools/odata.png",
+          "subTools": []
+        },
+        {
+          "id": "raml",
+          "name": "RAML",
+          "category": "API Design",
+          "description": "A YAML-based language for describing RESTful APIs, making them easier to design, document, and maintain.",
+          "imagePath": "images/tools/raml.png",
+          "subTools": []
+        },
+        {
+          "id": "api-blueprint",
+          "name": "API Blueprint",
+          "category": "API Design",
+          "description": "A powerful high-level API description language for web APIs, designed to enable automated testing, code generation, and more.",
+          "imagePath": "images/tools/api-blueprint.png",
+          "subTools": []
+        },
+        {
+          "id": "stoplight",
+          "name": "Stoplight",
+          "category": "API Design & Development",
+          "description": "A platform for designing, developing, and documenting APIs, with a focus on the OpenAPI specification.",
+          "imagePath": "images/tools/stoplight.png",
+          "subTools": []
+        },
+        {
+          "id": "payara",
+          "name": "Payara",
+          "category": "Application Server",
+          "description": "A modern, innovative, cloud-ready application server for running Java EE applications, often used for hosting Java-based APIs.",
+          "imagePath": "images/tools/payara.png",
+          "subTools": []
+        },
+        {
+          "id": "travis-ci-api",
+          "name": "Travis CI",
+          "category": "CI/CD",
+          "description": "A hosted continuous integration service used to build and test software projects hosted at GitHub, popular for automating API testing and deployment.",
+          "imagePath": "images/tools/travis-ci.png",
+          "subTools": []
+        },
+        {
+          "id": "jenkins-api",
+          "name": "Jenkins",
+          "category": "CI/CD",
+          "description": "An open-source automation server that enables developers to reliably build, test, and deploy their software, including APIs.",
+          "imagePath": "images/tools/jenkins.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "mobile-development",
+      "name": "Mobile Development",
+      "tools": [
+        {
+          "id": "swift",
+          "name": "Swift",
+          "category": "Programming Language",
+          "description": "A powerful and intuitive programming language for iOS, iPadOS, macOS, tvOS, and watchOS developed by Apple.",
+          "imagePath": "images/tools/swift.png",
+          "subTools": [
+            {
+              "id": "swiftui",
+              "name": "SwiftUI",
+              "description": "An innovative, exceptionally simple way to build user interfaces across all Apple platforms with the power of Swift.",
+              "imagePath": "images/tools/swiftui.png"
+            },
+            {
+              "id": "combine",
+              "name": "Combine",
+              "description": "A framework that provides a declarative Swift API for processing values over time, enabling reactive programming.",
+              "imagePath": "images/tools/combine.png"
+            },
+            {
+              "id": "core-data",
+              "name": "Core Data",
+              "description": "A framework that manages the model layer object in an application, providing data persistence and other features.",
+              "imagePath": "images/tools/core-data.png"
+            }
+          ]
+        },
+        {
+          "id": "kotlin",
+          "name": "Kotlin",
+          "category": "Programming Language",
+          "description": "A modern programming language that makes developers happier, officially supported for Android development by Google.",
+          "imagePath": "images/tools/kotlin.png",
+          "subTools": [
+            {
+              "id": "kotlin-coroutines",
+              "name": "Kotlin Coroutines",
+              "description": "A rich library for coroutines developed by JetBrains, designed to handle asynchronous programming in a more elegant way.",
+              "imagePath": "images/tools/kotlin-coroutines.png"
+            },
+            {
+              "id": "kotlinx-serialization",
+              "name": "KotlinX Serialization",
+              "description": "A multiplatform serialization library that turns objects into a stream of bytes and back.",
+              "imagePath": "images/tools/kotlinx-serialization.png"
+            }
+          ]
+        },
+        {
+          "id": "java-mobile",
+          "name": "Java",
+          "category": "Programming Language",
+          "description": "A widely used programming language for Android development before Kotlin became the preferred language.",
+          "imagePath": "images/tools/java.png",
+          "subTools": []
+        },
+        {
+          "id": "objective-c",
+          "name": "Objective-C",
+          "category": "Programming Language",
+          "description": "The primary programming language used by Apple for iOS and macOS development before Swift was introduced.",
+          "imagePath": "images/tools/objective-c.png",
+          "subTools": []
+        },
+        {
+          "id": "flutter",
+          "name": "Flutter",
+          "category": "Cross-Platform Framework",
+          "description": "Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.",
+          "imagePath": "images/tools/flutter.png",
+          "subTools": [
+            {
+              "id": "dart",
+              "name": "Dart",
+              "description": "The programming language used to build Flutter applications, optimized for UI development.",
+              "imagePath": "images/tools/dart.png"
+            },
+            {
+              "id": "flutter-widgets",
+              "name": "Flutter Widgets",
+              "description": "A comprehensive set of visual, structural, platform, and interactive widgets for building native interfaces.",
+              "imagePath": "images/tools/flutter-widgets.png"
+            },
+            {
+              "id": "provider",
+              "name": "Provider",
+              "description": "A state management solution for Flutter, mixing the good parts of Redux and RxJS.",
+              "imagePath": "images/tools/provider.png"
+            }
+          ]
+        },
+        {
+          "id": "react-native",
+          "name": "React Native",
+          "category": "Cross-Platform Framework",
+          "description": "A framework for building native apps using React, allowing developers to use JavaScript and React's declarative UI paradigm.",
+          "imagePath": "images/tools/react-native.png",
+          "subTools": [
+            {
+              "id": "expo",
+              "name": "Expo",
+              "description": "An open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.",
+              "imagePath": "images/tools/expo.png"
+            },
+            {
+              "id": "react-navigation",
+              "name": "React Navigation",
+              "description": "Routing and navigation for React Native applications, providing a way to transition between screens.",
+              "imagePath": "images/tools/react-navigation.png"
+            },
+            {
+              "id": "redux-mobile",
+              "name": "Redux",
+              "description": "A predictable state container for JavaScript apps, commonly used with React Native for state management.",
+              "imagePath": "images/tools/redux.png"
+            }
+          ]
+        },
+        {
+          "id": "xamarin",
+          "name": "Xamarin",
+          "category": "Cross-Platform Framework",
+          "description": "A Microsoft-owned framework for building cross-platform applications using C# and .NET.",
+          "imagePath": "images/tools/xamarin.png",
+          "subTools": [
+            {
+              "id": "xamarin-forms",
+              "name": "Xamarin.Forms",
+              "description": "An open-source mobile UI framework for building iOS, Android, & Windows apps with .NET from a single shared codebase.",
+              "imagePath": "images/tools/xamarin-forms.png"
+            }
+          ]
+        },
+        {
+          "id": "ionic",
+          "name": "Ionic",
+          "category": "Cross-Platform Framework",
+          "description": "A complete open-source SDK for hybrid mobile app development built with web technologies like HTML, CSS, and JavaScript.",
+          "imagePath": "images/tools/ionic.png",
+          "subTools": [
+            {
+              "id": "capacitor",
+              "name": "Capacitor",
+              "description": "A cross-platform native runtime for web apps, providing access to native APIs on iOS, Android, and the web.",
+              "imagePath": "images/tools/capacitor.png"
+            }
+          ]
+        },
+        {
+          "id": "android-studio",
+          "name": "Android Studio",
+          "category": "IDE",
+          "description": "The official Integrated Development Environment (IDE) for Android app development, based on IntelliJ IDEA.",
+          "imagePath": "images/tools/android-studio.png",
+          "subTools": []
+        },
+        {
+          "id": "xcode",
+          "name": "Xcode",
+          "category": "IDE",
+          "description": "Apple's integrated development environment for macOS, used to develop software for macOS, iOS, iPadOS, watchOS, and tvOS.",
+          "imagePath": "images/tools/xcode.png",
+          "subTools": []
+        },
+        {
+          "id": "vs-code-mobile",
+          "name": "Visual Studio Code",
+          "category": "IDE",
+          "description": "A free, lightweight but powerful source code editor with rich ecosystem of extensions for mobile development.",
+          "imagePath": "images/tools/vscode.png",
+          "subTools": []
+        },
+        {
+          "id": "firebase-mobile",
+          "name": "Firebase",
+          "category": "Backend Service",
+          "description": "A platform developed by Google for creating mobile and web applications, offering services like analytics, databases, messaging, and crash reporting.",
+          "imagePath": "images/tools/firebase.png",
+          "subTools": [
+            {
+              "id": "firestore-mobile",
+              "name": "Cloud Firestore",
+              "description": "A flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud.",
+              "imagePath": "images/tools/firestore.png"
+            },
+            {
+              "id": "firebase-auth",
+              "name": "Firebase Authentication",
+              "description": "A service that can authenticate users using only client-side code, supporting email/password accounts, phone auth, and Google, Twitter, Facebook, and GitHub login.",
+              "imagePath": "images/tools/firebase-auth.png"
+            },
+            {
+              "id": "firebase-cloud-messaging",
+              "name": "Firebase Cloud Messaging",
+              "description": "A cross-platform messaging solution that lets you reliably deliver messages at no cost.",
+              "imagePath": "images/tools/firebase-cloud-messaging.png"
+            }
+          ]
+        },
+        {
+          "id": "realm",
+          "name": "Realm",
+          "category": "Mobile Database",
+          "description": "A mobile database that runs directly inside phones, tablets or wearables, allowing you to build reactive apps with offline-first capabilities.",
+          "imagePath": "images/tools/realm.png",
+          "subTools": []
+        },
+        {
+          "id": "coreml",
+          "name": "CoreML",
+          "category": "Machine Learning",
+          "description": "Apple's framework for integrating machine learning models into iOS, macOS, watchOS, and tvOS apps.",
+          "imagePath": "images/tools/coreml.png",
+          "subTools": []
+        },
+        {
+          "id": "tensorflow-lite",
+          "name": "TensorFlow Lite",
+          "category": "Machine Learning",
+          "description": "A lightweight solution for mobile and embedded devices, allowing on-device machine learning inference with low latency.",
+          "imagePath": "images/tools/tensorflow-lite.png",
+          "subTools": []
+        },
+        {
+          "id": "arkit",
+          "name": "ARKit",
+          "category": "Augmented Reality",
+          "description": "Apple's framework that allows you to create augmented reality experiences for iOS devices.",
+          "imagePath": "images/tools/arkit.png",
+          "subTools": []
+        },
+        {
+          "id": "arcore",
+          "name": "ARCore",
+          "category": "Augmented Reality",
+          "description": "Google's platform for building augmented reality experiences on Android devices.",
+          "imagePath": "images/tools/arcore.png",
+          "subTools": []
+        },
+        {
+          "id": "fastlane",
+          "name": "Fastlane",
+          "category": "CI/CD",
+          "description": "An open-source platform aimed at simplifying Android and iOS deployment, enabling automation of building and releasing mobile applications.",
+          "imagePath": "images/tools/fastlane.png",
+          "subTools": []
+        },
+        {
+          "id": "bitrise",
+          "name": "Bitrise",
+          "category": "CI/CD",
+          "description": "A Mobile Continuous Integration and Delivery platform, providing seamless automation for mobile app development workflows.",
+          "imagePath": "images/tools/bitrise.png",
+          "subTools": []
+        },
+        {
+          "id": "appium",
+          "name": "Appium",
+          "category": "Testing",
+          "description": "An open-source test automation framework for use with native, hybrid, and mobile web apps, enabling cross-platform app testing.",
+          "imagePath": "images/tools/appium.png",
+          "subTools": []
+        },
+        {
+          "id": "espresso",
+          "name": "Espresso",
+          "category": "Testing",
+          "description": "A testing framework for Android that makes it easy to write reliable UI tests for an app.",
+          "imagePath": "images/tools/espresso.png",
+          "subTools": []
+        },
+        {
+          "id": "xctest",
+          "name": "XCTest",
+          "category": "Testing",
+          "description": "Apple's built-in testing framework for iOS development, allowing unit tests, performance tests, and UI tests.",
+          "imagePath": "images/tools/xctest.png",
+          "subTools": []
+        },
+        {
+          "id": "crashlytics",
+          "name": "Crashlytics",
+          "category": "Crash Reporting",
+          "description": "A lightweight, real-time crash reporter that helps you track, prioritize, and fix stability issues that erode app quality.",
+          "imagePath": "images/tools/crashlytics.png",
+          "subTools": []
+        },
+        {
+          "id": "sourcetree",
+          "name": "Sourcetree",
+          "category": "Version Control",
+          "description": "A free Git client for Windows and Mac that provides a visual interface for repository management.",
+          "imagePath": "images/tools/sourcetree.png",
+          "subTools": []
+        },
+        {
+          "id": "cocoapods",
+          "name": "CocoaPods",
+          "category": "Dependency Manager",
+          "description": "A dependency manager for Swift and Objective-C Cocoa projects, which has over 77 thousand libraries and is used in over 3 million apps.",
+          "imagePath": "images/tools/cocoapods.png",
+          "subTools": []
+        },
+        {
+          "id": "carthage",
+          "name": "Carthage",
+          "category": "Dependency Manager",
+          "description": "A simple, decentralized dependency manager for Cocoa applications.",
+          "imagePath": "images/tools/carthage.png",
+          "subTools": []
+        },
+        {
+          "id": "gradle",
+          "name": "Gradle",
+          "category": "Build Tool",
+          "description": "A build automation tool that supports multi-language development and is the official build tool for Android.",
+          "imagePath": "images/tools/gradle.png",
+          "subTools": []
+        },
+        {
+          "id": "maven",
+          "name": "Maven",
+          "category": "Build Tool",
+          "description": "A software project management and comprehension tool, primarily used for Java projects but can be used for other programming languages.",
+          "imagePath": "images/tools/maven.png",
+          "subTools": []
+        },
+        {
+          "id": "sketch",
+          "name": "Sketch",
+          "category": "Design",
+          "description": "A vector graphics editor for macOS, used primarily for user interface and user experience design of websites and mobile apps.",
+          "imagePath": "images/tools/sketch.png",
+          "subTools": []
+        },
+        {
+          "id": "figma-mobile",
+          "name": "Figma",
+          "category": "Design",
+          "description": "A vector graphics editor and prototyping tool, primarily web-based, with additional offline features enabled by desktop applications.",
+          "imagePath": "images/tools/figma.png",
+          "subTools": []
+        },
+        {
+          "id": "adobe-xd",
+          "name": "Adobe XD",
+          "category": "Design",
+          "description": "A vector-based user experience design tool for web apps and mobile apps, supporting website wireframing and creating simple interactive prototypes.",
+          "imagePath": "images/tools/adobe-xd.png",
+          "subTools": []
+        },
+        {
+          "id": "zeplin",
+          "name": "Zeplin",
+          "category": "Design Collaboration",
+          "description": "A connected space for product teams where app designs are turned into guidelines, specs, code snippets, and design systems.",
+          "imagePath": "images/tools/zeplin.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "security-software-development",
+      "name": "Security Software Development",
+      "tools": [
+        {
+          "id": "snyk",
+          "name": "Snyk",
+          "category": "Security Testing",
+          "description": "A developer security platform that helps developers find and fix vulnerabilities in their open source dependencies and containers.",
+          "imagePath": "images/tools/snyk.png",
+          "subTools": []
+        },
+        {
+          "id": "sonarqube",
+          "name": "SonarQube",
+          "category": "Code Quality & Security",
+          "description": "An open-source platform for continuous inspection of code quality and security to perform automatic reviews with static analysis to detect bugs, code smells, and security vulnerabilities.",
+          "imagePath": "images/tools/sonarqube.png",
+          "subTools": []
+        },
+        {
+          "id": "owasp-zap",
+          "name": "OWASP ZAP",
+          "category": "Web App Security",
+          "description": "One of the world's most popular free security tools, actively maintained by a dedicated international team of volunteers.",
+          "imagePath": "images/tools/owasp-zap.png",
+          "subTools": []
+        },
+        {
+          "id": "metasploit",
+          "name": "Metasploit",
+          "category": "Penetration Testing",
+          "description": "A penetration testing framework that helps security teams verify vulnerabilities and manage security assessments.",
+          "imagePath": "images/tools/metasploit.png",
+          "subTools": []
+        },
+        {
+          "id": "burp-suite",
+          "name": "Burp Suite",
+          "category": "Web App Security",
+          "description": "An integrated platform for performing security testing of web applications, frequently used by security professionals.",
+          "imagePath": "images/tools/burp-suite.png",
+          "subTools": []
+        },
+        {
+          "id": "kali-linux",
+          "name": "Kali Linux",
+          "category": "Security OS",
+          "description": "A Debian-derived Linux distribution designed for digital forensics and penetration testing.",
+          "imagePath": "images/tools/kali-linux.png",
+          "subTools": []
+        },
+        {
+          "id": "wireshark",
+          "name": "Wireshark",
+          "category": "Network Analysis",
+          "description": "A free and open-source packet analyzer used for network troubleshooting, analysis, software and communications protocol development.",
+          "imagePath": "images/tools/wireshark.png",
+          "subTools": []
+        },
+        {
+          "id": "nmap",
+          "name": "Nmap",
+          "category": "Network Scanning",
+          "description": "A free and open-source network scanner created to discover hosts and services on a computer network.",
+          "imagePath": "images/tools/nmap.png",
+          "subTools": []
+        },
+        {
+          "id": "sqlmap",
+          "name": "SQLMap",
+          "category": "SQL Injection",
+          "description": "An open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws.",
+          "imagePath": "images/tools/sqlmap.png",
+          "subTools": []
+        },
+        {
+          "id": "nikto",
+          "name": "Nikto",
+          "category": "Web Server Scanner",
+          "description": "An open-source web server scanner that performs comprehensive tests against web servers for multiple items.",
+          "imagePath": "images/tools/nikto.png",
+          "subTools": []
+        },
+        {
+          "id": "openvas",
+          "name": "OpenVAS",
+          "category": "Vulnerability Scanner",
+          "description": "A full-featured vulnerability scanner with its own NVT feed that is part of Greenbone Networks' commercial vulnerability management solution.",
+          "imagePath": "images/tools/openvas.png",
+          "subTools": []
+        },
+        {
+          "id": "hashcat",
+          "name": "Hashcat",
+          "category": "Password Cracking",
+          "description": "The world's fastest and most advanced password recovery utility, supporting five unique modes of attack for over 300 highly optimized hashing algorithms.",
+          "imagePath": "images/tools/hashcat.png",
+          "subTools": []
+        },
+        {
+          "id": "john-the-ripper",
+          "name": "John the Ripper",
+          "category": "Password Cracking",
+          "description": "A free and open-source password security auditing and password recovery tool available for many operating systems.",
+          "imagePath": "images/tools/john-the-ripper.png",
+          "subTools": []
+        },
+        {
+          "id": "ghidra",
+          "name": "Ghidra",
+          "category": "Reverse Engineering",
+          "description": "A software reverse engineering (SRE) framework created and maintained by the NSA Research Directorate.",
+          "imagePath": "images/tools/ghidra.png",
+          "subTools": []
+        },
+        {
+          "id": "ida-pro",
+          "name": "IDA Pro",
+          "category": "Reverse Engineering",
+          "description": "A multi-processor disassembler and debugger used by software security professionals and development teams around the world.",
+          "imagePath": "images/tools/ida-pro.png",
+          "subTools": []
+        },
+        {
+          "id": "volatility",
+          "name": "Volatility",
+          "category": "Memory Forensics",
+          "description": "An advanced memory forensics framework for incident response and malware analysis.",
+          "imagePath": "images/tools/volatility.png",
+          "subTools": []
+        },
+        {
+          "id": "autopsy",
+          "name": "Autopsy",
+          "category": "Digital Forensics",
+          "description": "A digital forensics platform and graphical interface to The Sleuth Kit and other digital forensics tools.",
+          "imagePath": "images/tools/autopsy.png",
+          "subTools": []
+        },
+        {
+          "id": "ossec",
+          "name": "OSSEC",
+          "category": "Host-based IDS",
+          "description": "A scalable, multi-platform, open-source host-based intrusion detection system (HIDS).",
+          "imagePath": "images/tools/ossec.png",
+          "subTools": []
+        },
+        {
+          "id": "suricata",
+          "name": "Suricata",
+          "category": "Network IDS/IPS",
+          "description": "A free and open-source, mature, fast, and robust network threat detection engine.",
+          "imagePath": "images/tools/suricata.png",
+          "subTools": []
+        },
+        {
+          "id": "snort",
+          "name": "Snort",
+          "category": "Network IDS/IPS",
+          "description": "A free and open-source network intrusion prevention system (NIPS) and network intrusion detection system (NIDS).",
+          "imagePath": "images/tools/snort.png",
+          "subTools": []
+        },
+        {
+          "id": "veracode",
+          "name": "Veracode",
+          "category": "Application Security",
+          "description": "A platform that performs automated static and dynamic analysis of applications to identify security flaws.",
+          "imagePath": "images/tools/veracode.png",
+          "subTools": []
+        },
+        {
+          "id": "checkmarx",
+          "name": "Checkmarx",
+          "category": "Application Security",
+          "description": "A software security solution that identifies security vulnerabilities in source code, providing guidance on fixing them.",
+          "imagePath": "images/tools/checkmarx.png",
+          "subTools": []
+        },
+        {
+          "id": "fortify",
+          "name": "Fortify",
+          "category": "Application Security",
+          "description": "A suite of security products from Micro Focus that help to identify, prioritize, and fix security vulnerabilities in source code.",
+          "imagePath": "images/tools/fortify.png",
+          "subTools": []
+        },
+        {
+          "id": "aircrack-ng",
+          "name": "Aircrack-ng",
+          "category": "Wireless Security",
+          "description": "A network software suite consisting of a detector, packet sniffer, WEP and WPA/WPA2-PSK cracker and analysis tool for 802.11 wireless LANs.",
+          "imagePath": "images/tools/aircrack-ng.png",
+          "subTools": []
+        },
+        {
+          "id": "openvpn",
+          "name": "OpenVPN",
+          "category": "VPN",
+          "description": "An open-source VPN protocol that uses a custom security protocol that utilizes SSL/TLS for key exchange.",
+          "imagePath": "images/tools/openvpn.png",
+          "subTools": []
+        },
+        {
+          "id": "openssl",
+          "name": "OpenSSL",
+          "category": "Cryptography",
+          "description": "A robust, commercial-grade, full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.",
+          "imagePath": "images/tools/openssl.png",
+          "subTools": []
+        },
+        {
+          "id": "gpg",
+          "name": "GnuPG",
+          "category": "Cryptography",
+          "description": "A complete and free implementation of the OpenPGP standard for encrypting and signing data and communications.",
+          "imagePath": "images/tools/gpg.png",
+          "subTools": []
+        },
+        {
+          "id": "owasp-dependency-check",
+          "name": "OWASP Dependency Check",
+          "category": "Dependency Security",
+          "description": "A software composition analysis tool that identifies project dependencies and checks if there are any known, publicly disclosed vulnerabilities.",
+          "imagePath": "images/tools/owasp-dependency-check.png",
+          "subTools": []
+        },
+        {
+          "id": "lynis",
+          "name": "Lynis",
+          "category": "Security Auditing",
+          "description": "A security auditing tool for Unix/Linux systems that helps in hardening systems and compliance testing.",
+          "imagePath": "images/tools/lynis.png",
+          "subTools": []
+        },
+        {
+          "id": "docker-bench-security",
+          "name": "Docker Bench for Security",
+          "category": "Container Security",
+          "description": "A script that checks for dozens of common best-practices around deploying Docker containers in production.",
+          "imagePath": "images/tools/docker-bench-security.png",
+          "subTools": []
+        },
+        {
+          "id": "clair",
+          "name": "Clair",
+          "category": "Container Security",
+          "description": "An open-source project for the static analysis of vulnerabilities in application containers.",
+          "imagePath": "images/tools/clair.png",
+          "subTools": []
+        },
+        {
+          "id": "anchore-engine",
+          "name": "Anchore Engine",
+          "category": "Container Security",
+          "description": "An open-source tool for deep container image inspection and vulnerability scanning.",
+          "imagePath": "images/tools/anchore-engine.png",
+          "subTools": []
+        },
+        {
+          "id": "trivy",
+          "name": "Trivy",
+          "category": "Container Security",
+          "description": "A simple and comprehensive vulnerability scanner for containers and other artifacts.",
+          "imagePath": "images/tools/trivy.png",
+          "subTools": []
+        },
+        {
+          "id": "vault-security",
+          "name": "HashiCorp Vault",
+          "category": "Secret Management",
+          "description": "A tool for securely accessing secrets like API keys, passwords, or certificates.",
+          "imagePath": "images/tools/vault-security.png",
+          "subTools": []
+        },
+        {
+          "id": "keepass",
+          "name": "KeePass",
+          "category": "Password Management",
+          "description": "A free, open-source, light-weight, and easy-to-use password manager.",
+          "imagePath": "images/tools/keepass.png",
+          "subTools": []
+        },
+        {
+          "id": "bro-ids",
+          "name": "Zeek (formerly Bro)",
+          "category": "Network Monitoring",
+          "description": "A powerful network analysis framework focused on security monitoring.",
+          "imagePath": "images/tools/bro-ids.png",
+          "subTools": []
+        },
+        {
+          "id": "falco",
+          "name": "Falco",
+          "category": "Container Security",
+          "description": "A cloud-native runtime security project designed to detect anomalous activity in your applications.",
+          "imagePath": "images/tools/falco.png",
+          "subTools": []
+        },
+        {
+          "id": "nessus",
+          "name": "Nessus",
+          "category": "Vulnerability Scanning",
+          "description": "A proprietary vulnerability scanner developed by Tenable, Inc. that performs vulnerability scanning, configuration auditing, and compliance checking.",
+          "imagePath": "images/tools/nessus.png",
+          "subTools": []
+        },
+        {
+          "id": "acunetix",
+          "name": "Acunetix",
+          "category": "Web Security",
+          "description": "A web vulnerability scanner that automatically tests web applications for vulnerabilities like SQL Injection and Cross-site Scripting.",
+          "imagePath": "images/tools/acunetix.png",
+          "subTools": []
+        },
+        {
+          "id": "sqlinjection",
+          "name": "SQL Injection Tools",
+          "category": "Web Security",
+          "description": "Tools designed to detect and exploit SQL injection vulnerabilities in web applications.",
+          "imagePath": "images/tools/sqlinjection.png",
+          "subTools": []
+        },
+        {
+          "id": "fail2ban",
+          "name": "Fail2Ban",
+          "category": "Intrusion Prevention",
+          "description": "A framework that protects Linux servers from brute-force attacks by monitoring log files and banning IPs that show malicious activity.",
+          "imagePath": "images/tools/fail2ban.png",
+          "subTools": []
+        },
+        {
+          "id": "binwalk",
+          "name": "Binwalk",
+          "category": "Firmware Analysis",
+          "description": "A fast, easy-to-use tool for analyzing, reverse engineering, and extracting firmware images.",
+          "imagePath": "images/tools/binwalk.png",
+          "subTools": []
+        },
+        {
+          "id": "radare2",
+          "name": "Radare2",
+          "category": "Reverse Engineering",
+          "description": "A complete framework for reverse engineering and binary analysis, providing a set of libraries and tools to facilitate disassembly, debugging, and analysis.",
+          "imagePath": "images/tools/radare2.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "frontend-development",
+      "name": "Frontend Development",
+      "tools": [
+        {
+          "id": "javascript-frontend",
+          "name": "JavaScript",
+          "category": "Programming Language",
+          "description": "The primary programming language for web browsers and a cornerstone of frontend development.",
+          "imagePath": "images/tools/javascript.png",
+          "subTools": [
+            {
+              "id": "es6",
+              "name": "ES6+",
+              "description": "Modern JavaScript features that enhance code readability and functionality.",
+              "imagePath": "images/tools/es6.png"
+            },
+            {
+              "id": "typescript-frontend",
+              "name": "TypeScript",
+              "description": "A superset of JavaScript that adds static typing to the language, enhancing code quality and developer productivity.",
+              "imagePath": "images/tools/typescript.png"
+            }
+          ]
+        },
+        {
+          "id": "html-frontend",
+          "name": "HTML5",
+          "category": "Markup Language",
+          "description": "The latest evolution of the standard that defines HTML, providing new elements and attributes for modern websites.",
+          "imagePath": "images/tools/html5.png",
+          "subTools": []
+        },
+        {
+          "id": "css-frontend",
+          "name": "CSS3",
+          "category": "Style Sheet Language",
+          "description": "The latest standard of CSS that adds numerous styling capabilities and visual effects.",
+          "imagePath": "images/tools/css3.png",
+          "subTools": [
+            {
+              "id": "sass-frontend",
+              "name": "Sass",
+              "description": "A preprocessor scripting language that is interpreted or compiled into CSS, adding features like variables, nesting, and mixins.",
+              "imagePath": "images/tools/sass.png"
+            },
+            {
+              "id": "less-frontend",
+              "name": "Less",
+              "description": "A backward-compatible language extension for CSS that adds features like variables, mixins, and functions.",
+              "imagePath": "images/tools/less.png"
+            },
+            {
+              "id": "postcss",
+              "name": "PostCSS",
+              "description": "A tool for transforming CSS with JavaScript plugins, enabling features like auto-prefixing and future CSS syntax.",
+              "imagePath": "images/tools/postcss.png"
+            }
+          ]
+        },
+        {
+          "id": "react-frontend",
+          "name": "React",
+          "category": "JavaScript Library",
+          "description": "A JavaScript library for building user interfaces, particularly single-page applications, developed and maintained by Facebook.",
+          "imagePath": "images/tools/react.png",
+          "subTools": [
+            {
+              "id": "redux-frontend",
+              "name": "Redux",
+              "description": "A predictable state container for JavaScript apps, commonly used with React for state management.",
+              "imagePath": "images/tools/redux.png"
+            },
+            {
+              "id": "react-router",
+              "name": "React Router",
+              "description": "A collection of navigational components for React applications, enabling dynamic routing.",
+              "imagePath": "images/tools/react-router.png"
+            },
+            {
+              "id": "nextjs-frontend",
+              "name": "Next.js",
+              "description": "A React framework that enables server-side rendering and static site generation for React applications.",
+              "imagePath": "images/tools/nextjs.png"
+            }
+          ]
+        },
+        {
+          "id": "angular-frontend",
+          "name": "Angular",
+          "category": "Framework",
+          "description": "A platform and framework for building single-page client applications using HTML and TypeScript, developed by Google.",
+          "imagePath": "images/tools/angular.png",
+          "subTools": [
+            {
+              "id": "rxjs-frontend",
+              "name": "RxJS",
+              "description": "A library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.",
+              "imagePath": "images/tools/rxjs.png"
+            },
+            {
+              "id": "angular-material",
+              "name": "Angular Material",
+              "description": "A UI component library for Angular developers that implements Google's Material Design.",
+              "imagePath": "images/tools/angular-material.png"
+            }
+          ]
+        },
+        {
+          "id": "vue-frontend",
+          "name": "Vue.js",
+          "category": "Framework",
+          "description": "A progressive JavaScript framework for building user interfaces, designed to be incrementally adoptable.",
+          "imagePath": "images/tools/vue.png",
+          "subTools": [
+            {
+              "id": "vuex",
+              "name": "Vuex",
+              "description": "A state management pattern and library for Vue.js applications.",
+              "imagePath": "images/tools/vuex.png"
+            },
+            {
+              "id": "vue-router",
+              "name": "Vue Router",
+              "description": "The official router for Vue.js, deeply integrated with Vue.js core.",
+              "imagePath": "images/tools/vue-router.png"
+            },
+            {
+              "id": "nuxt",
+              "name": "Nuxt.js",
+              "description": "A higher-level framework built on top of Vue designed to make web development simple and powerful.",
+              "imagePath": "images/tools/nuxt.png"
+            }
+          ]
+        },
+        {
+          "id": "svelte",
+          "name": "Svelte",
+          "category": "Framework",
+          "description": "A radical new approach to building user interfaces, compiling components into highly efficient imperative code.",
+          "imagePath": "images/tools/svelte.png",
+          "subTools": [
+            {
+              "id": "sapper",
+              "name": "Sapper",
+              "description": "A framework for building web applications of all sizes with Svelte, featuring server-side rendering and code-splitting.",
+              "imagePath": "images/tools/sapper.png"
+            }
+          ]
+        },
+        {
+          "id": "jquery-frontend",
+          "name": "jQuery",
+          "category": "JavaScript Library",
+          "description": "A fast, small, and feature-rich JavaScript library that simplifies HTML document traversal and manipulation, event handling, and animation.",
+          "imagePath": "images/tools/jquery.png",
+          "subTools": []
+        },
+        {
+          "id": "bootstrap-frontend",
+          "name": "Bootstrap",
+          "category": "CSS Framework",
+          "description": "A popular CSS framework directed at responsive, mobile-first front-end web development.",
+          "imagePath": "images/tools/bootstrap.png",
+          "subTools": []
+        },
+        {
+          "id": "tailwind-frontend",
+          "name": "Tailwind CSS",
+          "category": "CSS Framework",
+          "description": "A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design.",
+          "imagePath": "images/tools/tailwind.png",
+          "subTools": []
+        },
+        {
+          "id": "material-ui",
+          "name": "Material-UI",
+          "category": "UI Library",
+          "description": "A popular React UI framework that implements Google's Material Design, providing a set of pre-built components.",
+          "imagePath": "images/tools/material-ui.png",
+          "subTools": []
+        },
+        {
+          "id": "ant-design",
+          "name": "Ant Design",
+          "category": "UI Library",
+          "description": "A design system for enterprise-level products, providing a set of high-quality React components.",
+          "imagePath": "images/tools/ant-design.png",
+          "subTools": []
+        },
+        {
+          "id": "chakra-ui",
+          "name": "Chakra UI",
+          "category": "UI Library",
+          "description": "A simple, modular, and accessible component library that gives you the building blocks to build React applications.",
+          "imagePath": "images/tools/chakra-ui.png",
+          "subTools": []
+        },
+        {
+          "id": "webpack-frontend",
+          "name": "Webpack",
+          "category": "Module Bundler",
+          "description": "A static module bundler for modern JavaScript applications, processing all assets like JavaScript, images, and CSS.",
+          "imagePath": "images/tools/webpack.png",
+          "subTools": []
+        },
+        {
+          "id": "babel-frontend",
+          "name": "Babel",
+          "category": "JavaScript Compiler",
+          "description": "A JavaScript compiler that allows you to use next-generation JavaScript features by transforming them into backwards-compatible versions.",
+          "imagePath": "images/tools/babel.png",
+          "subTools": []
+        },
+        {
+          "id": "parcel-frontend",
+          "name": "Parcel",
+          "category": "Bundler",
+          "description": "A web application bundler, differentiated by its developer experience, requiring zero configuration.",
+          "imagePath": "images/tools/parcel.png",
+          "subTools": []
+        },
+        {
+          "id": "eslint",
+          "name": "ESLint",
+          "category": "Linter",
+          "description": "A static code analysis tool for identifying problematic patterns found in JavaScript code.",
+          "imagePath": "images/tools/eslint.png",
+          "subTools": []
+        },
+        {
+          "id": "prettier",
+          "name": "Prettier",
+          "category": "Code Formatter",
+          "description": "An opinionated code formatter that supports many languages and integrates with most editors.",
+          "imagePath": "images/tools/prettier.png",
+          "subTools": []
+        },
+        {
+          "id": "jest-frontend",
+          "name": "Jest",
+          "category": "Testing Framework",
+          "description": "A JavaScript testing framework maintained by Facebook designed to ensure correctness of any JavaScript codebase.",
+          "imagePath": "images/tools/jest.png",
+          "subTools": []
+        },
+        {
+          "id": "cypress-frontend",
+          "name": "Cypress",
+          "category": "Testing Framework",
+          "description": "A next-generation front-end testing tool built for the modern web, enabling fast, easy, and reliable testing for anything that runs in a browser.",
+          "imagePath": "images/tools/cypress.png",
+          "subTools": []
+        },
+        {
+          "id": "storybook-frontend",
+          "name": "Storybook",
+          "category": "UI Development",
+          "description": "An open-source tool for developing UI components in isolation, documenting them, and testing them interactively.",
+          "imagePath": "images/tools/storybook.png",
+          "subTools": []
+        },
+        {
+          "id": "npm-frontend",
+          "name": "npm",
+          "category": "Package Manager",
+          "description": "The default package manager for the JavaScript runtime environment Node.js.",
+          "imagePath": "images/tools/npm.png",
+          "subTools": []
+        },
+        {
+          "id": "yarn-frontend",
+          "name": "Yarn",
+          "category": "Package Manager",
+          "description": "A package manager that doubles down as project manager, created by Facebook to address npm's shortcomings.",
+          "imagePath": "images/tools/yarn.png",
+          "subTools": []
+        },
+        {
+          "id": "gatsby-frontend",
+          "name": "Gatsby",
+          "category": "Static Site Generator",
+          "description": "A React-based, GraphQL-powered static site generator that combines functionality from React, webpack, and other front-end tools.",
+          "imagePath": "images/tools/gatsby.png",
+          "subTools": []
+        },
+        {
+          "id": "vite",
+          "name": "Vite",
+          "category": "Build Tool",
+          "description": "A new breed of frontend build tool that significantly improves the frontend development experience.",
+          "imagePath": "images/tools/vite.png",
+          "subTools": []
+        },
+        {
+          "id": "d3-frontend",
+          "name": "D3.js",
+          "category": "Data Visualization",
+          "description": "A JavaScript library for producing dynamic, interactive data visualizations in web browsers.",
+          "imagePath": "images/tools/d3js.png",
+          "subTools": []
+        },
+        {
+          "id": "three-frontend",
+          "name": "Three.js",
+          "category": "3D Graphics",
+          "description": "A cross-browser JavaScript library and API used to create and display animated 3D computer graphics in a web browser.",
+          "imagePath": "images/tools/threejs.png",
+          "subTools": []
+        },
+        {
+          "id": "pwa",
+          "name": "Progressive Web Apps (PWA)",
+          "category": "Web Technology",
+          "description": "Web apps that use modern web capabilities to deliver an app-like experience to users.",
+          "imagePath": "images/tools/pwa.png",
+          "subTools": [
+            {
+              "id": "service-workers",
+              "name": "Service Workers",
+              "description": "Scripts that run in the background, separate from a web page, enabling features that don't need a web page or user interaction.",
+              "imagePath": "images/tools/service-workers.png"
+            },
+            {
+              "id": "workbox",
+              "name": "Workbox",
+              "description": "A set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build PWAs.",
+              "imagePath": "images/tools/workbox.png"
+            }
+          ]
+        },
+        {
+          "id": "web-components",
+          "name": "Web Components",
+          "category": "Web Technology",
+          "description": "A suite of different technologies allowing you to create reusable custom elements with their functionality encapsulated away from the rest of your code.",
+          "imagePath": "images/tools/web-components.png",
+          "subTools": [
+            {
+              "id": "lit-element",
+              "name": "LitElement",
+              "description": "A simple base class for creating web components with lit-html.",
+              "imagePath": "images/tools/lit-element.png"
+            }
+          ]
+        },
+        {
+          "id": "figma-frontend",
+          "name": "Figma",
+          "category": "Design",
+          "description": "A cloud-based design tool that helps teams create, test, and ship better designs from start to finish.",
+          "imagePath": "images/tools/figma.png",
+          "subTools": []
+        },
+        {
+          "id": "chrome-devtools",
+          "name": "Chrome DevTools",
+          "category": "Development Tools",
+          "description": "A set of web developer tools built directly into the Google Chrome browser, helping to edit pages on-the-fly and diagnose problems quickly.",
+          "imagePath": "images/tools/chrome-devtools.png",
+          "subTools": []
+        },
+        {
+          "id": "lighthouse",
+          "name": "Lighthouse",
+          "category": "Performance Analysis",
+          "description": "An open-source, automated tool for improving the quality of web pages, providing audits for performance, accessibility, PWAs, and more.",
+          "imagePath": "images/tools/lighthouse.png",
+          "subTools": []
+        },
+        {
+          "id": "browser-sync",
+          "name": "Browser-Sync",
+          "category": "Development Server",
+          "description": "A tool that keeps multiple browsers and devices in sync when building websites, saving time by mirroring actions like scrolls, clicks, and form inputs across multiple devices.",
+          "imagePath": "images/tools/browser-sync.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "embedded-systems-development",
+      "name": "Embedded Systems Development",
+      "tools": [
+        {
+          "id": "c-embedded",
+          "name": "C",
+          "category": "Programming Language",
+          "description": "One of the most widely used programming languages for embedded systems due to its efficiency, portability, and direct hardware control.",
+          "imagePath": "images/tools/c.png",
+          "subTools": []
+        },
+        {
+          "id": "cpp-embedded",
+          "name": "C++",
+          "category": "Programming Language",
+          "description": "A powerful language that extends C with object-oriented features, used in complex embedded systems where OOP benefits outweigh the overhead.",
+          "imagePath": "images/tools/cpp.png",
+          "subTools": []
+        },
+        {
+          "id": "rust-embedded",
+          "name": "Rust",
+          "category": "Programming Language",
+          "description": "A modern systems programming language that guarantees memory safety while maintaining high performance, gaining popularity in embedded systems.",
+          "imagePath": "images/tools/rust.png",
+          "subTools": []
+        },
+        {
+          "id": "arduino",
+          "name": "Arduino",
+          "category": "Development Platform",
+          "description": "An open-source electronics platform based on easy-to-use hardware and software, designed for creating interactive electronic objects.",
+          "imagePath": "images/tools/arduino.png",
+          "subTools": [
+            {
+              "id": "arduino-ide",
+              "name": "Arduino IDE",
+              "description": "The official integrated development environment for Arduino programming, with a text editor, compiler, and serial monitor.",
+              "imagePath": "images/tools/arduino-ide.png"
+            }
+          ]
+        },
+        {
+          "id": "raspberry-pi",
+          "name": "Raspberry Pi",
+          "category": "Single-Board Computer",
+          "description": "A series of small single-board computers developed for promoting teaching of basic computer science in schools and in developing countries.",
+          "imagePath": "images/tools/raspberry-pi.png",
+          "subTools": []
+        },
+        {
+          "id": "stm32",
+          "name": "STM32",
+          "category": "Microcontroller",
+          "description": "A family of 32-bit microcontroller integrated circuits by STMicroelectronics, based on the ARM Cortex-M processor.",
+          "imagePath": "images/tools/stm32.png",
+          "subTools": [
+            {
+              "id": "stm32cubemx",
+              "name": "STM32CubeMX",
+              "description": "A graphical tool that allows for easy configuration of STM32 microcontrollers and microprocessors.",
+              "imagePath": "images/tools/stm32cubemx.png"
+            }
+          ]
+        },
+        {
+          "id": "platformio",
+          "name": "PlatformIO",
+          "category": "Development Environment",
+          "description": "An open-source ecosystem for IoT development, cross-platform IDE and unified debugger, with remote unit testing and firmware updates.",
+          "imagePath": "images/tools/platformio.png",
+          "subTools": []
+        },
+        {
+          "id": "kicad",
+          "name": "KiCad",
+          "category": "EDA Software",
+          "description": "An open-source software suite for electronic design automation (EDA) - for designing schematics and printed circuit boards.",
+          "imagePath": "images/tools/kicad.png",
+          "subTools": []
+        },
+        {
+          "id": "eagle",
+          "name": "EAGLE",
+          "category": "EDA Software",
+          "description": "A popular electronic design automation software for PCB design, including schematic capture and board layout.",
+          "imagePath": "images/tools/eagle.png",
+          "subTools": []
+        },
+        {
+          "id": "vivado",
+          "name": "Xilinx Vivado",
+          "category": "FPGA Development",
+          "description": "A software suite produced by Xilinx for synthesis and analysis of HDL designs, enabling developers to synthesize their designs, perform timing analysis, and configure the target device.",
+          "imagePath": "images/tools/vivado.png",
+          "subTools": []
+        },
+        {
+          "id": "quartus-prime",
+          "name": "Intel Quartus Prime",
+          "category": "FPGA Development",
+          "description": "A software tool produced by Intel for analysis and synthesis of HDL designs, enabling developers to compile their designs and configure the target device.",
+          "imagePath": "images/tools/quartus-prime.png",
+          "subTools": []
+        },
+        {
+          "id": "altium-designer",
+          "name": "Altium Designer",
+          "category": "EDA Software",
+          "description": "A commercial software for electronic design automation, enabling PCB design and development with integrated design environment.",
+          "imagePath": "images/tools/altium-designer.png",
+          "subTools": []
+        },
+        {
+          "id": "mbed",
+          "name": "Arm Mbed",
+          "category": "IoT Platform",
+          "description": "A platform and operating system for internet of things devices based on Arm microcontrollers, designed to simplify the creation and deployment of IoT applications.",
+          "imagePath": "images/tools/mbed.png",
+          "subTools": []
+        },
+        {
+          "id": "freertos",
+          "name": "FreeRTOS",
+          "category": "Operating System",
+          "description": "A real-time operating system kernel for embedded devices that has been ported to 35 microcontroller platforms.",
+          "imagePath": "images/tools/freertos.png",
+          "subTools": []
+        },
+        {
+          "id": "zephyr",
+          "name": "Zephyr",
+          "category": "Operating System",
+          "description": "A small, scalable real-time operating system for use on resource-constrained and embedded systems, supporting multiple hardware architectures.",
+          "imagePath": "images/tools/zephyr.png",
+          "subTools": []
+        },
+        {
+          "id": "contiki",
+          "name": "Contiki",
+          "category": "Operating System",
+          "description": "An operating system for networked, memory-constrained systems with a focus on low-power Internet of Things devices.",
+          "imagePath": "images/tools/contiki.png",
+          "subTools": []
+        },
+        {
+          "id": "qemu",
+          "name": "QEMU",
+          "category": "Emulator",
+          "description": "A generic and open-source machine emulator and virtualizer, allowing for emulation of various processor architectures for embedded system development.",
+          "imagePath": "images/tools/qemu.png",
+          "subTools": []
+        },
+        {
+          "id": "gdb",
+          "name": "GDB",
+          "category": "Debugger",
+          "description": "The GNU Project debugger, allowing developers to see what's happening inside a program while it executes or when it crashes.",
+          "imagePath": "images/tools/gdb.png",
+          "subTools": []
+        },
+        {
+          "id": "jtag",
+          "name": "JTAG",
+          "category": "Debugging Interface",
+          "description": "An industry standard for verifying designs and testing printed circuit boards after manufacture, often used for debugging embedded systems.",
+          "imagePath": "images/tools/jtag.png",
+          "subTools": []
+        },
+        {
+          "id": "segger-jlink",
+          "name": "SEGGER J-Link",
+          "category": "Debug Probe",
+          "description": "A family of debug probes supporting a large number of CPU cores, providing direct access to the CPU's debug interface for programming and debugging.",
+          "imagePath": "images/tools/segger-jlink.png",
+          "subTools": []
+        },
+        {
+          "id": "mqtt",
+          "name": "MQTT",
+          "category": "Protocol",
+          "description": "A lightweight publish/subscribe messaging protocol designed for constrained devices and low-bandwidth, high-latency, or unreliable networks.",
+          "imagePath": "images/tools/mqtt.png",
+          "subTools": []
+        },
+        {
+          "id": "modbus",
+          "name": "Modbus",
+          "category": "Protocol",
+          "description": "A serial communications protocol originally published for use with programmable logic controllers (PLCs), commonly used in industrial environments.",
+          "imagePath": "images/tools/modbus.png",
+          "subTools": []
+        },
+        {
+          "id": "can",
+          "name": "CAN Bus",
+          "category": "Protocol",
+          "description": "A robust vehicle bus standard designed to allow microcontrollers and devices to communicate with each other's applications without a host computer.",
+          "imagePath": "images/tools/can.png",
+          "subTools": []
+        },
+        {
+          "id": "i2c",
+          "name": "I2C",
+          "category": "Protocol",
+          "description": "A synchronous, multi-master, multi-slave, packet switched, single-ended, serial communication bus widely used for attaching lower-speed peripheral ICs.",
+          "imagePath": "images/tools/i2c.png",
+          "subTools": []
+        },
+        {
+          "id": "spi",
+          "name": "SPI",
+          "category": "Protocol",
+          "description": "A synchronous serial communication interface specification used for short-distance communication, primarily in embedded systems.",
+          "imagePath": "images/tools/spi.png",
+          "subTools": []
+        },
+        {
+          "id": "uart",
+          "name": "UART",
+          "category": "Protocol",
+          "description": "A hardware communication protocol used in serial communication that provides full-duplex communication between two devices.",
+          "imagePath": "images/tools/uart.png",
+          "subTools": []
+        },
+        {
+          "id": "bluetooth-le",
+          "name": "Bluetooth Low Energy",
+          "category": "Protocol",
+          "description": "A wireless personal area network technology designed and marketed by the Bluetooth Special Interest Group aimed at novel applications in healthcare, fitness, security, and home entertainment.",
+          "imagePath": "images/tools/bluetooth-le.png",
+          "subTools": []
+        },
+        {
+          "id": "zigbee",
+          "name": "ZigBee",
+          "category": "Protocol",
+          "description": "A high-level communication protocol used to create personal area networks with small, low-power digital radios, based on the IEEE 802.15.4 standard.",
+          "imagePath": "images/tools/zigbee.png",
+          "subTools": []
+        },
+        {
+          "id": "lora",
+          "name": "LoRa",
+          "category": "Protocol",
+          "description": "A long-range, low-power wireless platform that became the predominant technology for Internet of Things (IoT) networks worldwide.",
+          "imagePath": "images/tools/lora.png",
+          "subTools": []
+        },
+        {
+          "id": "dsp",
+          "name": "Digital Signal Processing",
+          "category": "Technology",
+          "description": "The use of digital processing to perform signal processing operations, widely used in embedded systems for audio, video, and sensors.",
+          "imagePath": "images/tools/dsp.png",
+          "subTools": []
+        },
+        {
+          "id": "cmake",
+          "name": "CMake",
+          "category": "Build System",
+          "description": "An open-source, cross-platform family of tools designed to build, test and package software, popular for embedded systems development.",
+          "imagePath": "images/tools/cmake.png",
+          "subTools": []
+        },
+        {
+          "id": "make",
+          "name": "Make",
+          "category": "Build System",
+          "description": "A build automation tool that automatically builds executable programs and libraries from source code by reading files called Makefiles.",
+          "imagePath": "images/tools/make.png",
+          "subTools": []
+        },
+        {
+          "id": "jenkins-embedded",
+          "name": "Jenkins",
+          "category": "CI/CD",
+          "description": "An open-source automation server that helps automate parts of the embedded software development process, including building, testing, and deploying.",
+          "imagePath": "images/tools/jenkins.png",
+          "subTools": []
+        },
+        {
+          "id": "gitlab-ci-embedded",
+          "name": "GitLab CI/CD",
+          "category": "CI/CD",
+          "description": "A continuous integration service integrated with GitLab, enabling automated building, testing, and deploying of embedded software.",
+          "imagePath": "images/tools/gitlab-ci.png",
+          "subTools": []
+        },
+        {
+          "id": "git-embedded",
+          "name": "Git",
+          "category": "Version Control",
+          "description": "A distributed version-control system for tracking changes in source code during software development, essential for team-based embedded projects.",
+          "imagePath": "images/tools/git.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "desktop-development",
+      "name": "Desktop Development",
+      "tools": [
+        {
+          "id": "csharp",
+          "name": "C#",
+          "category": "Programming Language",
+          "description": "A general-purpose, multi-paradigm programming language developed by Microsoft, widely used for Windows desktop application development.",
+          "imagePath": "images/tools/csharp.png",
+          "subTools": []
+        },
+        {
+          "id": "dotnet",
+          "name": ".NET",
+          "category": "Framework",
+          "description": "A free, cross-platform, open-source developer platform for building many different types of applications, including desktop applications.",
+          "imagePath": "images/tools/dotnet.png",
+          "subTools": [
+            {
+              "id": "wpf",
+              "name": "Windows Presentation Foundation (WPF)",
+              "description": "A UI framework for building Windows desktop applications with visually stunning user experiences.",
+              "imagePath": "images/tools/wpf.png"
+            },
+            {
+              "id": "winforms",
+              "name": "Windows Forms",
+              "description": "A UI framework that creates rich desktop client applications for Windows that run on .NET Framework.",
+              "imagePath": "images/tools/winforms.png"
+            },
+            {
+              "id": "xaml",
+              "name": "XAML",
+              "description": "A declarative XML-based language created by Microsoft for initializing structured values and objects in many frameworks, particularly in WPF and UWP.",
+              "imagePath": "images/tools/xaml.png"
+            }
+          ]
+        },
+        {
+          "id": "java-desktop",
+          "name": "Java",
+          "category": "Programming Language",
+          "description": "A widely used, object-oriented programming language and software platform that runs on billions of devices, used for desktop application development with frameworks like JavaFX and Swing.",
+          "imagePath": "images/tools/java.png",
+          "subTools": [
+            {
+              "id": "javafx",
+              "name": "JavaFX",
+              "description": "A set of graphics and media packages that enables developers to design, create, test, debug, and deploy rich client applications that operate consistently across diverse platforms.",
+              "imagePath": "images/tools/javafx.png"
+            },
+            {
+              "id": "swing",
+              "name": "Swing",
+              "description": "A GUI widget toolkit for Java, providing a set of 'lightweight' (all-Java language) components that work the same way on all platforms.",
+              "imagePath": "images/tools/swing.png"
+            }
+          ]
+        },
+        {
+          "id": "python-desktop",
+          "name": "Python",
+          "category": "Programming Language",
+          "description": "A high-level, interpreted programming language with easy syntax and readability, used for desktop applications with libraries like PyQt and Tkinter.",
+          "imagePath": "images/tools/python.png",
+          "subTools": [
+            {
+              "id": "pyqt",
+              "name": "PyQt",
+              "description": "A set of Python bindings for Qt, one of the most powerful and popular cross-platform GUI libraries.",
+              "imagePath": "images/tools/pyqt.png"
+            },
+            {
+              "id": "tkinter",
+              "name": "Tkinter",
+              "description": "The standard Python interface to the Tk GUI toolkit, providing a fast and easy way to create GUI applications.",
+              "imagePath": "images/tools/tkinter.png"
+            },
+            {
+              "id": "pyside",
+              "name": "PySide",
+              "description": "The official Python module from the Qt Project, offering an alternative to PyQt with a more permissive license.",
+              "imagePath": "images/tools/pyside.png"
+            }
+          ]
+        },
+        {
+          "id": "cpp-desktop",
+          "name": "C++",
+          "category": "Programming Language",
+          "description": "A powerful, high-performance programming language used for system/software development, often with frameworks like Qt for desktop applications.",
+          "imagePath": "images/tools/cpp.png",
+          "subTools": [
+            {
+              "id": "qt",
+              "name": "Qt",
+              "description": "A free and open-source widget toolkit for creating graphical user interfaces as well as cross-platform applications.",
+              "imagePath": "images/tools/qt.png"
+            },
+            {
+              "id": "wxwidgets",
+              "name": "wxWidgets",
+              "description": "A C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.",
+              "imagePath": "images/tools/wxwidgets.png"
+            }
+          ]
+        },
+        {
+          "id": "electron",
+          "name": "Electron",
+          "category": "Framework",
+          "description": "A framework for building cross-platform desktop applications with JavaScript, HTML, and CSS, developed by GitHub.",
+          "imagePath": "images/tools/electron.png",
+          "subTools": []
+        },
+        {
+          "id": "flutter-desktop",
+          "name": "Flutter for Desktop",
+          "category": "Framework",
+          "description": "Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.",
+          "imagePath": "images/tools/flutter.png",
+          "subTools": []
+        },
+        {
+          "id": "visual-studio",
+          "name": "Visual Studio",
+          "category": "IDE",
+          "description": "An integrated development environment from Microsoft used to develop computer programs, websites, web apps, web services and mobile apps.",
+          "imagePath": "images/tools/visual-studio.png",
+          "subTools": []
+        },
+        {
+          "id": "intellij-idea",
+          "name": "IntelliJ IDEA",
+          "category": "IDE",
+          "description": "An integrated development environment written in Java for developing computer software, particularly known for its support for Java development.",
+          "imagePath": "images/tools/intellij-idea.png",
+          "subTools": []
+        },
+        {
+          "id": "vscode-desktop",
+          "name": "Visual Studio Code",
+          "category": "IDE",
+          "description": "A lightweight but powerful source code editor that runs on your desktop and is available for Windows, macOS, and Linux.",
+          "imagePath": "images/tools/vscode.png",
+          "subTools": []
+        },
+        {
+          "id": "eclipse",
+          "name": "Eclipse",
+          "category": "IDE",
+          "description": "An integrated development environment used in computer programming, particularly for Java development but also supports many other languages.",
+          "imagePath": "images/tools/eclipse.png",
+          "subTools": []
+        },
+        {
+          "id": "netbeans",
+          "name": "NetBeans",
+          "category": "IDE",
+          "description": "An integrated development environment for Java development that allows applications to be developed from a set of modular software components called modules.",
+          "imagePath": "images/tools/netbeans.png",
+          "subTools": []
+        },
+        {
+          "id": "uwp",
+          "name": "Universal Windows Platform (UWP)",
+          "category": "Platform",
+          "description": "A platform-homogeneous application architecture created by Microsoft and first introduced in Windows 10, designed to help develop universal apps that run on Windows 10, Windows 10 Mobile, Xbox One and HoloLens without the need to be rewritten.",
+          "imagePath": "images/tools/uwp.png",
+          "subTools": []
+        },
+        {
+          "id": "gtk",
+          "name": "GTK",
+          "category": "UI Library",
+          "description": "A free and open-source cross-platform widget toolkit for creating graphical user interfaces, primarily for Linux but also available for Windows and macOS.",
+          "imagePath": "images/tools/gtk.png",
+          "subTools": []
+        },
+        {
+          "id": "macos-cocoa",
+          "name": "macOS Cocoa",
+          "category": "Framework",
+          "description": "Apple's native object-oriented application programming interface (API) for the macOS operating system.",
+          "imagePath": "images/tools/macos-cocoa.png",
+          "subTools": []
+        },
+        {
+          "id": "swift-desktop",
+          "name": "Swift for Desktop",
+          "category": "Programming Language",
+          "description": "Apple's programming language for macOS desktop application development, offering modern features with strong safety guarantees.",
+          "imagePath": "images/tools/swift.png",
+          "subTools": []
+        },
+        {
+          "id": "objective-c-desktop",
+          "name": "Objective-C for Desktop",
+          "category": "Programming Language",
+          "description": "A general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language, historically used for macOS development.",
+          "imagePath": "images/tools/objective-c.png",
+          "subTools": []
+        },
+        {
+          "id": "delphi",
+          "name": "Delphi",
+          "category": "IDE & Language",
+          "description": "An integrated development environment for rapid application development of desktop, mobile, web, and console software, developed by Embarcadero Technologies.",
+          "imagePath": "images/tools/delphi.png",
+          "subTools": []
+        },
+        {
+          "id": "nsis",
+          "name": "NSIS",
+          "category": "Installer System",
+          "description": "A professional open-source system to create Windows installers, designed to be as small and flexible as possible.",
+          "imagePath": "images/tools/nsis.png",
+          "subTools": []
+        },
+        {
+          "id": "inno-setup",
+          "name": "Inno Setup",
+          "category": "Installer System",
+          "description": "A free installer for Windows programs, first introduced in 1997 and still maintained, offering a wide range of features.",
+          "imagePath": "images/tools/inno-setup.png",
+          "subTools": []
+        },
+        {
+          "id": "wix-toolset",
+          "name": "WiX Toolset",
+          "category": "Installer System",
+          "description": "A free and open-source set of tools for building Windows installation packages from XML source code.",
+          "imagePath": "images/tools/wix-toolset.png",
+          "subTools": []
+        },
+        {
+          "id": "appimage",
+          "name": "AppImage",
+          "category": "Packaging",
+          "description": "A format for distributing portable software on Linux without needing superuser permissions to install the application.",
+          "imagePath": "images/tools/appimage.png",
+          "subTools": []
+        },
+        {
+          "id": "flatpak",
+          "name": "Flatpak",
+          "category": "Packaging",
+          "description": "A utility for software deployment and package management for Linux, providing a sandbox environment in which users can run applications in isolation from the rest of the system.",
+          "imagePath": "images/tools/flatpak.png",
+          "subTools": []
+        },
+        {
+          "id": "snap",
+          "name": "Snap",
+          "category": "Packaging",
+          "description": "A software packaging and deployment system developed by Canonical for operating systems that use the Linux kernel, designed to work across many Linux distributions.",
+          "imagePath": "images/tools/snap.png",
+          "subTools": []
+        },
+        {
+          "id": "sqlite",
+          "name": "SQLite",
+          "category": "Database",
+          "description": "A C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine, commonly used in desktop applications.",
+          "imagePath": "images/tools/sqlite.png",
+          "subTools": []
+        },
+        {
+          "id": "appveyor",
+          "name": "AppVeyor",
+          "category": "CI/CD",
+          "description": "A continuous integration service used to build and test projects hosted on GitHub, BitBucket, and other version control hosting services, particularly strong for Windows environments.",
+          "imagePath": "images/tools/appveyor.png",
+          "subTools": []
+        },
+        {
+          "id": "github-actions-desktop",
+          "name": "GitHub Actions",
+          "category": "CI/CD",
+          "description": "A CI/CD platform that allows you to automate your build, test, and deployment pipeline directly within your GitHub repository.",
+          "imagePath": "images/tools/github-actions.png",
+          "subTools": []
+        },
+        {
+          "id": "nunit",
+          "name": "NUnit",
+          "category": "Testing",
+          "description": "A unit-testing framework for .NET languages, designed as a port of JUnit to the .NET world.",
+          "imagePath": "images/tools/nunit.png",
+          "subTools": []
+        },
+        {
+          "id": "mstest",
+          "name": "MSTest",
+          "category": "Testing",
+          "description": "A unit testing framework by Microsoft, provided with Visual Studio to write and run tests for .NET applications.",
+          "imagePath": "images/tools/mstest.png",
+          "subTools": []
+        },
+        {
+          "id": "junit",
+          "name": "JUnit",
+          "category": "Testing",
+          "description": "A simple framework to write repeatable tests for Java applications, serving as a foundation for automated testing in the Java ecosystem.",
+          "imagePath": "images/tools/junit.png",
+          "subTools": []
+        },
+        {
+          "id": "pytest",
+          "name": "pytest",
+          "category": "Testing",
+          "description": "A testing framework for Python that makes it easy to write small, readable tests, and can scale to support complex functional testing.",
+          "imagePath": "images/tools/pytest.png",
+          "subTools": []
+        }
+      ]
+    },
+    {
+      "id": "application-development",
+      "name": "Application Development",
+      "tools": [
+        {
+          "id": "javascript-app",
+          "name": "JavaScript",
+          "category": "Programming Language",
+          "description": "A lightweight, interpreted, or just-in-time compiled programming language with first-class functions, widely used for web application development.",
+          "imagePath": "images/tools/javascript.png",
+          "subTools": [
+            {
+              "id": "nodejs-app",
+              "name": "Node.js",
+              "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine, enabling server-side scripting and creation of dynamic web page content.",
+              "imagePath": "images/tools/nodejs.png"
+            },
+            {
+              "id": "express-app",
+              "name": "Express.js",
+              "description": "A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+              "imagePath": "images/tools/express.png"
+            },
+            {
+              "id": "react-app",
+              "name": "React",
+              "description": "A JavaScript library for building user interfaces, particularly single-page applications, developed and maintained by Facebook.",
+              "imagePath": "images/tools/react.png"
+            },
+            {
+              "id": "angular-app",
+              "name": "Angular",
+              "description": "A platform and framework for building single-page client applications using HTML and TypeScript, developed by Google.",
+              "imagePath": "images/tools/angular.png"
+            },
+            {
+              "id": "vue-app",
+              "name": "Vue.js",
+              "description": "A progressive JavaScript framework for building user interfaces, designed to be incrementally adoptable.",
+              "imagePath": "images/tools/vue.png"
+            }
+          ]
+        },
+        {
+          "id": "python-app",
+          "name": "Python",
+          "category": "Programming Language",
+          "description": "A high-level, interpreted programming language with easy syntax and readability, widely used for application development, data science, and automation.",
+          "imagePath": "images/tools/python.png",
+          "subTools": [
+            {
+              "id": "django-app",
+              "name": "Django",
+              "description": "A high-level Python web framework that encourages rapid development and clean, pragmatic design.",
+              "imagePath": "images/tools/django.png"
+            },
+            {
+              "id": "flask-app",
+              "name": "Flask",
+              "description": "A lightweight WSGI web application framework designed to make getting started quick and easy, with the ability to scale up to complex applications.",
+              "imagePath": "images/tools/flask.png"
+            },
+            {
+              "id": "fastapi-app",
+              "name": "FastAPI",
+              "description": "A modern, fast (high-performance), web framework for building APIs with Python based on standard Python type hints.",
+              "imagePath": "images/tools/fastapi.png"
+            }
+          ]
+        },
+        {
+          "id": "java-app",
+          "name": "Java",
+          "category": "Programming Language",
+          "description": "A general-purpose programming language intended to let application developers write once, run anywhere, commonly used for enterprise applications.",
+          "imagePath": "images/tools/java.png",
+          "subTools": [
+            {
+              "id": "spring-boot-app",
+              "name": "Spring Boot",
+              "description": "An extension of the Spring framework that simplifies the development of new Spring applications through opinionated defaults.",
+              "imagePath": "images/tools/spring-boot.png"
+            },
+            {
+              "id": "hibernate",
+              "name": "Hibernate",
+              "description": "An object-relational mapping tool for the Java programming language, providing a framework for mapping an object-oriented domain model to a relational database.",
+              "imagePath": "images/tools/hibernate.png"
+            }
+          ]
+        },
+        {
+          "id": "csharp-app",
+          "name": "C#",
+          "category": "Programming Language",
+          "description": "A general-purpose, multi-paradigm programming language developed by Microsoft for the .NET platform.",
+          "imagePath": "images/tools/csharp.png",
+          "subTools": [
+            {
+              "id": "asp-net-core",
+              "name": "ASP.NET Core",
+              "description": "A free and open-source web framework and successor to ASP.NET, developed by Microsoft for building modern web applications.",
+              "imagePath": "images/tools/asp-net-core.png"
+            },
+            {
+              "id": "entity-framework",
+              "name": "Entity Framework",
+              "description": "An object-relational mapper that enables .NET developers to work with a database using .NET objects.",
+              "imagePath": "images/tools/entity-framework.png"
+            }
+          ]
+        },
+        {
+          "id": "go-app",
+          "name": "Go",
+          "category": "Programming Language",
+          "description": "A statically typed, compiled language designed at Google, known for its simplicity, efficiency, and strong support for concurrent programming.",
+          "imagePath": "images/tools/go.png",
+          "subTools": [
+            {
+              "id": "gin-app",
+              "name": "Gin",
+              "description": "A HTTP web framework written in Go (Golang) that features a Martini-like API with much better performance.",
+              "imagePath": "images/tools/gin.png"
+            },
+            {
+              "id": "echo-app",
+              "name": "Echo",
+              "description": "A high performance, extensible, minimalist Go web framework.",
+              "imagePath": "images/tools/echo.png"
+            }
+          ]
+        },
+        {
+          "id": "ruby-app",
+          "name": "Ruby",
+          "category": "Programming Language",
+          "description": "A dynamic, open source programming language with a focus on simplicity and productivity, known for its elegant syntax.",
+          "imagePath": "images/tools/ruby.png",
+          "subTools": [
+            {
+              "id": "rails-app",
+              "name": "Ruby on Rails",
+              "description": "A server-side web application framework written in Ruby, providing default structures for databases, web services, and web pages.",
+              "imagePath": "images/tools/rails.png"
+            }
+          ]
+        },
+        {
+          "id": "php-app",
+          "name": "PHP",
+          "category": "Programming Language",
+          "description": "A popular general-purpose scripting language especially suited to web development, running on the server side.",
+          "imagePath": "images/tools/php.png",
+          "subTools": [
+            {
+              "id": "laravel-app",
+              "name": "Laravel",
+              "description": "A free, open-source PHP web framework for building web applications following the model-view-controller architectural pattern.",
+              "imagePath": "images/tools/laravel.png"
+            },
+            {
+              "id": "symfony-app",
+              "name": "Symfony",
+              "description": "A PHP framework for web and console applications, as well as a set of reusable PHP components.",
+              "imagePath": "images/tools/symfony.png"
+            }
+          ]
+        },
+        {
+          "id": "docker-app",
+          "name": "Docker",
+          "category": "Containerization",
+          "description": "A platform that provides the ability to run applications in isolated environments called containers, enabling consistent deployment across different environments.",
+          "imagePath": "images/tools/docker.png",
+          "subTools": []
+        },
+        {
+          "id": "kubernetes-app",
+          "name": "Kubernetes",
+          "category": "Container Orchestration",
+          "description": "An open-source system for automating deployment, scaling, and management of containerized applications.",
+          "imagePath": "images/tools/kubernetes.png",
+          "subTools": []
+        },
+        {
+          "id": "postgresql-app",
+          "name": "PostgreSQL",
+          "category": "Database",
+          "description": "A powerful, open-source object-relational database system with over 30 years of active development.",
+          "imagePath": "images/tools/postgresql.png",
+          "subTools": []
+        },
+        {
+          "id": "mysql-app",
+          "name": "MySQL",
+          "category": "Database",
+          "description": "An open-source relational database management system, widely used for web applications.",
+          "imagePath": "images/tools/mysql.png",
+          "subTools": []
+        },
+        {
+          "id": "mongodb-app",
+          "name": "MongoDB",
+          "category": "Database",
+          "description": "A source-available cross-platform document-oriented database program, classified as a NoSQL database program.",
+          "imagePath": "images/tools/mongodb.png",
+          "subTools": []
+        },
+        {
+          "id": "redis-app",
+          "name": "Redis",
+          "category": "Database",
+          "description": "An in-memory data structure store, used as a database, cache, and message broker.",
+          "imagePath": "images/tools/redis.png",
+          "subTools": []
+        },
+        {
+          "id": "git-app",
+          "name": "Git",
+          "category": "Version Control",
+          "description": "A distributed version-control system for tracking changes in source code during software development.",
+          "imagePath": "images/tools/git.png",
+          "subTools": []
+        },
+        {
+          "id": "github-app",
+          "name": "GitHub",
+          "category": "Version Control Platform",
+          "description": "A provider of Internet hosting for software development and version control using Git.",
+          "imagePath": "images/tools/github.png",
+          "subTools": []
+        },
+        {
+          "id": "gitlab-app",
+          "name": "GitLab",
+          "category": "Version Control Platform",
+          "description": "A web-based DevOps lifecycle tool that provides a Git-repository manager with wiki, issue-tracking and continuous integration/continuous deployment pipeline features.",
+          "imagePath": "images/tools/gitlab.png",
+          "subTools": []
+        },
+        {
+          "id": "jenkins-app",
+          "name": "Jenkins",
+          "category": "CI/CD",
+          "description": "An open-source automation server that helps to automate parts of the software development process including building, testing, and deploying.",
+          "imagePath": "images/tools/jenkins.png",
+          "subTools": []
+        },
+        {
+          "id": "travis-ci-app",
+          "name": "Travis CI",
+          "category": "CI/CD",
+          "description": "A hosted continuous integration service used to build and test software projects hosted on GitHub.",
+          "imagePath": "images/tools/travis-ci.png",
+          "subTools": []
+        },
+        {
+          "id": "circleci-app",
+          "name": "CircleCI",
+          "category": "CI/CD",
+          "description": "A continuous integration and delivery platform that can be used to implement DevOps practices.",
+          "imagePath": "images/tools/circleci.png",
+          "subTools": []
+        },
+        {
+          "id": "aws-app",
+          "name": "AWS",
+          "category": "Cloud Services",
+          "description": "A comprehensive cloud computing platform, offering over 200 fully featured services from data centers globally.",
+          "imagePath": "images/tools/aws.png",
+          "subTools": [
+            {
+              "id": "aws-ec2-app",
+              "name": "AWS EC2",
+              "description": "A web service that provides secure, resizable compute capacity in the cloud.",
+              "imagePath": "images/tools/aws-ec2.png"
+            },
+            {
+              "id": "aws-s3-app",
+              "name": "AWS S3",
+              "description": "An object storage service that offers industry-leading scalability, data availability, security, and performance.",
+              "imagePath": "images/tools/aws-s3.png"
+            },
+            {
+              "id": "aws-lambda-app",
+              "name": "AWS Lambda",
+              "description": "A serverless compute service that lets you run code without provisioning or managing servers.",
+              "imagePath": "images/tools/aws-lambda.png"
+            }
+          ]
+        },
+        {
+          "id": "azure-app",
+          "name": "Azure",
+          "category": "Cloud Services",
+          "description": "Microsoft's cloud computing service, providing a wide range of services including compute, analytics, storage, and networking.",
+          "imagePath": "images/tools/azure.png",
+          "subTools": []
+        },
+        {
+          "id": "gcp-app",
+          "name": "Google Cloud Platform",
+          "category": "Cloud Services",
+          "description": "A suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products.",
+          "imagePath": "images/tools/gcp.png",
+          "subTools": []
+        },
+        {
+          "id": "heroku-app",
+          "name": "Heroku",
+          "category": "Platform as a Service",
+          "description": "A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.",
+          "imagePath": "images/tools/heroku.png",
+          "subTools": []
+        },
+        {
+          "id": "nginx-app",
+          "name": "NGINX",
+          "category": "Web Server",
+          "description": "A web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.",
+          "imagePath": "images/tools/nginx.png",
+          "subTools": []
+        },
+        {
+          "id": "apache-app",
+          "name": "Apache HTTP Server",
+          "category": "Web Server",
+          "description": "A free and open-source cross-platform web server software.",
+          "imagePath": "images/tools/apache.png",
+          "subTools": []
+        }
+      ]
+    }
+  ]
+}

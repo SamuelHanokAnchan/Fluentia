@@ -1,0 +1,60 @@
+{
+  "projectTypes": [
+    {
+      "id": "full-stack",
+      "name": "Full Stack Development",
+      "tools": [
+        {
+          "id": "javascript",
+          "name": "JavaScript",
+          "category": "Programming Language",
+          "description": "The primary language of web browsers and a key component in full-stack development. Used for creating interactive web applications.",
+          "imagePath": "images/tools/javascript.png",
+          "questions": [
+            "What type of application are you developing with JavaScript?",
+            "What JavaScript features or libraries do you need to use?",
+            "Are you targeting specific browsers or environments?"
+          ],
+          "subTools": [
+            {
+              "id": "react",
+              "name": "React",
+              "description": "A JavaScript library for building user interfaces, particularly single-page applications. Developed by Facebook.",
+              "imagePath": "images/tools/react.png",
+              "questions": [
+                "What type of web application are you building with React?",
+                "What components and state management do you need to implement?",
+                "Are you using specific React features or patterns (hooks, context, HOCs)?"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "typescript",
+          "name": "TypeScript",
+          "category": "Programming Language",
+          "description": "A superset of JavaScript that adds static typing, enabling better tooling and error detection in large applications.",
+          "imagePath": "images/tools/typescript.png",
+          "questions": [
+            "What type of application are you developing with TypeScript?",
+            "What TypeScript features do you need to use (interfaces, generics, decorators)?",
+            "How are you configuring the TypeScript compiler options?"
+          ],
+          "subTools": [
+            {
+              "id": "nestjs",
+              "name": "NestJS",
+              "description": "A progressive Node.js framework for building scalable server-side applications.",
+              "imagePath": "images/tools/nestjs.png",
+              "questions": [
+                "What type of Node.js application are you building with NestJS?",
+                "What modules, controllers, and providers do you need to implement?",
+                "What NestJS features do you need to use (Guards, Interceptors, Pipes)?"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -14,3 +14,4 @@
 13) correct all errors within this and move on to AI part of the project
 
 
+1)if there are no ai recommendation add a sad smily face with a message

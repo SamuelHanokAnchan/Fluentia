@@ -74,6 +74,9 @@ async function initApp() {
         // Initialize responsive layout
         initResponsiveLayout(); 
         
+        // Initialize AI chat module
+        initAiChat();
+        
         console.log("Fluentia application initialized");
         
         // Hide loading indicator

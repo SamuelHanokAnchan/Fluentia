@@ -212,6 +212,12 @@ function clearWorkspace() {
 // Add this to replace the original initWorkspace function
 
 // Initialize workspace for jsPlumb
+/**
+ * This function should replace the initWorkspace function in your workspace.js file
+ */
+/**
+ * This function should replace the initWorkspace function in your workspace.js file
+ */
 function initWorkspace() {
     const workspace = document.getElementById('workspace');
     const container = document.getElementById('workspaceContainer');
@@ -219,6 +225,7 @@ function initWorkspace() {
     if (!workspace || !container) return;
     
     // Initialize jsPlumb
+    jsPlumbInstance = jsPlumb.getInstance();
     jsPlumbInstance.setContainer(workspace);
     
     // Configure jsPlumb defaults
@@ -227,7 +234,19 @@ function initWorkspace() {
         ReattachConnections: true,
         ConnectionOverlays: [
             ["Arrow", { location: 1, id: 'arrow', width: 10, length: 10 }]
-        ]
+        ],
+        // Set connector defaults
+        Connector: ["Straight"],
+        Endpoint: ["Dot", { radius: 5 }],
+        EndpointStyle: { fill: "#3b82f6" },
+        PaintStyle: { 
+            stroke: "#3b82f6",
+            strokeWidth: 2
+        },
+        HoverPaintStyle: { 
+            stroke: "#10b981",
+            strokeWidth: 3
+        }
     });
     
     // Set up zoom controls
@@ -280,7 +299,14 @@ function initWorkspace() {
     // Setup context menu for connections
     setupContextMenu();
     
-    // Bind connection events - the function that needs to be defined and called
+    // Ensure the AI chat module is initialized
+    if (typeof initAiChat === 'function') {
+        initAiChat();
+    } else {
+        console.error("AI Chat module not loaded");
+    }
+    
+    // Bind connection events
     if (typeof bindConnectionEvents === 'function') {
         bindConnectionEvents();
     } else {

@@ -426,3 +426,251 @@
 .ai-chat-input button:hover {
     background-color: var(--primary-dark);
 }
+/* Add these styles to your ai-styles.css file */
+
+/* Tool tooltip */
+.tool-tooltip {
+    position: absolute;
+    background-color: var(--gray-800);
+    color: white;
+    padding: 8px 12px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    max-width: 250px;
+    z-index: 1500;
+    box-shadow: var(--box-shadow-md);
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Arrow for right-positioned tooltip (showing on left side of element) */
+.tool-tooltip.tooltip-right::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 6px 6px 0;
+    border-style: solid;
+    border-color: transparent var(--gray-800) transparent transparent;
+}
+
+/* Arrow for left-positioned tooltip (showing on right side of element) */
+.tool-tooltip.tooltip-left::before {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--gray-800);
+}
+
+/* Loading spinner in AI suggestions */
+.ai-recommendations .loading-spinner {
+    border: 3px solid var(--gray-200);
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+/* Add these styles to your ai-styles.css file */
+
+/* Compatibility Label Styles */
+.compatibility-label-container {
+    z-index: 50;
+    pointer-events: none;
+}
+
+.compatibility-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    color: var(--gray-700);
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 1;
+}
+
+.compatibility-low {
+    background-color: var(--danger);
+    color: white;
+}
+
+.compatibility-medium {
+    background-color: #f59e0b; /* Amber */
+    color: white;
+}
+
+.compatibility-high {
+    background-color: var(--success);
+    color: white;
+}
+
+/* Connection Tooltip */
+.connection-tooltip {
+    position: absolute;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-md);
+    width: 280px;
+    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;
+    border: 1px solid var(--gray-200);
+}
+
+.connection-tooltip .tooltip-header {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connection-tooltip .tooltip-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--gray-800);
+}
+
+.connection-tooltip .tooltip-score {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    color: white;
+}
+
+.connection-tooltip.compatibility-low .tooltip-score {
+    background-color: var(--danger);
+}
+
+.connection-tooltip.compatibility-medium .tooltip-score {
+    background-color: #f59e0b; /* Amber */
+}
+
+.connection-tooltip.compatibility-high .tooltip-score {
+    background-color: var(--success);
+}
+
+.connection-tooltip .tooltip-body {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    color: var(--gray-700);
+}
+
+.connection-tooltip .tooltip-hint {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--primary);
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+/* Compatibility Modal */
+.compatibility-modal {
+    max-width: 500px;
+}
+
+.compatibility-details {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.compatibility-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 1rem;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.compatibility-score-container.score-0 {
+    background-color: var(--danger);
+}
+
+.compatibility-score-container.score-1 {
+    background-color: #f59e0b; /* Amber */
+}
+
+.compatibility-score-container.score-2 {
+    background-color: var(--success);
+}
+
+.compatibility-score {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.compatibility-level {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.compatibility-explanation {
+    flex: 1;
+}
+
+.compatibility-explanation h4 {
+    margin: 1rem 0 0.5rem 0;
+    color: var(--gray-800);
+}
+
+.compatibility-alternatives {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.compatibility-alternatives li {
+    margin-bottom: 0.5rem;
+}
+
+.alternatives-note {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--primary);
+    margin-top: 0.5rem;
+}
+
+/* Animation for loading connection */
+@keyframes connection-loading {
+    0% { stroke-dashoffset: 10; }
+    100% { stroke-dashoffset: 0; }
+}
+
+.compatibility-loading path, 
+.compatibility-loading svg {
+    stroke-dasharray: 5, 5;
+    animation: connection-loading 1s linear infinite;
+}
+
+/* Alternative Tools Section */
+.ai-alternatives {
+    border-top: 1px solid var(--gray-200);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.alternatives-list .connection-item {
+    border-left: 3px solid #f59e0b; /* Amber for suggested alternatives */
+    transition: border-color 0.2s;
+}
+
+.alternatives-list .connection-item:hover {
+    border-left-color: var(--primary);
+}

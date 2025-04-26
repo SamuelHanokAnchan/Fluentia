@@ -55,7 +55,7 @@ function displaySearchResults(results) {
     
     resultsDropdown.innerHTML = results.map(tool => `
         <div class="result-item" data-tool='${JSON.stringify(tool)}'>
-            <img src="${tool.imagePath || 'images/tools/default.png'}" alt="${tool.name}" class="tool-logo">
+            <img src="${tool.imagePath || getDefaultImageForCategory(tool.category)}" alt="${tool.name}" class="tool-logo">
             <div class="tool-info">
                 <div class="tool-name">${tool.name}</div>
                 <div class="tool-description">${tool.category} Tool</div>
@@ -130,8 +130,11 @@ function addToolToPane(toolData) {
     toolElement.className = 'added-item';
     toolElement.setAttribute('data-tool', JSON.stringify(toolData));
     
+    // Make sure we have an image path
+    const imagePath = toolData.imagePath || getDefaultImageForCategory(toolData.category);
+    
     toolElement.innerHTML = `
-        <img src="${toolData.imagePath || 'images/tools/default.png'}" alt="${toolData.name}" class="tool-logo">
+        <img src="${imagePath}" alt="${toolData.name}" class="tool-logo">
         <span>${toolData.name}</span>
         <span class="platform-badge">${toolData.category}</span>
         <div class="delete-item-btn" title="Remove from toolkit">
@@ -219,9 +222,12 @@ function createToolNode(id, toolData, x, y) {
     node.style.top = `${y}px`;
     node.setAttribute('data-tool', JSON.stringify(toolData));
     
+    // Make sure we have an image path
+    const imagePath = toolData.imagePath || getDefaultImageForCategory(toolData.category);
+    
     // Add content to node - with delete button INSIDE the node
     node.innerHTML = `
-        <img src="${toolData.imagePath || 'images/tools/default.png'}" alt="${toolData.name}">
+        <img src="${imagePath}" alt="${toolData.name}">
         <div class="tool-node-title">${toolData.name}</div>
         <div class="delete-node-btn" title="Delete node">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -341,27 +347,62 @@ function createToolNode(id, toolData, x, y) {
 }
 
 // Update AI suggestions based on selected tool
-function updateAISuggestions(toolData) {
+async function updateAISuggestions(toolData) {
     const aiContent = document.getElementById('aiSuggestionsContent');
     if (!aiContent) {
         console.error("aiSuggestionsContent element not found");
         return;
     }
     
-    // Get related tools from the tool data
-    const relatedTools = getAISuggestionsForTool(toolData);
-    
-    // Build the suggestion content
-    let suggestionsHTML = `
+    // Show loading indicator in the suggestions panel
+    aiContent.innerHTML = `
         <div class="ai-recommendations">
             <div class="ai-section-header">
-                <h4>AI Recommendations for ${toolData.name}</h4>
-                <p>${toolData.description || toolData.category + ' Tool'}</p>
+                <h4>Finding recommendations for ${toolData.name}...</h4>
+                <p>Please wait while AI analyzes compatibility</p>
             </div>
+            <div style="display: flex; justify-content: center; padding: 2rem;">
+                <div class="loading-spinner" style="width: 40px; height: 40px;"></div>
+            </div>
+        </div>
     `;
     
-    // Add tool relationships section
-    if (relatedTools && relatedTools.length > 0) {
+    try {
+        // Get AI-generated tool suggestions
+        const relatedTools = await getAISuggestionsForTool(toolData);
+        
+        // If no suggestions were returned, show a message
+        if (!relatedTools || relatedTools.length === 0) {
+            aiContent.innerHTML = `
+                <div class="ai-recommendations">
+                    <div class="ai-section-header">
+                        <h4>AI Recommendations for ${toolData.name}</h4>
+                        <p>${toolData.description || toolData.category + ' Tool'}</p>
+                    </div>
+                    <div class="ai-connections">
+                        <div class="ai-section-header">
+                            <h4>No Suggestions Available</h4>
+                            <p>Couldn't find recommendations for this tool. Try another tool or check back later.</p>
+                        </div>
+                        <div style="text-align: center; padding: 2rem;">
+                            <span style="font-size: 3rem;">😢</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        // Build the suggestion content
+        let suggestionsHTML = `
+            <div class="ai-recommendations">
+                <div class="ai-section-header">
+                    <h4>AI Recommendations for ${toolData.name}</h4>
+                    <p>${toolData.description || toolData.category + ' Tool'}</p>
+                </div>
+        `;
+        
+        // Add tool relationships section
         suggestionsHTML += `
             <div class="ai-connections">
                 <div class="ai-section-header">
@@ -371,19 +412,21 @@ function updateAISuggestions(toolData) {
                 <div class="connections-list">
         `;
         
-        // Add each related tool
+        // Add each related tool - ensure image path is always set
         relatedTools.forEach(relatedTool => {
+            // Make sure we have an image path
+            const imagePath = relatedTool.imagePath || getDefaultImageForCategory(relatedTool.category);
+            
             suggestionsHTML += `
                 <div class="connection-item" data-tool='${JSON.stringify(relatedTool)}' style="cursor: pointer;">
                     <div>
-                        <img src="${relatedTool.imagePath || 'images/tools/default.png'}" 
+                        <img src="${imagePath}" 
                             alt="${relatedTool.name}" 
                             style="width: 24px; height: 24px; margin-right: 8px; vertical-align: middle;">
                         <span>${relatedTool.name}</span>
                     </div>
                     <div class="connection-tools">
                         <span class="badge">${relatedTool.category}</span>
-                        
                     </div>
                 </div>
             `;  
@@ -393,27 +436,106 @@ function updateAISuggestions(toolData) {
                 </div>
             </div>
         `;
+        
+        // Add a tip about the tools
+        suggestionsHTML += `
+            <div class="ai-tip">
+                <div class="ai-section-header">
+                    <h4>AI Insight</h4>
+                    <p>These tools are commonly used with ${toolData.name} in ${document.getElementById('projectName')?.getAttribute('data-project-type') || 'this type of'} projects.</p>
+                </div>
+            </div>
+        `;
+        
+        suggestionsHTML += `</div>`;
+        
+        // Update the AI content
+        aiContent.innerHTML = suggestionsHTML;
+        
+        // Add event listeners to related tool items
+        const connectionItems = aiContent.querySelectorAll('.connection-item');
+        connectionItems.forEach(item => {
+            item.addEventListener('click', function() {
+                try {
+                    const relatedToolData = JSON.parse(this.getAttribute('data-tool'));
+                    addToolToPane(relatedToolData);
+                } catch (error) {
+                    console.error("Error adding related tool:", error);
+                    showToast("Error adding related tool", "error");
+                }
+            });
+            
+            // Add hover effect to show description
+            item.addEventListener('mouseenter', function() {
+                try {
+                    const toolData = JSON.parse(this.getAttribute('data-tool'));
+                    if (toolData.description) {
+                        // Create or update tooltip with description
+                        let tooltip = document.getElementById('tool-tooltip');
+                        if (!tooltip) {
+                            tooltip = document.createElement('div');
+                            tooltip.id = 'tool-tooltip';
+                            tooltip.className = 'tool-tooltip';
+                            document.body.appendChild(tooltip);
+                        }
+                        
+                        tooltip.textContent = toolData.description;
+                        tooltip.style.display = 'block';
+                        
+                        // Position tooltip - Check if there's enough space on the right
+                        const rect = this.getBoundingClientRect();
+                        const viewportWidth = window.innerWidth;
+                        
+                        // Calculate if tooltip would go off-screen to the right
+                        const tooltipWidth = tooltip.offsetWidth || 250; // Fallback to estimated width if not yet rendered
+                        
+                        if (rect.right + tooltipWidth + 20 > viewportWidth) {
+                            // Not enough space on right, show tooltip on the left side
+                            tooltip.style.left = (rect.left - tooltipWidth - 10) + 'px';
+                            tooltip.style.top = rect.top + 'px';
+                            
+                            // Change arrow direction to point right
+                            tooltip.classList.add('tooltip-left');
+                            tooltip.classList.remove('tooltip-right');
+                        } else {
+                            // Enough space on right, show tooltip on the right side
+                            tooltip.style.left = (rect.right + 10) + 'px';
+                            tooltip.style.top = rect.top + 'px';
+                            
+                            // Change arrow direction to point left
+                            tooltip.classList.add('tooltip-right');
+                            tooltip.classList.remove('tooltip-left');
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error showing tool description:", error);
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const tooltip = document.getElementById('tool-tooltip');
+                if (tooltip) {
+                    tooltip.style.display = 'none';
+                }
+            });
+        });
+    } catch (error) {
+        console.error("Error updating AI suggestions:", error);
+        
+        // Show error message in the panel
+        aiContent.innerHTML = `
+            <div class="ai-recommendations">
+                <div class="ai-section-header">
+                    <h4>AI Recommendations for ${toolData.name}</h4>
+                    <p>${toolData.description || toolData.category + ' Tool'}</p>
+                </div>
+                <div class="ai-connections">
+                    <div class="ai-section-header">
+                        <h4>Error Loading Recommendations</h4>
+                        <p>Couldn't connect to AI service. Please try again later.</p>
+                    </div>
+                </div>
+            </div>
+        `;
     }
-    
-    // Add tool tips section based on questions from the tool data
-    
-    
-    suggestionsHTML += `</div>`;
-    
-    // Update the AI content
-    aiContent.innerHTML = suggestionsHTML;
-    
-    // Add event listeners to "Add to Toolkit" buttons
-    const connectionItems = aiContent.querySelectorAll('.connection-item');
-connectionItems.forEach(item => {
-    item.addEventListener('click', function() {
-        try {
-            const relatedToolData = JSON.parse(this.getAttribute('data-tool'));
-            addToolToPane(relatedToolData);
-        } catch (error) {
-            console.error("Error adding related tool:", error);
-            showToast("Error adding related tool", "error");
-        }
-    });
-});
 }

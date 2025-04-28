@@ -199,16 +199,14 @@
     color: var(--primary);
 }
 
-/* Fix for issue #1: Code icon positioning (move above compatibility label) */
+/* FIXED CODE ICON POSITIONING */
+/* This ensures the code icon appears above the compatibility label */
 .code-icon-container {
-    /* margin-bottom: 100px; */
-    /* position: absolute !important; */
-    /* z-index: 101 !important; Higher z-index to appear above compatibility label */
-    transform: translateY(-25px) !important; /*Move up to appear above the line and label*/
+    z-index: 150 !important; /* Higher than compatibility label */
 }
 
 .code-icon-overlay {
-    position: absolute;
+    position: absolute !important;
     background-color: var(--primary);
     color: white;
     border-radius: 50%;
@@ -219,13 +217,15 @@
     justify-content: center;
     font-size: 10px;
     cursor: pointer;
-    z-index: 100;
+    z-index: 150 !important; /* Higher than compatibility label */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, background-color 0.2s;
+    /* Critical positioning - move it up */
+    transform: translateY(-35px) !important;
 }
 
 .code-icon-overlay:hover {
-    transform: scale(1.1);
+    transform: translateY(-35px) scale(1.1) !important;
     background-color: var(--primary-dark);
 }
 

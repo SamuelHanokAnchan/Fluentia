@@ -654,6 +654,7 @@ function bindConnectionEvents() {
 
 // Add a code icon to a connection using overlays
 // Add a code icon to a connection using overlays - FIXED POSITIONING
+// Add a code icon to a connection using overlays - FIXED POSITIONING
 function addCodeIconToConnection(connection) {
     try {
         // Remove any existing code icon overlay
@@ -663,26 +664,15 @@ function addCodeIconToConnection(connection) {
         
         // Only add the overlay if the connection has code
         if (connection.codeSnippet && connection.codeSnippet.trim() !== "") {
-            // Add an overlay to the connection with direct positioning
+            // Add an overlay to the connection
             connection.addOverlay([
                 "Custom", {
                     id: "codeIcon",
                     create: function() {
-                        // Create the element with inline styles for positioning
+                        // Create the element
                         const codeIcon = document.createElement('div');
                         codeIcon.className = 'code-icon-overlay';
                         codeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>';
-                        
-                        // Direct positioning without transform
-                        codeIcon.style.position = 'absolute';
-                        codeIcon.style.zIndex = '9999';
-                        // Remove the transform that's causing the issue
-                        codeIcon.style.transform = 'none';
-                        // Set top to a negative value to move it up
-                        codeIcon.style.top = '-25px';
-                        // Center it horizontally
-                        codeIcon.style.left = '50%';
-                        codeIcon.style.marginLeft = '-11px'; // Half the width of the icon
                         
                         // Add click handler
                         codeIcon.addEventListener('click', function(e) {

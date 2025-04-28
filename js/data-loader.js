@@ -305,6 +305,8 @@ function getDefaultImageForCategory(category) {
     return imagePath;
 }
 
+// In data-loader.js, update the enhanceToolWithImageAndId function:
+
 /**
  * Enhance a suggested tool with image path and ID
  * @param {Object} tool - The tool object from AI
@@ -325,14 +327,14 @@ function enhanceToolWithImageAndId(tool) {
         return {
             ...tool,
             id: existingTool.id,
-            imagePath: existingTool.imagePath || getDefaultImageForCategory(tool.category)
+            imagePath: existingTool.imagePath || 'images/tools/default.png' // Default image if not found
         };
     }
     
-    // For tools not in our database, use a default image based on category
+    // For tools not in our database, use a default image
     return {
         ...tool,
         id: id,
-        imagePath: getDefaultImageForCategory(tool.category)
+        imagePath: 'images/tools/default.png' // Always use default image for AI-suggested tools without images
     };
 }

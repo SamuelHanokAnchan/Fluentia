@@ -169,6 +169,80 @@ function addToolToPane(toolData) {
         updateAISuggestions(toolData);
     });
     
+    // Add proper tooltip functionality
+    toolElement.addEventListener('mouseenter', function(e) {
+        try {
+            if (toolData.description) {
+                // Only show tooltip if chat is not active
+                const aiChatBox = document.getElementById('aiChatBox');
+                if (aiChatBox && aiChatBox.style.display === 'flex') {
+                    return;
+                }
+                
+                // Create or update tooltip with description
+                let tooltip = document.getElementById('tool-tooltip');
+                if (!tooltip) {
+                    tooltip = document.createElement('div');
+                    tooltip.id = 'tool-tooltip';
+                    tooltip.className = 'tool-tooltip';
+                    document.body.appendChild(tooltip);
+                }
+                
+                tooltip.textContent = toolData.description;
+                tooltip.style.display = 'block';
+                
+                // Position tooltip - Check if there's enough space on the right
+                const rect = this.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                
+                // Calculate if tooltip would go off-screen to the right
+                const tooltipWidth = tooltip.offsetWidth || 250; // Fallback to estimated width if not yet rendered
+                
+                if (rect.right + tooltipWidth + 20 > viewportWidth) {
+                    // Not enough space on right, show tooltip on the left side
+                    tooltip.style.left = (rect.left - tooltipWidth - 10) + 'px';
+                    tooltip.style.top = rect.top + 'px';
+                    
+                    // Change arrow direction to point right
+                    tooltip.classList.add('tooltip-left');
+                    tooltip.classList.remove('tooltip-right');
+                } else {
+                    // Enough space on right, show tooltip on the right side
+                    tooltip.style.left = (rect.right + 10) + 'px';
+                    tooltip.style.top = rect.top + 'px';
+                    
+                    // Change arrow direction to point left
+                    tooltip.classList.add('tooltip-right');
+                    tooltip.classList.remove('tooltip-left');
+                }
+            }
+        } catch (error) {
+            console.error("Error showing tool description:", error);
+        }
+    });
+    
+    toolElement.addEventListener('mouseleave', function() {
+        const tooltip = document.getElementById('tool-tooltip');
+        if (tooltip) {
+            tooltip.style.display = 'none';
+        }
+    });
+
+    // Additional document-level check to ensure tooltips disappear
+    document.addEventListener('mousemove', function(e) {
+        const tooltip = document.getElementById('tool-tooltip');
+        if (tooltip && tooltip.style.display === 'block') {
+            // Check if mouse is over the tooltip or the target element
+            const isOverTooltip = e.target === tooltip || tooltip.contains(e.target);
+            const isOverElement = e.target.classList.contains('added-item') || 
+                                 e.target.closest('.added-item');
+            
+            if (!isOverTooltip && !isOverElement) {
+                tooltip.style.display = 'none';
+            }
+        }
+    });
+    
     resultsContainer.appendChild(toolElement);
     
     // Make the element draggable
@@ -465,11 +539,17 @@ async function updateAISuggestions(toolData) {
                 }
             });
             
-            // Add hover effect to show description
-            item.addEventListener('mouseenter', function() {
+            // Add proper tooltip functionality
+            item.addEventListener('mouseenter', function(e) {
                 try {
                     const toolData = JSON.parse(this.getAttribute('data-tool'));
                     if (toolData.description) {
+                        // Only show tooltip if chat is not active
+                        const aiChatBox = document.getElementById('aiChatBox');
+                        if (aiChatBox && aiChatBox.style.display === 'flex') {
+                            return;
+                        }
+                        
                         // Create or update tooltip with description
                         let tooltip = document.getElementById('tool-tooltip');
                         if (!tooltip) {
@@ -539,3 +619,69 @@ async function updateAISuggestions(toolData) {
         `;
     }
 }
+
+// Fix for tool tooltips not disappearing when mouse leaves
+function fixToolTooltips() {
+    // Create a global mousemove event listener to close tooltips
+    document.addEventListener('mousemove', function(e) {
+        const tooltip = document.getElementById('tool-tooltip');
+        
+        if (tooltip && tooltip.style.display === 'block') {
+            // Check if mouse is over the tooltip or a relevant element
+            const isOverTooltip = e.target === tooltip || tooltip.contains(e.target);
+            const isOverElement = e.target.classList.contains('alternative-item') || 
+                                e.target.classList.contains('added-item') ||
+                                e.target.closest('.alternative-item') ||
+                                e.target.closest('.added-item');
+            
+            if (!isOverTooltip && !isOverElement) {
+                tooltip.style.display = 'none';
+            }
+        }
+    });
+    
+    // Add this function to the window load event
+    window.addEventListener('load', function() {
+        console.log("Adding tooltip fix handlers");
+        fixToolTooltipEventHandlers();
+    });
+}
+
+// Function to fix tooltip event handlers on specific elements
+function fixToolTooltipEventHandlers() {
+    // Fix tooltip handlers for all existing relevant elements
+    document.querySelectorAll('.alternative-item, .added-item').forEach(item => {
+        // Remove existing event listeners by cloning and replacing
+        const clone = item.cloneNode(true);
+        if (item.parentNode) {
+            item.parentNode.replaceChild(clone, item);
+        }
+        
+        // Add event listener for click
+        clone.addEventListener('click', function() {
+            try {
+                if (this.classList.contains('alternative-item') || this.classList.contains('added-item')) {
+                    const toolData = JSON.parse(this.getAttribute('data-tool'));
+                    if (toolData) {
+                        addToolToPane(toolData);
+                    }
+                }
+            } catch (error) {
+                console.error("Error handling click:", error);
+            }
+        });
+        
+        // Force set proper mouseleave handler
+        clone.addEventListener('mouseleave', function() {
+            const tooltip = document.getElementById('tool-tooltip');
+            if (tooltip) {
+                tooltip.style.display = 'none';
+            }
+        });
+    });
+    
+    console.log("Tool tooltip event handlers fixed");
+}
+
+// Call the fix function during initialization
+fixToolTooltips();

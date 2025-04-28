@@ -49,6 +49,11 @@ function addEndpointsToNode(id) {
                         
                         // Check compatibility between the tools
                         checkToolsCompatibility(sourceNode, targetNode, conn);
+                        
+                        // Open AI chat automatically without confirmation dialog
+                        setTimeout(() => {
+                            showAiChatForConnectedTools(sourceToolName, targetToolName, conn);
+                        }, 800);
                     }
                 }, 300);
             }
@@ -97,15 +102,6 @@ async function checkToolsCompatibility(sourceNode, targetNode, connection) {
         if (compatibilityResult.score < 2) {
             showAlternativeTools(compatibilityResult.alternatives, sourceToolData, targetToolData);
         }
-        
-        // Ask if user wants to generate code
-        if (compatibilityResult.score > 0) {
-            setTimeout(() => {
-                if (confirm(`Would you like to generate connection code between ${sourceToolData.name} and ${targetToolData.name}?`)) {
-                    showAiChatForConnectedTools(sourceToolData.name, targetToolData.name, connection);
-                }
-            }, 500);
-        }
     } catch (error) {
         console.error("Error checking tool compatibility:", error);
         // Set default compatibility
@@ -127,16 +123,23 @@ async function getToolsCompatibility(sourceTool, targetTool) {
         const projectName = projectNameElement ? projectNameElement.textContent.trim() : "Untitled Project";
         const projectType = projectNameElement ? projectNameElement.getAttribute('data-project-type') || "Unknown" : "Unknown";
         
-        // Prepare the prompt for the model
+        // Prepare the prompt for the model - IMPROVED to ensure more varied scores
         const prompt = `You are evaluating the compatibility between two software tools for a ${projectType} project named "${projectName}".
 
 Tool 1: ${sourceTool.name} (${sourceTool.category})
 Tool 2: ${targetTool.name} (${targetTool.category})
 
-Rate their compatibility on a scale of 0-2:
-0 - Not compatible or very difficult to integrate
-1 - Somewhat compatible with some integration challenges
-2 - Highly compatible and work well together
+IMPORTANT: Rate their compatibility on a scale of 0-2 with STRICT evaluation criteria:
+0 - INCOMPATIBLE: Significant integration challenges, conflicting paradigms, rarely used together, or requires extensive custom adapters
+1 - MODERATE: Can be integrated with some effort, requires configuration or middleware, not a natural pairing
+2 - HIGH: Well-established integration patterns, commonly used together, natural fit
+
+IMPORTANT INSTRUCTIONS:
+- Be critical in your assessment
+- Competing tools or frameworks in the same category should get score 0
+- Frontend tools directly connecting to databases without middleware should get score 0
+- If integration requires substantial custom code, score 0 or 1
+- Only give score 2 for well-documented, established integrations
 
 Also provide 1-3 alternative tools that would work better with ${sourceTool.name} if the compatibility score is less than 2.
 
@@ -165,7 +168,7 @@ Note: Only include the JSON object in your response, nothing else.`;
             body: JSON.stringify({
                 model: 'meta-llama/Meta-Llama-3-8B-Instruct',
                 messages: [{ role: 'user', content: prompt }],
-                temperature: 0.1,
+                temperature: 0.4, // Slightly higher temperature for more varied responses
                 max_tokens: 500
             })
         });
@@ -179,7 +182,7 @@ Note: Only include the JSON object in your response, nothing else.`;
             
             // Ensure the result has the expected structure
             return {
-                score: Number(result.score) || 1, // Default to 1 if invalid
+                score: Number(result.score), // Keep as is without default to allow 0
                 reason: result.reason || "Compatibility uncertain",
                 alternatives: Array.isArray(result.alternatives) ? result.alternatives : []
             };
@@ -191,7 +194,7 @@ Note: Only include the JSON object in your response, nothing else.`;
                 try {
                     const result = JSON.parse(jsonMatch[0]);
                     return {
-                        score: Number(result.score) || 1,
+                        score: Number(result.score),
                         reason: result.reason || "Compatibility uncertain",
                         alternatives: Array.isArray(result.alternatives) ? result.alternatives : []
                     };
@@ -340,60 +343,6 @@ function showAlternativeTools(alternatives, sourceTool, targetTool) {
             } catch (error) {
                 console.error("Error adding alternative tool:", error);
                 showToast("Error adding alternative tool", "error");
-            }
-        });
-        
-        // Add hover tooltip for description
-        item.addEventListener('mouseenter', function() {
-            try {
-                const toolData = JSON.parse(this.getAttribute('data-tool'));
-                if (toolData.description) {
-                    // Create or update tooltip with description
-                    let tooltip = document.getElementById('tool-tooltip');
-                    if (!tooltip) {
-                        tooltip = document.createElement('div');
-                        tooltip.id = 'tool-tooltip';
-                        tooltip.className = 'tool-tooltip';
-                        document.body.appendChild(tooltip);
-                    }
-                    
-                    tooltip.textContent = toolData.description;
-                    tooltip.style.display = 'block';
-                    
-                    // Position tooltip - Check if there's enough space on the right
-                    const rect = this.getBoundingClientRect();
-                    const viewportWidth = window.innerWidth;
-                    
-                    // Calculate if tooltip would go off-screen to the right
-                    const tooltipWidth = tooltip.offsetWidth || 250; // Fallback to estimated width if not yet rendered
-                    
-                    if (rect.right + tooltipWidth + 20 > viewportWidth) {
-                        // Not enough space on right, show tooltip on the left side
-                        tooltip.style.left = (rect.left - tooltipWidth - 10) + 'px';
-                        tooltip.style.top = rect.top + 'px';
-                        
-                        // Change arrow direction to point right
-                        tooltip.classList.add('tooltip-left');
-                        tooltip.classList.remove('tooltip-right');
-                    } else {
-                        // Enough space on right, show tooltip on the right side
-                        tooltip.style.left = (rect.right + 10) + 'px';
-                        tooltip.style.top = rect.top + 'px';
-                        
-                        // Change arrow direction to point left
-                        tooltip.classList.add('tooltip-right');
-                        tooltip.classList.remove('tooltip-left');
-                    }
-                }
-            } catch (error) {
-                console.error("Error showing tool description:", error);
-            }
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            const tooltip = document.getElementById('tool-tooltip');
-            if (tooltip) {
-                tooltip.style.display = 'none';
             }
         });
     });
@@ -592,6 +541,12 @@ function setupSingleConnectionHover(connection) {
     $(connection.canvas).hover(
         // Mouse enter
         function(event) {
+            // Only show tooltip if chat isn't active
+            if (document.getElementById('aiChatBox') && 
+                document.getElementById('aiChatBox').style.display === 'flex') {
+                return; // Don't show connection tooltip when chat is active
+            }
+            
             if (connection.compatibilityData) {
                 const sourceNode = document.getElementById(connection.sourceId);
                 const targetNode = document.getElementById(connection.targetId);
@@ -621,11 +576,6 @@ function setupSingleConnectionHover(connection) {
                     tooltip.style.top = (event.pageY - 15) + 'px';
                     tooltip.style.display = 'block';
                 }
-            }
-            
-            // Also show code icon if connection has code
-            if (connection.codeSnippet && connection.codeSnippet.trim() !== "") {
-                showCodeModal(connection);
             }
         },
         // Mouse leave
@@ -703,6 +653,7 @@ function bindConnectionEvents() {
 }
 
 // Add a code icon to a connection using overlays
+// Add a code icon to a connection using overlays - FIXED POSITIONING
 function addCodeIconToConnection(connection) {
     try {
         // Remove any existing code icon overlay
@@ -712,15 +663,26 @@ function addCodeIconToConnection(connection) {
         
         // Only add the overlay if the connection has code
         if (connection.codeSnippet && connection.codeSnippet.trim() !== "") {
-            // Add an overlay to the connection
+            // Add an overlay to the connection with direct positioning
             connection.addOverlay([
                 "Custom", {
                     id: "codeIcon",
                     create: function() {
-                        // Create the element
+                        // Create the element with inline styles for positioning
                         const codeIcon = document.createElement('div');
                         codeIcon.className = 'code-icon-overlay';
                         codeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>';
+                        
+                        // Direct positioning without transform
+                        codeIcon.style.position = 'absolute';
+                        codeIcon.style.zIndex = '9999';
+                        // Remove the transform that's causing the issue
+                        codeIcon.style.transform = 'none';
+                        // Set top to a negative value to move it up
+                        codeIcon.style.top = '-25px';
+                        // Center it horizontally
+                        codeIcon.style.left = '50%';
+                        codeIcon.style.marginLeft = '-11px'; // Half the width of the icon
                         
                         // Add click handler
                         codeIcon.addEventListener('click', function(e) {
@@ -737,6 +699,9 @@ function addCodeIconToConnection(connection) {
             
             // Store reference to the overlay
             connection.codeIconOverlay = true;
+            
+            // Add a CSS class to highlight the connection with code
+            jsPlumbInstance.select({source: connection.sourceId, target: connection.targetId}).addClass("has-code");
         }
     } catch (error) {
         console.error("Error adding code icon:", error);

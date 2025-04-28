@@ -199,7 +199,14 @@
     color: var(--primary);
 }
 
-/* Code Icon Overlay */
+/* Fix for issue #1: Code icon positioning (move above compatibility label) */
+.code-icon-container {
+    /* margin-bottom: 100px; */
+    /* position: absolute !important; */
+    /* z-index: 101 !important; Higher z-index to appear above compatibility label */
+    transform: translateY(-25px) !important; /*Move up to appear above the line and label*/
+}
+
 .code-icon-overlay {
     position: absolute;
     background-color: var(--primary);
@@ -220,12 +227,6 @@
 .code-icon-overlay:hover {
     transform: scale(1.1);
     background-color: var(--primary-dark);
-}
-
-/* Container for code icon when used as overlay */
-.code-icon-container {
-    position: absolute;
-    z-index: 100;
 }
 
 /* Connection Code Modal */
@@ -322,7 +323,7 @@
     box-shadow: var(--box-shadow-lg);
     display: flex;
     flex-direction: column;
-    z-index: 1000;
+    z-index: 1500 !important; /* Ensure chat is above tooltips */
     overflow: hidden;
     border: 1px solid var(--gray-200);
 }
@@ -426,7 +427,6 @@
 .ai-chat-input button:hover {
     background-color: var(--primary-dark);
 }
-/* Add these styles to your ai-styles.css file */
 
 /* Tool tooltip */
 .tool-tooltip {
@@ -437,7 +437,7 @@
     border-radius: var(--border-radius-sm);
     font-size: 0.75rem;
     max-width: 250px;
-    z-index: 1500;
+    z-index: 1000;
     box-shadow: var(--box-shadow-md);
     pointer-events: none;
     opacity: 0.9;
@@ -476,12 +476,20 @@
     height: 40px;
     animation: spin 1s linear infinite;
 }
-/* Add these styles to your ai-styles.css file */
+
+/* Fix for issue #2: Hide tooltips when chat is active */
+body:has(.ai-chat-box[style*="display: flex"]) .tool-tooltip {
+    display: none !important;
+}
+
+body:has(.ai-chat-box[style*="display: flex"]) .connection-tooltip {
+    display: none !important;
+}
 
 /* Compatibility Label Styles */
 .compatibility-label-container {
-    z-index: 50;
-    pointer-events: none;
+    z-index: 50 !important;
+    pointer-events: none !important;
 }
 
 .compatibility-label {
@@ -495,21 +503,23 @@
     text-transform: uppercase;
     display: inline-block;
     line-height: 1;
+    margin-bottom: 7px;
 }
 
-.compatibility-low {
-    background-color: var(--danger);
-    color: white;
+/* Fix for issue #3: Ensure proper compatibility label colors */
+.compatibility-label.compatibility-low {
+    background-color: var(--danger) !important;
+    color: white !important;
 }
 
-.compatibility-medium {
-    background-color: #f59e0b; /* Amber */
-    color: white;
+.compatibility-label.compatibility-medium {
+    background-color: #f59e0b !important; /* Amber */
+    color: white !important;
 }
 
-.compatibility-high {
-    background-color: var(--success);
-    color: white;
+.compatibility-label.compatibility-high {
+    background-color: var(--success) !important;
+    color: white !important;
 }
 
 /* Connection Tooltip */
@@ -598,15 +608,15 @@
 }
 
 .compatibility-score-container.score-0 {
-    background-color: var(--danger);
+    background-color: var(--danger) !important;
 }
 
 .compatibility-score-container.score-1 {
-    background-color: #f59e0b; /* Amber */
+    background-color: #f59e0b !important; /* Amber */
 }
 
 .compatibility-score-container.score-2 {
-    background-color: var(--success);
+    background-color: var(--success) !important;
 }
 
 .compatibility-score {
@@ -673,4 +683,10 @@
 
 .alternatives-list .connection-item:hover {
     border-left-color: var(--primary);
+}
+
+/* Additional animation for loading */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

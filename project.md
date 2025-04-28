@@ -15,3 +15,10 @@
 
 
 1)if there are no ai recommendation add a sad smily face with a message
+
+
+
+
+issue to be sorted are - just green and orange appears not red anywere
+and the chatbox should open automatically upon connectiong code with the option to close which is already there
+and once the code is genrated the code icon is added on top of the hig medium low and insted i want it to show on top of that

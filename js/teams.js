@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (addMemberBtn) {
         addMemberBtn.addEventListener('click', () => {
             if (!viewingOnly) {
+                addMemberModal.style.display = 'flex';
                 addMemberModal.classList.add('active');
                 document.getElementById('member-name').focus();
             }
@@ -113,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function closeModal() {
         addMemberModal.classList.remove('active');
+        addMemberModal.style.display = 'none';
         addMemberForm.reset();
     }
     
@@ -340,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input.setAttribute('readonly', 'readonly');
             input.style.backgroundColor = '#f3f4f6';
             input.style.borderColor = '#e5e7eb';
+            input.style.cursor = 'not-allowed';
         });
         
         // Hide form buttons
@@ -361,6 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input.removeAttribute('readonly');
             input.style.backgroundColor = '';
             input.style.borderColor = '';
+            input.style.cursor = '';
         });
         
         // Show form buttons

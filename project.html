@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/tools.css">
     <link rel="stylesheet" href="css/workspace.css">
+    <link rel="stylesheet" href="css/teams.css">
 
     
     <!-- jQuery and jQuery UI -->
@@ -36,6 +37,7 @@
         </div>
         <div class="project-title" id="projectName">Untitled Project</div>
         <div class="nav-actions">
+            <button class="btn btn-primary team-btn" id="teamManagementBtn">Team</button>
             <button class="btn btn-primary export-btn">Export</button>
         </div>
     </div>
@@ -310,6 +312,151 @@
         <div class="loading-text">Loading...</div>
     </div>
 
+  <!-- Team Management Modal -->
+<div class="modal-overlay" id="teamManagementModal" style="display: none;">
+    <div class="modal-content tm-modal-content">
+        <div class="modal-header">
+            <h2>Team Management</h2>
+            <button class="modal-close-btn" id="closeTeamModalBtn">&times;</button>
+        </div>
+        
+        <div class="tm-tabs">
+            <div class="tm-tab active" data-tab="create-team">Create Team</div>
+            <div class="tm-tab" data-tab="view-teams">View Teams</div>
+        </div>
+        
+        <div class="modal-body">
+            <!-- Create Team Form -->
+            <div class="tab-content active" id="create-team">
+                <form id="team-form">
+                    <div class="tm-form-section">
+                        <h3>Team Information</h3>
+                        <div class="tm-form-row">
+                            <div class="tm-form-group">
+                                <label class="tm-form-label" for="team-name">Team Name *</label>
+                                <input type="text" class="tm-form-control" id="team-name" placeholder="Enter team name" required>
+                            </div>
+                            <div class="tm-form-group">
+                                <label class="tm-form-label" for="team-project">Project</label>
+                                <input type="text" class="tm-form-control" id="team-project" placeholder="Associated project name">
+                            </div>
+                        </div>
+                        <div class="tm-form-group">
+                            <label class="tm-form-label" for="team-description">Description</label>
+                            <textarea class="tm-form-control" id="team-description" rows="3" placeholder="Brief team description"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="tm-form-section">
+                        <h3>Team Owner</h3>
+                        <div class="tm-form-row">
+                            <div class="tm-form-group">
+                                <label class="tm-form-label" for="owner-name">Name *</label>
+                                <input type="text" class="tm-form-control" id="owner-name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="tm-form-group">
+                                <label class="tm-form-label" for="owner-email">Email *</label>
+                                <input type="email" class="tm-form-control" id="owner-email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="tm-form-row">
+                            <div class="tm-form-group">
+                                <label class="tm-form-label" for="owner-position">Position/Role</label>
+                                <input type="text" class="tm-form-control" id="owner-position" placeholder="e.g. Project Manager, Lead Developer">
+                            </div>
+                            <div class="tm-form-group">
+                                <label class="tm-form-label" for="owner-github">GitHub Profile</label>
+                                <input type="url" class="tm-form-control" id="owner-github" placeholder="https://github.com/username">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tm-form-section">
+                        <div class="form-section-header">
+                            <h3>Team Members</h3>
+                        </div>
+                        
+                        <div class="tm-team-members" id="team-members-container">
+                            <!-- Member cards will be added here dynamically -->
+                        </div>
+                        
+                        <button type="button" class="btn btn-secondary" id="add-member-btn">
+                            <span class="btn-icon">+</span> Add Team Member
+                        </button>
+                    </div>
+                    
+                    <div class="tm-form-actions">
+                        <button type="button" class="btn btn-secondary" id="reset-form-btn">Reset</button>
+                        <button type="submit" class="btn btn-primary">Create Team</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- View Teams Tab -->
+            <div class="tab-content" id="view-teams" style="display: none;">
+                <div class="teams-list" id="teams-container">
+                    <!-- Teams will be listed here -->
+                    <div class="team-list-header">
+                        <h2>Your Teams</h2>
+                    </div>
+                    
+                    <div id="teams-grid">
+                        <!-- Team cards will be added here dynamically -->
+                        <p class="no-teams-message">No teams created yet. Create your first team using the 'Create Team' tab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Member Modal (nested modal) -->
+<div class="tm-add-member-modal" id="add-member-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Team Member</h3>
+            <button type="button" class="modal-close" id="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="add-member-form">
+                <div class="tm-form-row">
+                    <div class="tm-form-group">
+                        <label class="tm-form-label" for="member-name">Name *</label>
+                        <input type="text" class="tm-form-control" id="member-name" placeholder="Enter member name" required>
+                    </div>
+                    <div class="tm-form-group">
+                        <label class="tm-form-label" for="member-email">Email *</label>
+                        <input type="email" class="tm-form-control" id="member-email" placeholder="Enter member email" required>
+                    </div>
+                </div>
+                <div class="tm-form-row">
+                    <div class="tm-form-group">
+                        <label class="tm-form-label" for="member-position">Position/Role</label>
+                        <input type="text" class="tm-form-control" id="member-position" placeholder="e.g. Developer, Designer">
+                    </div>
+                    <div class="tm-form-group">
+                        <label class="tm-form-label" for="member-github">GitHub Profile</label>
+                        <input type="url" class="tm-form-control" id="member-github" placeholder="https://github.com/username">
+                    </div>
+                </div>
+                <div class="tm-form-group">
+                    <label class="tm-form-label" for="member-role">Access Role *</label>
+                    <select class="tm-form-select" id="member-role" required>
+                        <option value="">Select role</option>
+                        <option value="admin">Admin</option>
+                        <option value="member">Member</option>
+                        <option value="viewer">Viewer</option>
+                    </select>
+                </div>
+                <div class="tm-form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-add-member">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Member</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
     <script src="js/core.js"></script>
 
     <!-- Include our new data loader script -->
@@ -322,7 +469,7 @@
     <script src="js/connections.js"></script>
     <script src="js/history.js"></script>
     <script src="js/storage.js"></script>
-    
+    <script src="js/teams.js"></script>
     <!-- Include our new AI chat script -->
     <script src="js/ai-chat.js"></script>
 </body>

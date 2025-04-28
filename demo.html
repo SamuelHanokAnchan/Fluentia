@@ -1,281 +1,1179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Code Architect</title>
-  <style>
-    :root {
-      --primary-blue: #2563eb;
-      --background: #f8fafc;
-      --bot-bubble: #ffffff;
-      --user-bubble: #eff6ff;
-    }
-
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background-color: var(--background);
-      margin: 0;
-      padding: 20px;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .chat-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .chat-header {
-      padding: 20px;
-      background: var(--primary-blue);
-      color: white;
-      border-radius: 12px 12px 0 0;
-    }
-
-    .chat-messages {
-      flex-grow: 1;
-      padding: 20px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .message {
-      max-width: 80%;
-      padding: 12px 16px;
-      border-radius: 20px;
-      margin: 4px 0;
-      font-size: 0.95rem;
-    }
-
-    .bot-message {
-      background: var(--bot-bubble);
-      align-self: flex-start;
-      border: 1px solid #e2e8f0;
-    }
-
-    .user-message {
-      background: var(--user-bubble);
-      align-self: flex-end;
-      color: var(--primary-blue);
-    }
-
-    .input-area {
-      padding: 20px;
-      border-top: 1px solid #e2e8f0;
-      display: flex;
-      gap: 10px;
-    }
-
-    input[type="text"] {
-      flex-grow: 1;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    button {
-      background: var(--primary-blue);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .code-block {
-      background: #1e293b;
-      color: #f8fafc;
-      padding: 16px;
-      border-radius: 8px;
-      font-family: 'Courier New', monospace;
-      white-space: pre-wrap;
-      margin: 10px 0;
-    }
-
-    .status-text {
-      color: #64748b;
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluentia - Team Management</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --success: #10b981;
+            --success-dark: #059669;
+            --danger: #ef4444;
+            --danger-dark: #dc2626;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --dark-blue: #01133f;
+            --warning: #f59e0b;
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --transition: all 0.2s ease;
+            --box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .header img {
+            width: 150px;
+            margin-right: 1.5rem;
+        }
+        
+        .header h1 {
+            color: var(--dark-blue);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        
+        .tab {
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .tab:hover:not(.active) {
+            color: var(--gray-800);
+            background-color: var(--gray-100);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .form-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gray-800);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            appearance: none;
+        }
+        
+        .form-select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+        
+        .team-members {
+            margin-bottom: 1.5rem;
+        }
+        
+        .member-card {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .member-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-role-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+        
+        .role-owner {
+            background-color: var(--primary);
+        }
+        
+        .role-admin {
+            background-color: var(--warning);
+        }
+        
+        .role-member {
+            background-color: var(--success);
+        }
+        
+        .role-viewer {
+            background-color: var(--gray-400);
+        }
+        
+        .member-remove {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--gray-200);
+            color: var(--gray-600);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .member-remove:hover {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--gray-300);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: var(--success-dark);
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .teams-list {
+            margin-top: 2rem;
+        }
+        
+        .team-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .team-list-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .team-table th, 
+        .team-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .team-table th {
+            background-color: var(--gray-100);
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .team-table tr:hover td {
+            background-color: var(--gray-100);
+        }
+        
+        .member-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+            font-size: 0.85rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+        }
+        
+        .team-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .add-member-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .add-member-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--box-shadow-lg);
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            background-color: var(--dark-blue);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+        
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .team-card:hover {
+            box-shadow: var(--box-shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .team-card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .team-card-body {
+            padding: 1.25rem;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .team-members-preview {
+            display: flex;
+            margin-top: 0.75rem;
+        }
+        
+        .avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: var(--gray-300);
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: -0.5rem;
+            border: 2px solid white;
+        }
+        
+        .avatar-more {
+            background-color: var(--gray-200);
+        }
+        
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .toast {
+            background-color: white;
+            color: var(--gray-800);
+            padding: 1rem 1.25rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-md);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            max-width: 90vw;
+            border-left: 4px solid var(--primary);
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast-success {
+            border-left-color: var(--success);
+        }
+        
+        .toast-error {
+            border-left-color: var(--danger);
+        }
+        
+        .toast-warning {
+            border-left-color: var(--warning);
+        }
+        
+        .toast-icon {
+            margin-right: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .toast-success .toast-icon {
+            color: var(--success);
+        }
+        
+        .toast-error .toast-icon {
+            color: var(--danger);
+        }
+        
+        .toast-warning .toast-icon {
+            color: var(--warning);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .team-table th:nth-child(3),
+            .team-table td:nth-child(3) {
+                display: none;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <h1>AI Code Architect</h1>
-      <p>I'll ask 3 questions to generate your perfect code</p>
+    <div class="container">
+        <div class="header">
+            <img src="https://placehold.co/150x50/EAEAEA/01133F?text=Fluentia" alt="Fluentia Logo">
+            <h1>Team Management</h1>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Manage Teams</h2>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="create-team">Create Team</div>
+                <div class="tab" data-tab="view-teams">View Teams</div>
+            </div>
+            
+            <div class="card-body">
+                <!-- Create Team Form -->
+                <div class="tab-content active" id="create-team">
+                    <form id="team-form">
+                        <div class="form-section">
+                            <h3>Team Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="team-name">Team Name *</label>
+                                    <input type="text" class="form-control" id="team-name" placeholder="Enter team name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="team-project">Project</label>
+                                    <input type="text" class="form-control" id="team-project" placeholder="Associated project name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="team-description">Description</label>
+                                <textarea class="form-control" id="team-description" rows="3" placeholder="Brief team description"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Team Owner</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="owner-name">Name *</label>
+                                    <input type="text" class="form-control" id="owner-name" placeholder="Enter your name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="owner-email">Email *</label>
+                                    <input type="email" class="form-control" id="owner-email" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="owner-position">Position/Role</label>
+                                    <input type="text" class="form-control" id="owner-position" placeholder="e.g. Project Manager, Lead Developer">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="owner-github">GitHub Profile</label>
+                                    <input type="url" class="form-control" id="owner-github" placeholder="https://github.com/username">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="form-section-header">
+                                <h3>Team Members</h3>
+                            </div>
+                            
+                            <div class="team-members" id="team-members-container">
+                                <!-- Member cards will be added here dynamically -->
+                            </div>
+                            
+                            <button type="button" class="btn btn-secondary" id="add-member-btn">
+                                <span class="btn-icon">+</span> Add Team Member
+                            </button>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="reset-form-btn">Reset</button>
+                            <button type="submit" class="btn btn-primary">Create Team</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- View Teams Tab -->
+                <div class="tab-content" id="view-teams" style="display: none;">
+                    <div class="teams-list" id="teams-container">
+                        <!-- Teams will be listed here -->
+                        <div class="team-list-header">
+                            <h2>Your Teams</h2>
+                        </div>
+                        
+                        <div id="teams-grid">
+                            <!-- Team cards will be added here dynamically -->
+                            <p class="no-teams-message">No teams created yet. Create your first team using the 'Create Team' tab.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <div class="chat-messages" id="chatMessages">
-      <div class="message bot-message">🚀 Let's create some code! First question:</div>
+    <!-- Add Member Modal -->
+    <div class="add-member-modal" id="add-member-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Team Member</h3>
+                <button type="button" class="modal-close" id="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-member-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="member-name">Name *</label>
+                            <input type="text" class="form-control" id="member-name" placeholder="Enter member name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="member-email">Email *</label>
+                            <input type="email" class="form-control" id="member-email" placeholder="Enter member email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="member-position">Position/Role</label>
+                            <input type="text" class="form-control" id="member-position" placeholder="e.g. Developer, Designer">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="member-github">GitHub Profile</label>
+                            <input type="url" class="form-control" id="member-github" placeholder="https://github.com/username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="member-role">Access Role *</label>
+                        <select class="form-select" id="member-role" required>
+                            <option value="">Select role</option>
+                            <option value="admin">Admin</option>
+                            <option value="member">Member</option>
+                            <option value="viewer">Viewer</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-add-member">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container">
+        <!-- Toasts will be added here dynamically -->
     </div>
 
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Type your answer here..." />
-      <button onclick="handleInteraction()">Send</button>
-    </div>
-  </div>
-
-  <script>
-    let conversationState = {
-      currentStep: 0,
-      answers: [],
-      questions: [
-        "What programming language or framework are we using?",
-        "", // Will be generated based on Q1 answer
-        "",
-        ""  // Will be generated based on Q1+Q2 answers
-      ]
-    };
-
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-
-    async function generateNextQuestion() {
-  let prompt;
-  const previousAnswers = conversationState.answers.join(', ');
-  
-  switch(conversationState.currentStep) {
-    case 1:
-      prompt = `As a senior ${conversationState.answers[0]} developer, I need to ask one specific technical question that helps determine the project structure. Considering the tool is ${conversationState.answers[0]}, ask exactly one short question about: the specific purpose/goal of the code. Only include the question.make sure the question is within in 15 words`;
-      break;
-      
-    case 2:
-      prompt = `Based on:
-      - Tool: ${conversationState.answers[0]}
-      - Purpose: ${conversationState.answers[1]}
-      Ask exactly one short technical question about required functionality or key features needed in the code. Only include the question. and make sure that the question is within 15 words`;
-      break;
-      
-    case 3:
-      prompt = `Given:
-      - Tool: ${conversationState.answers[0]}
-      - Purpose: ${conversationState.answers[1]}
-      - Key Features: ${conversationState.answers[2]}
-      Ask exactly one final short question about implementation specifics (e.g., needed dependencies, architectural pattern, or input/output requirements). Only include the question. and make sure that the question is within 15 words`;
-      break;
-  }
-
-  const question = await callAI(prompt);
-  conversationState.questions[conversationState.currentStep] = question;
-  appendMessage(question, 'bot');
-}
-
-    async function generateFinalCode() {
-      const requirements = conversationState.questions.map((q, i) => `${q} → ${conversationState.answers[i]}`).join('\n');
-      const prompt = `Generate code for ${conversationState.answers[0]} that satisfies:\n${requirements}\n\nOutput only raw code without any formatting or explanations.`;
-      
-      const code = await callAI(prompt);
-      appendMessage(code, 'bot', true);
-    }
-
-    async function callAI(prompt) {
-      appendMessage('Analyzing...', 'bot');
-      
-      try {
-        const response = await fetch('https://api.deepinfra.com/v1/openai/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': 'Bearer zTg0D6lABD5ncLQsk6bTQp3pBDVpliGa',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: 'meta-llama/Meta-Llama-3-8B-Instruct',
-            messages: [{ role: 'user', content: prompt }],
-            temperature: 0.2,
-            max_tokens: 200
-          })
+    <script>
+        // Store teams in localStorage
+        let teams = JSON.parse(localStorage.getItem('fluentia_teams')) || [];
+        let currentTeamIndex = -1; // For editing existing team
+        let membersCount = 0;
+        
+        // DOM Elements
+        const teamForm = document.getElementById('team-form');
+        const teamMembersContainer = document.getElementById('team-members-container');
+        const addMemberBtn = document.getElementById('add-member-btn');
+        const addMemberModal = document.getElementById('add-member-modal');
+        const addMemberForm = document.getElementById('add-member-form');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const cancelAddMemberBtn = document.getElementById('cancel-add-member');
+        const resetFormBtn = document.getElementById('reset-form-btn');
+        const teamsGrid = document.getElementById('teams-grid');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // Tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.style.display = 'none';
+                    if (content.id === tabId) {
+                        content.style.display = 'block';
+                    }
+                });
+                
+                // Refresh teams list when switching to view tab
+                if (tabId === 'view-teams') {
+                    renderTeams();
+                }
+            });
         });
-
-        const data = await response.json();
-        return data?.choices?.[0]?.message?.content.trim() || "Could not generate response";
-      } catch (error) {
-        return "Error generating response";
-      } finally {
-        removeLastLoadingMessage();
-      }
-    }
-
-    function handleInteraction() {
-      const answer = userInput.value.trim();
-      if (!answer) return;
-
-      // Store answer and clear input
-      conversationState.answers.push(answer);
-      userInput.value = '';
-      appendMessage(answer, 'user');
-
-      if (conversationState.currentStep < 3) {
-        conversationState.currentStep++;
-        generateNextQuestion();
-      } else {
-        generateFinalCode();
-        // Reset for new conversation
-        setTimeout(() => {
-          conversationState = {
-            currentStep: 0,
-            answers: [],
-            questions: [
-              "What programming language or framework are we using?",
-              "",
-              ""
-            ]
-          };
-          appendMessage("✅ Code generated! Start a new session by typing below.", 'bot');
-        }, 2000);
-      }
-    }
-
-    // UI Helpers
-    function appendMessage(text, sender, isCode = false) {
-      const message = document.createElement('div');
-      message.className = `message ${sender}-message`;
-      
-      if (isCode) {
-        const codeBlock = document.createElement('pre');
-        codeBlock.className = 'code-block';
-        codeBlock.textContent = text;
-        message.appendChild(codeBlock);
-      } else {
-        message.textContent = text;
-      }
-      
-      chatMessages.appendChild(message);
-      message.scrollIntoView();
-    }
-
-    function removeLastLoadingMessage() {
-      const lastMessage = chatMessages.lastElementChild;
-      if (lastMessage?.textContent?.includes('Analyzing...')) {
-        chatMessages.removeChild(lastMessage);
-      }
-    }
-
-    // Initialize first question
-    appendMessage(conversationState.questions[0], 'bot');
-
-    // Handle Enter key
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleInteraction();
-    });
-  </script>
+        
+        // Open add member modal
+        addMemberBtn.addEventListener('click', () => {
+            addMemberModal.classList.add('active');
+            document.getElementById('member-name').focus();
+        });
+        
+        // Close modal handlers
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelAddMemberBtn.addEventListener('click', closeModal);
+        
+        function closeModal() {
+            addMemberModal.classList.remove('active');
+            addMemberForm.reset();
+        }
+        
+        // Handle adding a team member
+        addMemberForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const memberName = document.getElementById('member-name').value;
+            const memberEmail = document.getElementById('member-email').value;
+            const memberPosition = document.getElementById('member-position').value;
+            const memberGithub = document.getElementById('member-github').value;
+            const memberRole = document.getElementById('member-role').value;
+            
+            addTeamMember({
+                id: Date.now(),
+                name: memberName,
+                email: memberEmail,
+                position: memberPosition,
+                github: memberGithub,
+                role: memberRole
+            });
+            
+            closeModal();
+            showToast('Team member added successfully', 'success');
+        });
+        
+        // Add team member to the form
+        function addTeamMember(member) {
+            membersCount++;
+            
+            const memberCard = document.createElement('div');
+            memberCard.className = 'member-card';
+            memberCard.dataset.id = member.id;
+            
+            // Get role color class
+            let roleColorClass = '';
+            switch (member.role) {
+                case 'owner':
+                    roleColorClass = 'role-owner';
+                    break;
+                case 'admin':
+                    roleColorClass = 'role-admin';
+                    break;
+                case 'member':
+                    roleColorClass = 'role-member';
+                    break;
+                case 'viewer':
+                    roleColorClass = 'role-viewer';
+                    break;
+                default:
+                    roleColorClass = 'role-member';
+            }
+            
+            // Format role name for display
+            const roleDisplayName = member.role.charAt(0).toUpperCase() + member.role.slice(1);
+            
+            memberCard.innerHTML = `
+                <div class="member-header">
+                    <div class="member-role-indicator ${roleColorClass}"></div>
+                    <strong>${member.name}</strong>
+                    <span style="margin-left: 10px; color: var(--gray-500);">${roleDisplayName}</span>
+                </div>
+                <div style="margin-left: 26px;">
+                    <div>${member.email}</div>
+                    ${member.position ? `<div style="color: var(--gray-600);">${member.position}</div>` : ''}
+                    ${member.github ? `<div style="margin-top: 5px;"><a href="${member.github}" target="_blank" style="color: var(--primary);">${member.github.replace('https://github.com/', '@')}</a></div>` : ''}
+                </div>
+                ${member.role !== 'owner' ? `<button type="button" class="member-remove" data-id="${member.id}">&times;</button>` : ''}
+            `;
+            
+            teamMembersContainer.appendChild(memberCard);
+            
+            // Add remove event listener (except for owner)
+            if (member.role !== 'owner') {
+                const removeBtn = memberCard.querySelector('.member-remove');
+                removeBtn.addEventListener('click', () => {
+                    memberCard.remove();
+                    membersCount--;
+                    showToast('Team member removed', 'warning');
+                });
+            }
+        }
+        
+        // Handle team form submission
+        teamForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const teamName = document.getElementById('team-name').value;
+            const teamProject = document.getElementById('team-project').value;
+            const teamDescription = document.getElementById('team-description').value;
+            const ownerName = document.getElementById('owner-name').value;
+            const ownerEmail = document.getElementById('owner-email').value;
+            const ownerPosition = document.getElementById('owner-position').value;
+            const ownerGithub = document.getElementById('owner-github').value;
+            
+            // Create team owner
+            const owner = {
+                id: Date.now(),
+                name: ownerName,
+                email: ownerEmail,
+                position: ownerPosition,
+                github: ownerGithub,
+                role: 'owner'
+            };
+            
+            // Get team members from the DOM
+            const memberCards = teamMembersContainer.querySelectorAll('.member-card');
+            const members = [owner]; // Start with owner
+            
+            memberCards.forEach(card => {
+                // Skip if it's the owner card (which we already added)
+                if (card.querySelector('.member-role-indicator.role-owner')) {
+                    return;
+                }
+                
+                // Get member info from data attributes and inner content
+                const id = card.dataset.id;
+                const name = card.querySelector('.member-header strong').textContent;
+                const roleText = card.querySelector('.member-header span').textContent.trim();
+                const role = roleText.toLowerCase();
+                
+                // Get email, position and github from the div content
+                const contentDivs = card.querySelectorAll('div > div');
+                const email = contentDivs[0].textContent;
+                let position = '';
+                let github = '';
+                
+                if (contentDivs.length > 1) {
+                    // Check if second div has position
+                    if (!contentDivs[1].querySelector('a')) {
+                        position = contentDivs[1].textContent;
+                    }
+                }
+                
+                // Check for github link
+                const githubLink = card.querySelector('a');
+                if (githubLink) {
+                    github = githubLink.href;
+                }
+                
+                members.push({
+                    id: parseInt(id),
+                    name,
+                    email,
+                    position,
+                    github,
+                    role
+                });
+            });
+            
+            // Create team object
+            const team = {
+                id: Date.now(),
+                name: teamName,
+                project: teamProject,
+                description: teamDescription,
+                createdAt: new Date().toISOString(),
+                members: members
+            };
+            
+            // Add to teams array
+            if (currentTeamIndex >= 0) {
+                // Update existing team
+                teams[currentTeamIndex] = team;
+                showToast(`Team "${teamName}" updated successfully`, 'success');
+            } else {
+                // Add new team
+                teams.push(team);
+                showToast(`Team "${teamName}" created successfully`, 'success');
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('fluentia_teams', JSON.stringify(teams));
+            
+            // Reset form and state
+            resetForm();
+            
+            // Switch to view teams tab
+            document.querySelector('.tab[data-tab="view-teams"]').click();
+        });
+        
+        // Reset form
+        resetFormBtn.addEventListener('click', resetForm);
+        
+        function resetForm() {
+            teamForm.reset();
+            teamMembersContainer.innerHTML = '';
+            membersCount = 0;
+            currentTeamIndex = -1;
+        }
+        
+        // Render teams in the view tab
+        function renderTeams() {
+            // Check if there are teams
+            if (teams.length === 0) {
+                teamsGrid.innerHTML = '<p class="no-teams-message">No teams created yet. Create your first team using the \'Create Team\' tab.</p>';
+                return;
+            }
+            
+            // Clear teams container
+            teamsGrid.innerHTML = '';
+            
+            // Render each team
+            teams.forEach((team, index) => {
+                const teamCard = document.createElement('div');
+                teamCard.className = 'team-card';
+                
+                // Get member counts by role
+                const memberCounts = team.members.reduce((acc, member) => {
+                    acc[member.role] = (acc[member.role] || 0) + 1;
+                    return acc;
+                }, {});
+                
+                // Find the owner
+                const owner = team.members.find(member => member.role === 'owner');
+                
+                // Create avatars for members (max 4 avatars + "more" if needed)
+                let avatarsHTML = '';
+                const displayedMembers = team.members.slice(0, 4);
+                
+                displayedMembers.forEach(member => {
+                    // Get initials for avatar
+                    const initials = member.name.split(' ')
+                        .map(n => n[0])
+                        .join('')
+                        .toUpperCase()
+                        .substring(0, 2);
+                    
+                    avatarsHTML += `<div class="avatar" title="${member.name}">${initials}</div>`;
+                });
+                
+                // Add "more" avatar if needed
+                if (team.members.length > 4) {
+                    const moreCount = team.members.length - 4;
+                    avatarsHTML += `<div class="avatar avatar-more" title="${moreCount} more members">+${moreCount}</div>`;
+                }
+                
+                teamCard.innerHTML = `
+                    <div class="team-card-header">
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.1rem;">${team.name}</h3>
+                            <div style="color: var(--gray-600); font-size: 0.85rem; margin-top: 0.25rem;">
+                                ${owner ? `Created by ${owner.name}` : ''}
+                                <span style="margin-left: 0.5rem; color: var(--gray-400);">
+                                    ${new Date(team.createdAt).toLocaleDateString()}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="badge badge-primary">${team.members.length} ${team.members.length === 1 ? 'member' : 'members'}</div>
+                    </div>
+                    <div class="team-card-body">
+                        ${team.description ? `<p style="margin-top: 0; color: var(--gray-700);">${team.description}</p>` : ''}
+                        ${team.project ? `<p style="margin-bottom: 0.5rem; font-size: 0.9rem;">Project: <strong>${team.project}</strong></p>` : ''}
+                        
+                        <div class="team-members-preview">
+                            ${avatarsHTML}
+                        </div>
+                        
+                        <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                            <button type="button" class="btn btn-secondary btn-sm view-team-btn" data-index="${index}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.25rem; vertical-align: -3px;">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                View Team
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm add-member-team-btn" style="margin-left: 0.5rem;" data-index="${index}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.25rem; vertical-align: -3px;">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                                Add Member
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                teamsGrid.appendChild(teamCard);
+                
+                // Add event listeners
+                const viewBtn = teamCard.querySelector('.view-team-btn');
+                viewBtn.addEventListener('click', () => {
+                    loadTeamForEdit(index);
+                });
+                
+                const addMemberBtn = teamCard.querySelector('.add-member-team-btn');
+                addMemberBtn.addEventListener('click', () => {
+                    openAddMemberForTeam(index);
+                });
+            });
+        }
+        
+        // Load team for editing
+        function loadTeamForEdit(index) {
+            const team = teams[index];
+            currentTeamIndex = index;
+            
+            // Set team info
+            document.getElementById('team-name').value = team.name;
+            document.getElementById('team-project').value = team.project || '';
+            document.getElementById('team-description').value = team.description || '';
+            
+            // Find owner
+            const owner = team.members.find(m => m.role === 'owner');
+            
+            // Set owner info
+            if (owner) {
+                document.getElementById('owner-name').value = owner.name;
+                document.getElementById('owner-email').value = owner.email;
+                document.getElementById('owner-position').value = owner.position || '';
+                document.getElementById('owner-github').value = owner.github || '';
+            }
+            
+            // Clear existing members
+            teamMembersContainer.innerHTML = '';
+            membersCount = 0;
+            
+            // Add non-owner members
+            team.members.forEach(member => {
+                if (member.role !== 'owner') {
+                    addTeamMember(member);
+                }
+            });
+            
+            // Switch to create tab
+            document.querySelector('.tab[data-tab="create-team"]').click();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Show toast
+            showToast(`Editing team: ${team.name}`, 'info');
+        }
+        
+        // Open add member modal for a specific team
+        function openAddMemberForTeam(index) {
+            currentTeamIndex = index;
+            
+            // Clear form
+            addMemberForm.reset();
+            
+            // Show modal
+            addMemberModal.classList.add('active');
+            
+            // Focus on first field
+            document.getElementById('member-name').focus();
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toast-container');
+            
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            // Icon based on type
+            let icon = '';
+            switch (type) {
+                case 'success':
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toast-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>';
+                    break;
+                case 'error':
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toast-icon"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
+                    break;
+                case 'warning':
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toast-icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>';
+                    break;
+                default:
+                    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toast-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>';
+            }
+            
+            toast.innerHTML = `${icon}<span>${message}</span>`;
+            
+            // Add to container
+            toastContainer.appendChild(toast);
+            
+            // Show toast with animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Auto hide after delay
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toastContainer.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Initialize - render teams if any
+        renderTeams();
+    </script>
 </body>
 </html>

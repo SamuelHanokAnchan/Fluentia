@@ -1,0 +1,403 @@
+/* Team Management Modal Styles - Prefixed with 'tm-' to avoid conflicts */
+.tm-modal-content {
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .tm-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .tm-tab {
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tm-tab.active {
+    color: #3b82f6;
+    border-bottom-color: #3b82f6;
+  }
+  
+  .tm-tab:hover:not(.active) {
+    color: #1e293b;
+    background-color: #f3f4f6;
+  }
+  
+  .tm-form-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .tm-form-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+  
+  .tm-form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tm-form-group {
+    flex: 1;
+  }
+  
+  .tm-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #334155;
+  }
+  
+  .tm-form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+  
+  .tm-form-control:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+  
+  .tm-form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    appearance: none;
+  }
+  
+  .tm-form-select:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+  
+  .tm-team-members {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Enhanced member card styling */
+.tm-member-card {
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    border-left: 4px solid transparent;
+}
+
+.tm-member-card.tm-role-owner-card {
+    border-left-color: #3b82f6; /* Blue for owner */
+}
+
+.tm-member-card.tm-role-admin-card {
+    border-left-color: #f59e0b; /* Amber for admin */
+}
+
+.tm-member-card.tm-role-member-card {
+    border-left-color: #10b981; /* Green for member */
+}
+
+.tm-member-card.tm-role-viewer-card {
+    border-left-color: #94a3b8; /* Gray for viewer */
+}
+
+.tm-member-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.tm-member-role {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background-color: #f3f4f6;
+    color: #475569;
+}
+
+.tm-member-email {
+    color: #475569;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.tm-member-position {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 2px;
+}
+
+.tm-member-github {
+    margin-top: 5px;
+}
+
+.tm-member-github a {
+    color: #3b82f6;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.tm-member-github a:hover {
+    text-decoration: underline;
+}
+  
+  .tm-member-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tm-member-role-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+  }
+  
+  .tm-role-owner {
+    background-color: #3b82f6;
+  }
+  
+  .tm-role-admin {
+    background-color: #f59e0b;
+  }
+  
+  .tm-role-member {
+    background-color: #10b981;
+  }
+  
+  .tm-role-viewer {
+    background-color: #94a3b8;
+  }
+  
+  .tm-member-remove {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    color: #475569;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .tm-member-remove:hover {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .tm-team-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .tm-team-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+  
+  .tm-team-card-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tm-team-card-body {
+    padding: 1.25rem;
+  }
+  
+  .tm-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .tm-badge-primary {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .tm-team-members-preview {
+    display: flex;
+    margin-top: 0.75rem;
+  }
+  
+  .tm-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-right: -0.5rem;
+    border: 2px solid white;
+  }
+  
+  .tm-avatar-more {
+    background-color: #e5e7eb;
+  }
+  
+  .tm-add-member-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100; /* Higher z-index to appear above the team modal */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  
+  .tm-add-member-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .team-btn {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .team-btn::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='9' cy='7' r='4'%3E%3C/circle%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'%3E%3C/path%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .tm-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Toast notifications */
+  .tm-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .tm-toast {
+    background-color: white;
+    color: #1e293b;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    max-width: 90vw;
+    border-left: 4px solid #3b82f6;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+  }
+  
+  .tm-toast.show {
+    transform: translateX(0);
+  }
+  
+  .tm-toast-success {
+    border-left-color: #10b981;
+  }
+  
+  .tm-toast-error {
+    border-left-color: #ef4444;
+  }
+  
+  .tm-toast-warning {
+    border-left-color: #f59e0b;
+  }
+  
+  .tm-toast-icon {
+    margin-right: 0.75rem;
+    color: #3b82f6;
+  }
+  
+  .tm-toast-success .tm-toast-icon {
+    color: #10b981;
+  }
+  
+  .tm-toast-error .tm-toast-icon {
+    color: #ef4444;
+  }
+  
+  .tm-toast-warning .tm-toast-icon {
+    color: #f59e0b;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .tm-form-row {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Add this to your css/teams.css file */
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
